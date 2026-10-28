@@ -4,6 +4,16 @@ import {
   Header 
 } from './components/Header';
 import { 
+  TailAdminSidebar, 
+  SidebarTab 
+} from './components/TailAdminSidebar';
+import { 
+  TailAdminHeader 
+} from './components/TailAdminHeader';
+import { 
+  TailAdminKpiCards 
+} from './components/TailAdminKpiCards';
+import { 
   ProgressBar 
 } from './components/ProgressBar';
 import { 
@@ -171,6 +181,8 @@ export default function App() {
   const [institutionFilter, setInstitutionFilter] = useState<string>('all');
   const [sortBy, setSortBy] = useState<SortOption>('dueDateAsc');
   const [viewMode, setViewMode] = useState<ViewMode>('table');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarTab, setSidebarTab] = useState<SidebarTab>('tables');
 
   // Synchronize dark mode class on document
   useEffect(() => {
@@ -521,10 +533,18 @@ export default function App() {
     let pending = 0;
     let completed = 0;
     let urgent = 0;
+    let maya = 0;
+    let aydin = 0;
+    let kisisel = 0;
 
     allHomeworkList.forEach((hw) => {
       if (hw.completed) completed++;
       else pending++;
+
+      const inst = hw.institution || 'maya';
+      if (inst === 'maya') maya++;
+      else if (inst === 'aydin') aydin++;
+      else if (inst === 'kisisel') kisisel++;
 
       const u = getUrgencyInfo(hw.dueDate);
       if (u.status === 'today' || u.status === 'tomorrow' || u.status === 'expired') {
@@ -537,6 +557,9 @@ export default function App() {
       pending,
       completed,
       urgent,
+      maya,
+      aydin,
+      kisisel,
     };
   }, [allHomeworkList]);
 
@@ -562,158 +585,220 @@ export default function App() {
   }, [filteredAndSortedList]);
 
   return (
-    <div className="min-h-screen bg-slate-100/70 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors font-sans antialiased selection:bg-blue-500 selection:text-white">
-      {/* Top Header */}
-      <Header
-        studentName={studentName}
-        onOpenStudentModal={() => setStudentModalOpen(true)}
-        onOpenShareModal={() => setShareModalOpen(true)}
+    <div className="flex h-screen overflow-hidden bg-gray-50/70 dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans antialiased selection:bg-blue-500 selection:text-white">
+      {/* 1. TailAdmin Left Sidebar Navigation */}
+      <TailAdminSidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        activeTab={sidebarTab}
+        onSelectTab={(tab) => {
+          setSidebarTab(tab);
+          if (tab === 'timeline') setViewMode('timeline');
+          else if (tab === 'tables') setViewMode('table');
+        }}
+        institutionFilter={institutionFilter}
+        onInstitutionChange={setInstitutionFilter}
+        subjectFilter={subjectFilter}
+        onSubjectChange={setSubjectFilter}
+        availableSubjects={availableSubjects}
+        counts={{
+          all: counts.all,
+          pending: counts.pending,
+          completed: counts.completed,
+          maya: counts.maya,
+          aydin: counts.aydin,
+          kisisel: counts.kisisel,
+        }}
         onOpenAddModal={() => setAddModalOpen(true)}
         onOpenTimerModal={() => setTimerModalOpen(true)}
-        onOpenGitHubModal={() => setGitHubModalOpen(true)}
-        hasGitHubGist={!!getGitHubConfig().gistId}
+        onOpenPrint={() => window.print()}
+        onOpenShareModal={() => setShareModalOpen(true)}
         onOpenSupabaseModal={() => setSupabaseModalOpen(true)}
         isSupabaseConnected={isSupabaseConnected}
-        onPrint={() => window.print()}
-        soundEnabled={soundEnabled}
-        onToggleSound={handleToggleSound}
-        darkMode={darkMode}
-        onToggleDarkMode={() => setDarkMode(!darkMode)}
-        completedCount={completedCount}
-        totalCount={totalCount}
       />
 
-      {/* Main Container - TailAdmin responsive 5xl container */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-6 space-y-4">
-        
-        {/* Progress Bar & Motivation card */}
-        <ProgressBar
-          completedCount={completedCount}
-          totalCount={totalCount}
-          subjectBreakdown={subjectBreakdown}
-          onResetProgress={handleResetProgress}
-          onCompleteAll={handleCompleteAll}
-          studentName={studentName}
-        />
-
-        {/* Filters & Search */}
-        <HomeworkFilters
+      {/* 2. Main Content Canvas (Fills Available Width) */}
+      <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+        {/* Top Header (Search, Dark Mode, Notification bell, Student profile) */}
+        <TailAdminHeader
+          onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
-          statusFilter={statusFilter}
-          onStatusFilterChange={setStatusFilter}
-          institutionFilter={institutionFilter}
-          onInstitutionFilterChange={setInstitutionFilter}
-          subjectFilter={subjectFilter}
-          onSubjectFilterChange={setSubjectFilter}
-          sortBy={sortBy}
-          onSortChange={setSortBy}
-          viewMode={viewMode}
-          onViewModeChange={setViewMode}
-          availableSubjects={availableSubjects}
-          counts={counts}
+          studentName={studentName}
+          onOpenStudentModal={() => setStudentModalOpen(true)}
+          darkMode={darkMode}
+          onToggleDarkMode={() => setDarkMode(!darkMode)}
+          soundEnabled={soundEnabled}
+          onToggleSound={handleToggleSound}
+          isSupabaseConnected={isSupabaseConnected}
+          onOpenSupabaseModal={() => setSupabaseModalOpen(true)}
+          onOpenAddModal={() => setAddModalOpen(true)}
+          onOpenShareModal={() => setShareModalOpen(true)}
+          pendingItems={filteredAndSortedList.filter((h) => !h.completed)}
+          urgentCount={counts.urgent}
         />
 
-        {/* Homework Items: Timeline View or Flat List View */}
-        {filteredAndSortedList.length > 0 ? (
-          viewMode === 'timeline' ? (
-            <div className="space-y-4">
-              {/* 1. Urgent / Today */}
-              {timelineBuckets.urgent.length > 0 && (
-                <TimelineSection
-                  bucket="urgent"
-                  items={timelineBuckets.urgent}
-                  onToggleComplete={handleToggleComplete}
-                  onToggleSubtask={handleToggleSubtask}
-                  onUpdateNote={handleUpdateNote}
-                  onDeleteCustom={handleDeleteCustom}
-                />
-              )}
-
-              {/* 2. Weekend / Monday */}
-              {timelineBuckets.monday.length > 0 && (
-                <TimelineSection
-                  bucket="monday"
-                  items={timelineBuckets.monday}
-                  onToggleComplete={handleToggleComplete}
-                  onToggleSubtask={handleToggleSubtask}
-                  onUpdateNote={handleUpdateNote}
-                  onDeleteCustom={handleDeleteCustom}
-                />
-              )}
-
-              {/* 3. Later next week */}
-              {timelineBuckets.later.length > 0 && (
-                <TimelineSection
-                  bucket="later"
-                  items={timelineBuckets.later}
-                  onToggleComplete={handleToggleComplete}
-                  onToggleSubtask={handleToggleSubtask}
-                  onUpdateNote={handleUpdateNote}
-                  onDeleteCustom={handleDeleteCustom}
-                />
-              )}
-
-              {/* 4. Completed Section (Collapsible) */}
-              {timelineBuckets.completed.length > 0 && (
-                <TimelineSection
-                  bucket="completed"
-                  items={timelineBuckets.completed}
-                  onToggleComplete={handleToggleComplete}
-                  onToggleSubtask={handleToggleSubtask}
-                  onUpdateNote={handleUpdateNote}
-                  onDeleteCustom={handleDeleteCustom}
-                  defaultExpanded={statusFilter === 'completed' || (timelineBuckets.urgent.length === 0 && timelineBuckets.monday.length === 0 && timelineBuckets.later.length === 0)}
-                />
-              )}
+        {/* TailAdmin Page Content Container */}
+        <main className="p-4 sm:p-6 lg:p-8 space-y-6 flex-1 max-w-full">
+          
+          {/* Breadcrumb & Title Area (Matches TailAdmin screenshot image_5d7984d3.png) */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div>
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+                {sidebarTab === 'tables' ? 'Basic Tables' : sidebarTab === 'timeline' ? 'Haftalık Akış' : 'Genel Bakış'}
+              </h1>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                8/D Sınıfı · Maya Okulu, Aydın Dershanesi ve Kişisel Çalışmalar
+              </p>
             </div>
-          ) : viewMode === 'table' ? (
-            <HomeworkDataTable
-              items={filteredAndSortedList}
-              onToggleComplete={handleToggleComplete}
-              onToggleSubtask={handleToggleSubtask}
-              onUpdateNote={handleUpdateNote}
-              onDeleteCustom={handleDeleteCustom}
-            />
-          ) : (
-            <div className="space-y-3">
-              {filteredAndSortedList.map((hw) => (
-                <HomeworkCard
-                  key={hw.id}
-                  homework={hw}
-                  onToggleComplete={handleToggleComplete}
-                  onToggleSubtask={handleToggleSubtask}
-                  onUpdateNote={handleUpdateNote}
-                  onDeleteCustom={hw.isCustom ? handleDeleteCustom : undefined}
-                />
-              ))}
-            </div>
-          )
-        ) : (
-          <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 text-center border border-slate-200 dark:border-slate-800 shadow-2xs">
-            <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 mx-auto flex items-center justify-center mb-2.5">
-              <Inbox className="w-6 h-6" />
-            </div>
-            <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200">
-              Bu filtrede ödev bulunamadı
-            </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 max-w-xs mx-auto">
-              Filtreleri değiştirerek veya "Tüm Liste" sekmesini seçerek ödevlerini görebilirsin.
-            </p>
-            <button
-              onClick={() => {
-                setSearchQuery('');
-                setStatusFilter('all');
-                setSubjectFilter('all');
-              }}
-              className="mt-3.5 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl cursor-pointer shadow-xs transition"
-            >
-              Tüm Ödevleri Göster
-            </button>
+
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-1.5 text-xs text-gray-400">
+              <span className="hover:text-gray-600 dark:hover:text-gray-300 transition cursor-pointer" onClick={() => setSidebarTab('tables')}>
+                Home
+              </span>
+              <span>&gt;</span>
+              <span className="text-gray-900 dark:text-gray-200 font-semibold">
+                {sidebarTab === 'tables' ? 'Basic Tables' : 'Timeline'}
+              </span>
+            </nav>
           </div>
-        )}
 
-      </main>
+          {/* TailAdmin 4 KPI Metric Cards */}
+          <TailAdminKpiCards
+            totalCount={counts.all}
+            pendingCount={counts.pending}
+            completedCount={counts.completed}
+            urgentCount={counts.urgent}
+            onFilterStatus={(s) => setStatusFilter(s)}
+            activeStatus={statusFilter}
+          />
+
+          {/* Quick Filter Bar */}
+          <HomeworkFilters
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            statusFilter={statusFilter}
+            onStatusFilterChange={setStatusFilter}
+            institutionFilter={institutionFilter}
+            onInstitutionFilterChange={setInstitutionFilter}
+            subjectFilter={subjectFilter}
+            onSubjectFilterChange={setSubjectFilter}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
+            viewMode={viewMode}
+            onViewModeChange={(m) => {
+              setViewMode(m);
+              if (m === 'timeline') setSidebarTab('timeline');
+              else setSidebarTab('tables');
+            }}
+            availableSubjects={availableSubjects}
+            counts={counts}
+          />
+
+          {/* Homework Content: TailAdmin Basic Table View or Timeline */}
+          {filteredAndSortedList.length > 0 ? (
+            viewMode === 'timeline' ? (
+              <div className="space-y-4">
+                {/* 1. Urgent / Today */}
+                {timelineBuckets.urgent.length > 0 && (
+                  <TimelineSection
+                    bucket="urgent"
+                    items={timelineBuckets.urgent}
+                    onToggleComplete={handleToggleComplete}
+                    onToggleSubtask={handleToggleSubtask}
+                    onUpdateNote={handleUpdateNote}
+                    onDeleteCustom={handleDeleteCustom}
+                  />
+                )}
+
+                {/* 2. Weekend / Monday */}
+                {timelineBuckets.monday.length > 0 && (
+                  <TimelineSection
+                    bucket="monday"
+                    items={timelineBuckets.monday}
+                    onToggleComplete={handleToggleComplete}
+                    onToggleSubtask={handleToggleSubtask}
+                    onUpdateNote={handleUpdateNote}
+                    onDeleteCustom={handleDeleteCustom}
+                  />
+                )}
+
+                {/* 3. Later next week */}
+                {timelineBuckets.later.length > 0 && (
+                  <TimelineSection
+                    bucket="later"
+                    items={timelineBuckets.later}
+                    onToggleComplete={handleToggleComplete}
+                    onToggleSubtask={handleToggleSubtask}
+                    onUpdateNote={handleUpdateNote}
+                    onDeleteCustom={handleDeleteCustom}
+                  />
+                )}
+
+                {/* 4. Completed Section (Collapsible) */}
+                {timelineBuckets.completed.length > 0 && (
+                  <TimelineSection
+                    bucket="completed"
+                    items={timelineBuckets.completed}
+                    onToggleComplete={handleToggleComplete}
+                    onToggleSubtask={handleToggleSubtask}
+                    onUpdateNote={handleUpdateNote}
+                    onDeleteCustom={handleDeleteCustom}
+                    defaultExpanded={statusFilter === 'completed' || (timelineBuckets.urgent.length === 0 && timelineBuckets.monday.length === 0 && timelineBuckets.later.length === 0)}
+                  />
+                )}
+              </div>
+            ) : viewMode === 'table' ? (
+              <HomeworkDataTable
+                items={filteredAndSortedList}
+                onToggleComplete={handleToggleComplete}
+                onToggleSubtask={handleToggleSubtask}
+                onUpdateNote={handleUpdateNote}
+                onDeleteCustom={handleDeleteCustom}
+                onOpenAddModal={() => setAddModalOpen(true)}
+              />
+            ) : (
+              <div className="space-y-3">
+                {filteredAndSortedList.map((hw) => (
+                  <HomeworkCard
+                    key={hw.id}
+                    homework={hw}
+                    onToggleComplete={handleToggleComplete}
+                    onToggleSubtask={handleToggleSubtask}
+                    onUpdateNote={handleUpdateNote}
+                    onDeleteCustom={hw.isCustom ? handleDeleteCustom : undefined}
+                  />
+                ))}
+              </div>
+            )
+          ) : (
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-10 text-center border border-gray-200 dark:border-gray-800 shadow-2xs">
+              <div className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-400 mx-auto flex items-center justify-center mb-3">
+                <Inbox className="w-6 h-6" />
+              </div>
+              <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">
+                Bu filtrede ödev bulunamadı
+              </h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-xs mx-auto">
+                Filtreleri sıfırlayarak tüm kurum ve derslerin ödevlerini görüntüleyebilirsiniz.
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setStatusFilter('all');
+                  setSubjectFilter('all');
+                  setInstitutionFilter('all');
+                }}
+                className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer shadow-xs transition"
+              >
+                Tüm Ödevleri Göster
+              </button>
+            </div>
+          )}
+
+        </main>
+      </div>
 
       {/* Hidden Print Document (Rendered only on print) */}
       <PrintView homeworkList={allHomeworkList} studentName={studentName} />
