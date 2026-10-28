@@ -166,10 +166,10 @@ export default function App() {
 
   // Filters, Sorting & View Mode
   const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>('pending');
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [subjectFilter, setSubjectFilter] = useState<string>('all');
   const [sortBy, setSortBy] = useState<SortOption>('dueDateAsc');
-  const [viewMode, setViewMode] = useState<ViewMode>('timeline');
+  const [viewMode, setViewMode] = useState<ViewMode>('table');
 
   // Synchronize dark mode class on document
   useEffect(() => {
@@ -574,8 +574,8 @@ export default function App() {
         totalCount={totalCount}
       />
 
-      {/* Main Container - Focused 3xl column */}
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-4 sm:py-6 space-y-4">
+      {/* Main Container - TailAdmin responsive 5xl container */}
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-6 space-y-4">
         
         {/* Progress Bar & Motivation card */}
         <ProgressBar
