@@ -153,14 +153,14 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                   <ArrowUpDown className="w-3 h-3 opacity-60" />
                 </div>
               </th>
+              <th className="py-3.5 px-4 text-xs font-medium uppercase tracking-wider text-center">
+                Durum
+              </th>
               <th className="py-3.5 px-4 text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                 Kurum / Kaynak
               </th>
               <th className="py-3.5 px-5 text-xs font-medium uppercase tracking-wider min-w-[170px]">
                 Kitap & Sayfa
-              </th>
-              <th className="py-3.5 px-5 text-xs font-medium uppercase tracking-wider hidden md:table-cell">
-                Öğretmen
               </th>
               <th 
                 className="py-3.5 px-5 text-xs font-medium uppercase tracking-wider cursor-pointer hover:text-gray-900 dark:hover:text-white" 
@@ -170,9 +170,6 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                   <span>Son Teslim</span>
                   <ArrowUpDown className="w-3 h-3 opacity-60" />
                 </div>
-              </th>
-              <th className="py-3.5 px-4 text-xs font-medium uppercase tracking-wider text-center">
-                Durum
               </th>
               <th className="py-3.5 px-4 w-12 text-center"></th>
             </tr>
@@ -250,6 +247,23 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                       </div>
                     </td>
 
+                    {/* Status Pill Badge (TailAdmin Style: Active, Pending, Cancel) */}
+                    <td className="py-4 px-4 text-center whitespace-nowrap">
+                      {hw.completed ? (
+                        <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60">
+                          Active (Tamam)
+                        </span>
+                      ) : urgency.status === 'expired' ? (
+                        <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60">
+                          Cancel (Gecikti)
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/60">
+                          Pending (Bekliyor)
+                        </span>
+                      )}
+                    </td>
+
                     {/* Kurum / Kaynak Column */}
                     <td className="py-4 px-4 whitespace-nowrap">
                       {(() => {
@@ -291,16 +305,6 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                       )}
                     </td>
 
-                    {/* Teacher */}
-                    <td className="py-4 px-5 hidden md:table-cell">
-                      <div className="flex items-center gap-1.5 text-gray-600 dark:text-gray-400">
-                        <User className="w-3.5 h-3.5 opacity-60 shrink-0" />
-                        <span className="text-xs font-medium truncate max-w-[140px]">
-                          {hw.teacher}
-                        </span>
-                      </div>
-                    </td>
-
                     {/* Due Date */}
                     <td className="py-4 px-5 whitespace-nowrap">
                       <div className="flex items-center gap-1.5">
@@ -328,23 +332,6 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                       </div>
                     </td>
 
-                    {/* Status Pill Badge (TailAdmin Style: Active, Pending, Cancel) */}
-                    <td className="py-4 px-4 text-center whitespace-nowrap">
-                      {hw.completed ? (
-                        <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/60">
-                          Active (Tamam)
-                        </span>
-                      ) : urgency.status === 'expired' ? (
-                        <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 border border-rose-200/60 dark:border-rose-800/60">
-                          Cancel (Gecikti)
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-200/60 dark:border-amber-800/60">
-                          Pending (Bekliyor)
-                        </span>
-                      )}
-                    </td>
-
                     {/* Action Chevron */}
                     <td className="py-4 px-4 text-center">
                       <div className="flex items-center justify-center">
@@ -360,7 +347,7 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                   {/* Expanded Row Detail (Subtasks, notes, description) */}
                   {isExpanded && (
                     <tr className="bg-gray-50/50 dark:bg-gray-800/30">
-                      <td colSpan={8} className="p-0 border-b border-gray-200 dark:border-gray-800">
+                      <td colSpan={7} className="p-0 border-b border-gray-200 dark:border-gray-800">
                         <div className="px-6 py-5 space-y-4">
                           
                           {/* Teacher Instruction Text */}
