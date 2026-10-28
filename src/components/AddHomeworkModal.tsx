@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Plus, PlusCircle, BookOpen, User, Calendar, FileText } from 'lucide-react';
-import { HomeworkItem, SubjectType } from '../types/homework';
+import { HomeworkItem, SubjectType, InstitutionType } from '../types/homework';
 
 interface AddHomeworkModalProps {
   isOpen: boolean;
@@ -13,6 +13,7 @@ export const AddHomeworkModal: React.FC<AddHomeworkModalProps> = ({
   onClose,
   onAddHomework,
 }) => {
+  const [institution, setInstitution] = useState<InstitutionType>('maya');
   const [course, setCourse] = useState('FEN BİLİMLERİ 8/D');
   const [subjectType, setSubjectType] = useState<SubjectType>('FEN BİLİMLERİ');
   const [teacher, setTeacher] = useState('');
@@ -65,6 +66,7 @@ export const AddHomeworkModal: React.FC<AddHomeworkModalProps> = ({
 
     const newItem: HomeworkItem = {
       id: `custom-hw-${Date.now()}`,
+      institution,
       topic: topic || title,
       title: title.trim(),
       course: course.trim(),
@@ -124,6 +126,48 @@ export const AddHomeworkModal: React.FC<AddHomeworkModalProps> = ({
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+          {/* Institution selector */}
+          <div>
+            <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1.5">
+              Kurum / Kaynak:
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                onClick={() => setInstitution('maya')}
+                className={`py-2 px-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer ${
+                  institution === 'maya'
+                    ? 'bg-blue-50 dark:bg-blue-950/50 border-blue-500 text-blue-700 dark:text-blue-300 shadow-xs ring-1 ring-blue-400'
+                    : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                }`}
+              >
+                <span>🏫 Maya Okulu</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setInstitution('aydin')}
+                className={`py-2 px-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer ${
+                  institution === 'aydin'
+                    ? 'bg-purple-50 dark:bg-purple-950/50 border-purple-500 text-purple-700 dark:text-purple-300 shadow-xs ring-1 ring-purple-400'
+                    : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                }`}
+              >
+                <span>🏛️ Aydın Dershane</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setInstitution('kisisel')}
+                className={`py-2 px-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer ${
+                  institution === 'kisisel'
+                    ? 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-500 text-emerald-700 dark:text-emerald-300 shadow-xs ring-1 ring-emerald-400'
+                    : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                }`}
+              >
+                <span>👤 Kişisel</span>
+              </button>
+            </div>
+          </div>
+
           {/* Course selection */}
           <div>
             <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">

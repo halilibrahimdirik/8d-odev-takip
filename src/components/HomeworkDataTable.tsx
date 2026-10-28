@@ -14,7 +14,7 @@ import {
   AlertCircle,
   FileText
 } from 'lucide-react';
-import { HomeworkItem } from '../types/homework';
+import { HomeworkItem, INSTITUTION_META, InstitutionType } from '../types/homework';
 import { getUrgencyInfo } from '../utils/dateUtils';
 import { cn } from '../lib/utils';
 
@@ -129,6 +129,9 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                   <ArrowUpDown className="w-3 h-3 opacity-60" />
                 </div>
               </th>
+              <th className="py-3.5 px-3 text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
+                Kurum / Kaynak
+              </th>
               <th className="py-3.5 px-4 text-xs font-semibold uppercase tracking-wider min-w-[170px]">
                 Kitap & Sayfa
               </th>
@@ -215,6 +218,23 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                       </div>
                     </td>
 
+                    {/* Kurum / Kaynak Ayracı */}
+                    <td className="py-4 px-3 whitespace-nowrap">
+                      {(() => {
+                        const inst = hw.institution || 'maya';
+                        const meta = INSTITUTION_META[inst] || INSTITUTION_META.maya;
+                        return (
+                          <span className={cn(
+                            'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[11px] font-semibold border',
+                            meta.badgeClass
+                          )}>
+                            <span>{meta.icon}</span>
+                            <span>{meta.shortName}</span>
+                          </span>
+                        );
+                      })()}
+                    </td>
+
                     {/* Book & Pages */}
                     <td className="py-4 px-4">
                       {hw.booksAndPages && hw.booksAndPages.length > 0 ? (
@@ -273,7 +293,7 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                   {/* Expanded Row Detail (Accordion) */}
                   {isExpanded && (
                     <tr className="bg-gray-50/60 dark:bg-gray-800/40 border-y border-gray-200/70 dark:border-gray-800">
-                      <td colSpan={7} className="p-4 sm:p-5">
+                      <td colSpan={8} className="p-4 sm:p-5">
                         <div className="max-w-3xl space-y-3">
                           
                           {/* Teacher Note */}

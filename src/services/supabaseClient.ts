@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { HomeworkItem, SubjectType } from '../types/homework';
+import { HomeworkItem, SubjectType, InstitutionType } from '../types/homework';
 import { INITIAL_HOMEWORK } from '../data/initialHomework';
 
 export const SUPABASE_URL = 'https://pzwdxnokmpsgisnwgnbt.supabase.co';
@@ -13,6 +13,7 @@ interface DbHomework {
   title: string;
   course: string;
   subject_type: string;
+  institution?: string;
   teacher: string;
   description: string;
   start_date: string;
@@ -23,13 +24,22 @@ interface DbHomework {
   created_at?: string;
 }
 
-function mapFromDb(db: DbHomework): HomeworkItem {
+
+function mapFromDb(db: any): HomeworkItem {
+  let institution: InstitutionType = 'maya';
+  if (db.institution === 'aydin' || (db.topic && db.topic.includes('Aydın'))) {
+    institution = 'aydin';
+  } else if (db.institution === 'kisisel' || (db.topic && db.topic.includes('Kişisel'))) {
+    institution = 'kisisel';
+  }
+
   return {
     id: db.id,
-    topic: db.topic,
+    topic: db.topic ? db.topic.replace(/\[(Maya|Aydın Dershanesi|Kişisel)\]\s*/g, '') : '',
     title: db.title,
     course: db.course,
     subjectType: (db.subject_type || 'DİĞER') as SubjectType,
+    institution,
     teacher: db.teacher,
     description: db.description,
     startDate: db.start_date,
@@ -41,10 +51,11 @@ function mapFromDb(db: DbHomework): HomeworkItem {
   };
 }
 
-function mapToDb(item: HomeworkItem): DbHomework {
+function mapToDb(item: HomeworkItem): any {
+  const prefix = item.institution === 'aydin' ? '[Aydın Dershanesi] ' : item.institution === 'kisisel' ? '[Kişisel] ' : '[Maya] ';
   return {
     id: item.id,
-    topic: item.topic,
+    topic: prefix + (item.topic || ''),
     title: item.title,
     course: item.course,
     subject_type: item.subjectType,

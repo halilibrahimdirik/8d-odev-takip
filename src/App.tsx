@@ -168,6 +168,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [subjectFilter, setSubjectFilter] = useState<string>('all');
+  const [institutionFilter, setInstitutionFilter] = useState<string>('all');
   const [sortBy, setSortBy] = useState<SortOption>('dueDateAsc');
   const [viewMode, setViewMode] = useState<ViewMode>('table');
 
@@ -484,6 +485,14 @@ export default function App() {
       list = list.filter((hw) => hw.course === subjectFilter);
     }
 
+    // Institution filter
+    if (institutionFilter !== 'all') {
+      list = list.filter((hw) => {
+        const inst = hw.institution || 'maya';
+        return inst === institutionFilter;
+      });
+    }
+
     // Sorting
     list.sort((a, b) => {
       if (sortBy === 'dueDateAsc') {
@@ -505,7 +514,7 @@ export default function App() {
     });
 
     return list;
-  }, [allHomeworkList, searchQuery, statusFilter, subjectFilter, sortBy]);
+  }, [allHomeworkList, searchQuery, statusFilter, subjectFilter, institutionFilter, sortBy]);
 
   // Filter counts
   const counts = useMemo(() => {
@@ -593,6 +602,8 @@ export default function App() {
           onSearchChange={setSearchQuery}
           statusFilter={statusFilter}
           onStatusFilterChange={setStatusFilter}
+          institutionFilter={institutionFilter}
+          onInstitutionFilterChange={setInstitutionFilter}
           subjectFilter={subjectFilter}
           onSubjectFilterChange={setSubjectFilter}
           sortBy={sortBy}

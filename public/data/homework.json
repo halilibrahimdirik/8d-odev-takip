@@ -432,5 +432,125 @@
       }
     ],
     "completed": false
+  },
+  {
+    "id": "hw-18",
+    "topic": "Hız yayınları haftasonu ödevi",
+    "title": "Hız yayınları haftasonu ödevi",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "institution": "maya",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim hız yayınları soru bankası 35-42 ödevinizdir.İyi çalışmalar dilerim",
+    "startDate": "2026-10-22T08:00:00",
+    "dueDate": "2026-10-26T23:00:00",
+    "displayDueDate": "26 Ekim 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "Hız Yayınları Soru Bankası: Sayfa 35-42"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-18-1",
+        "title": "Hız Yayınları sf. 35-42 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-19",
+    "topic": "hafta sonu ödevi",
+    "title": "hafta sonu ödevi (MEB Kitabı)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "institution": "maya",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba Çocuklar hafta sonu ödeviniz MEB kitabımızdandır. (MEB kitabı önemli, kitapta verilen örnekler, kavramlar çok değerli, eğer ödevi yaparken bilmediğinizi soru ya da kavramlarla karşılaşırsanız kitabın anlatım kısmından tekrarlarınızı yapınız.)\n\nİyi tatiller çocuklar\n\nMEB ders kitabı: 35-36-37-38-39-40-41-61-66-67-72-73",
+    "startDate": "2026-10-22T08:00:00",
+    "dueDate": "2026-10-26T23:00:00",
+    "displayDueDate": "26 Ekim 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "MEB Ders Kitabı: Sayfa 35-41, 61, 66-67, 72-73"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-19-1",
+        "title": "MEB Ders Kitabı sf. 35-41, 61, 66-67, 72-73 test ve etkinlikleri tamamla",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-20",
+    "topic": "Hafta içi ödevi",
+    "title": "Hafta içi ödevi (Bumerang 6. Deneme)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "institution": "maya",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba çocuklar hafta içi ödeviniz bumerang deneme kitabı altıncı deneme",
+    "startDate": "2026-10-21T08:00:00",
+    "dueDate": "2026-10-23T23:00:00",
+    "displayDueDate": "23 Ekim 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Bumerang Deneme Kitabı: 6. Deneme"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-20-1",
+        "title": "Bumerang 6. Deneme Sınavını çöz ve yanlışlarını kontrol et",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-21",
+    "topic": "Prestij yayınları haftaiçi ödevi",
+    "title": "Prestij yayınları haftaiçi ödevi",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "institution": "maya",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim prestij yayınları 45-50 sayfaları ödevinizdir.İyi çalışmalar diliyorum",
+    "startDate": "2026-10-19T08:00:00",
+    "dueDate": "2026-10-23T23:00:00",
+    "displayDueDate": "23 Ekim 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Prestij Yayınları: Sayfa 45-50"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-21-1",
+        "title": "Prestij Yayınları sf. 45-50 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-22",
+    "topic": "Matematik ödevi",
+    "title": "Matematik ödevi (Startfen 5. Hafta)",
+    "course": "MATEMATİK 8/D",
+    "subjectType": "MATEMATİK",
+    "institution": "maya",
+    "teacher": "ÜLKÜ TANRIVERDİ GÜVEN",
+    "description": "Odeviniz startfen kurumsal 5. Hafta calismalaridir.",
+    "startDate": "2026-10-16T08:00:00",
+    "dueDate": "2026-10-19T08:00:00",
+    "displayDueDate": "19 Ekim 2026 Pazartesi, 08:00",
+    "booksAndPages": [
+      "Startfen Kurumsal: 5. Hafta"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-22-1",
+        "title": "Startfen Kurumsal 5. Hafta test ve çalışmalarını yap",
+        "completed": false
+      }
+    ],
+    "completed": false
   }
 ]
