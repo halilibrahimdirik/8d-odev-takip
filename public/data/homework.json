@@ -243,5 +243,28 @@
       }
     ],
     "completed": false
+  },
+  {
+    "id": "hw-10",
+    "topic": "LGS Çıkmış Sorular",
+    "title": "Lgs Çalışma kitabı (lgs çıkmış sorular kitabı)",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim lgs çalışma kitabı 8-18 arası sayfalarındaki testler ödevinizdir.İyi çalışmalar dilerim.",
+    "startDate": "2026-10-28T08:00:00",
+    "dueDate": "2026-11-02T23:00:00",
+    "displayDueDate": "2 Kasım 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "LGS Çalışma Kitabı: Sayfa 8-18"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-10-1",
+        "title": "LGS Çalışma Kitabı (Çıkmış Sorular) sf. 8-18 testlerini çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
   }
 ]

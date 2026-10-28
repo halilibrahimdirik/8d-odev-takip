@@ -181,6 +181,20 @@ INSERT INTO public.homework (
   '19 Ekim 2026 Pazartesi, 23:00',
   '["ZOOM Paragraf: sf. 51-56", "SUPER 8A: sf. 84-90"]'::jsonb,
   '[{"id":"hw-9-1","title":"ZOOM Paragraf sf. 51-56 (Soruları süre tutarak çöz)","completed":false},{"id":"hw-9-2","title":"SUPER 8A sf. 84-90 (Testleri tamamla)","completed":false}]'::jsonb
+),
+(
+  'hw-10',
+  'LGS Çıkmış Sorular',
+  'Lgs Çalışma kitabı (lgs çıkmış sorular kitabı)',
+  'T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D',
+  'İNKILAP TARİHİ',
+  'BÜŞRA CAN',
+  'Sevgili öğrencim lgs çalışma kitabı 8-18 arası sayfalarındaki testler ödevinizdir.İyi çalışmalar dilerim.',
+  '2026-10-28T08:00:00',
+  '2026-11-02T23:00:00',
+  '2 Kasım 2026 Pazartesi, 23:00',
+  '["LGS Çalışma Kitabı: Sayfa 8-18"]'::jsonb,
+  '[{"id":"hw-10-1","title":"LGS Çalışma Kitabı (Çıkmış Sorular) sf. 8-18 testlerini çöz","completed":false}]'::jsonb
 )
 ON CONFLICT (id) DO UPDATE SET
   title = EXCLUDED.title,
