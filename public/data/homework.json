@@ -266,5 +266,171 @@
       }
     ],
     "completed": false
+  },
+  {
+    "id": "hw-11",
+    "topic": "8. Sınıf Din Kültürü Ödevi",
+    "title": "8.sınıf Din Kültürü Ödevi",
+    "course": "DİN KÜLTÜRÜ VE AHLAK BİLGİSİ 8/D",
+    "subjectType": "DİN KÜLTÜRÜ",
+    "teacher": "MERVE DUMAN GÜNGÖR",
+    "description": "Merhaba sevgili çocuklar , bu haftaki ödeviniz sözel çalışma kitabından sayfa 102-124 arasıdır . kolaylıklar dilerim",
+    "startDate": "2026-10-27T08:00:00",
+    "dueDate": "2026-11-06T23:00:00",
+    "displayDueDate": "6 Kasım 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Sözel Çalışma Kitabı: Sayfa 102-124"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-11-1",
+        "title": "Sözel Çalışma Kitabı sf. 102-124 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-12",
+    "topic": "Hafta sonu ödevi",
+    "title": "Hafta sonu ödevi (Ankara Yayıncılık)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba çocuklar hafta sonu ödeviniz Ankara yayıncılık güçlendiren 51-78\nKolay gelsin",
+    "startDate": "2026-10-27T08:00:00",
+    "dueDate": "2026-11-02T23:00:00",
+    "displayDueDate": "2 Kasım 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "Ankara Yayıncılık Güçlendiren: Sayfa 51-78"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-12-1",
+        "title": "Ankara Yayıncılık Güçlendiren sf. 51-78 arası soruları çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-13",
+    "topic": "Hafta içi ödevi",
+    "title": "Hafta içi ödevi (Bumerang 7. Deneme)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba çocuklar hafta içi ödeviniz bumerang haftalık deneme kitabından 7. haftalık deneme\nKolay gelsin🌺",
+    "startDate": "2026-10-27T08:00:00",
+    "dueDate": "2026-11-06T23:00:00",
+    "displayDueDate": "6 Kasım 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Bumerang Haftalık Deneme: 7. Deneme"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-13-1",
+        "title": "Bumerang 7. Haftalık Deneme Sınavını çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-14",
+    "topic": "Matematik ödevi",
+    "title": "Matematik ödevi (Hız Yayınları)",
+    "course": "MATEMATİK 8/D",
+    "subjectType": "MATEMATİK",
+    "teacher": "ÜLKÜ TANRIVERDİ GÜVEN",
+    "description": "Hiz yayinlari 46-61 odevinizdir. Odeviniz pazartesi gunu kontrol edilecektir.",
+    "startDate": "2026-10-26T08:00:00",
+    "dueDate": "2026-11-02T08:00:00",
+    "displayDueDate": "2 Kasım 2026 Pazartesi, 08:00",
+    "booksAndPages": [
+      "Hız Yayınları: Sayfa 46-61"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-14-1",
+        "title": "Hız Yayınları sf. 46-61 testlerini tamamla",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-15",
+    "topic": "İnkılap tarihi haftaiçi ödevi",
+    "title": "İnkilap tarihi haftaiçi ödevi (Hız Yayınları)",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim, hız yayınları soru bankası 42-43-44-45 sayfaları ödevinizdir.İyi çalışmalar dilerim",
+    "startDate": "2026-10-26T08:00:00",
+    "dueDate": "2026-10-30T23:00:00",
+    "displayDueDate": "30 Ekim 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Hız Yayınları Soru Bankası: Sayfa 42-45"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-15-1",
+        "title": "Hız Yayınları sf. 42-45 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-16",
+    "topic": "MLJ HOMEWORK WEEK 6",
+    "title": "MLJ HOMEWORK WEEK 6",
+    "course": "ENGLISH MAIN COURSE 8/D",
+    "subjectType": "ENGLISH MAIN COURSE",
+    "teacher": "ŞENNUR DURSUN",
+    "description": "Hi there :)\n\nYour weekend mission is here! Please complete your homework before Monday- MLJ Pages 22-25.\n\n“I forgot” is NOT an acceptable answer! :)\n\nHave a great weekend, enjoy yourselves,\n\nSee you on Monday!",
+    "startDate": "2026-10-23T08:00:00",
+    "dueDate": "2026-10-26T08:00:00",
+    "displayDueDate": "26 Ekim 2026 Pazartesi, 08:00",
+    "booksAndPages": [
+      "MLJ Workbook: Pages 22-25"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-16-1",
+        "title": "MLJ Book Pages 22-25",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-17",
+    "topic": "LGS- W6",
+    "title": "LGS- W6 İngilizce Testleri",
+    "course": "ENGLISH LGS 8/D",
+    "subjectType": "ENGLISH LGS",
+    "teacher": "ŞULE ARTIK",
+    "description": "Dear students, the upcoming tests will have been completed.\n\nTeam ELT - English Ahead Test Book: Unit 3 Practice Test 3-4 (up to pg 66)\n\nHave a nice week!",
+    "startDate": "2026-10-23T08:00:00",
+    "dueDate": "2026-10-29T23:00:00",
+    "displayDueDate": "29 Ekim 2026 Perşembe, 23:00",
+    "booksAndPages": [
+      "Team ELT - English Ahead Test Book: Unit 3 sf. 66'ya kadar"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-17-1",
+        "title": "English Ahead Practice Test 3",
+        "completed": false
+      },
+      {
+        "id": "hw-17-2",
+        "title": "English Ahead Practice Test 4 (sf. 66'ya kadar)",
+        "completed": false
+      }
+    ],
+    "completed": false
   }
 ]
