@@ -64,7 +64,10 @@ import {
   deleteHomeworkFromSupabase, 
   subscribeToHomeworkChanges 
 } from './services/supabaseClient';
-import { HomeworkItem, SubjectType, StudentProgress } from './types/homework';
+import { 
+  MistakeAnalysisView 
+} from './components/MistakeAnalysisView';
+import { HomeworkItem, SubjectType, StudentProgress, MistakeItem, MistakeStatus } from './types/homework';
 import { 
   getActiveStudentName, 
   setActiveStudentName, 
@@ -73,6 +76,8 @@ import {
   saveStudentProgress,
   loadCustomHomework,
   saveCustomHomework,
+  loadStudentMistakes,
+  saveStudentMistakes,
   getSoundPreference,
   setSoundPreference
 } from './utils/storage';
@@ -210,6 +215,49 @@ export default function App() {
   useEffect(() => {
     saveCustomHomework(customHomework);
   }, [customHomework]);
+
+  // Mistakes state for active student
+  const [mistakes, setMistakes] = useState<MistakeItem[]>(() =>
+    loadStudentMistakes(studentName)
+  );
+
+  // Reload mistakes when studentName changes
+  useEffect(() => {
+    setMistakes(loadStudentMistakes(studentName));
+  }, [studentName]);
+
+  // Save mistakes on change
+  const handleAddMistake = (newItem: MistakeItem) => {
+    setMistakes((prev) => {
+      const updated = [newItem, ...prev];
+      saveStudentMistakes(studentName, updated);
+      return updated;
+    });
+  };
+
+  const handleUpdateMistakeStatus = (id: string, status: MistakeStatus) => {
+    setMistakes((prev) => {
+      const updated = prev.map((m) =>
+        m.id === id
+          ? {
+              ...m,
+              status,
+              resolvedAt: status === 'resolved' ? new Date().toISOString() : undefined,
+            }
+          : m
+      );
+      saveStudentMistakes(studentName, updated);
+      return updated;
+    });
+  };
+
+  const handleDeleteMistake = (id: string) => {
+    setMistakes((prev) => {
+      const updated = prev.filter((m) => m.id !== id);
+      saveStudentMistakes(studentName, updated);
+      return updated;
+    });
+  };
 
   // Merge base homework with custom homework and progress
   const allHomeworkList: HomeworkItem[] = useMemo(() => {
@@ -645,10 +693,18 @@ export default function App() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
-                {sidebarTab === 'tables' ? 'Ödev Listesi & Takip Tablosu' : sidebarTab === 'timeline' ? 'Haftalık Akış' : 'Genel Bakış'}
+                {sidebarTab === 'tables' 
+                  ? 'Ödev Listesi & Takip Tablosu' 
+                  : sidebarTab === 'timeline' 
+                  ? 'Haftalık Akış' 
+                  : sidebarTab === 'mistakes'
+                  ? 'LGS Sınav Yanlış Analizi & Çalışma Planı'
+                  : 'Genel Bakış'}
               </h1>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                8/D Sınıfı · Maya Okulu, Aydın Dershanesi ve Kişisel Çalışmalar
+                {sidebarTab === 'mistakes'
+                  ? `Deneme ve tarama sınavı yanlışları, eksik konular ve soru çözüm hedefleri · ${studentName}`
+                  : '8/D Sınıfı · Maya Okulu, Aydın Dershanesi ve Kişisel Çalışmalar'}
               </p>
             </div>
 
@@ -659,142 +715,161 @@ export default function App() {
               </span>
               <span>&gt;</span>
               <span className="text-gray-900 dark:text-gray-200 font-semibold">
-                {sidebarTab === 'tables' ? 'Ödev Listesi' : 'Haftalık Akış'}
+                {sidebarTab === 'tables' 
+                  ? 'Ödev Listesi' 
+                  : sidebarTab === 'timeline' 
+                  ? 'Haftalık Akış' 
+                  : sidebarTab === 'mistakes'
+                  ? 'Yanlış Analizi'
+                  : 'Genel Bakış'}
               </span>
             </nav>
           </div>
 
-          {/* TailAdmin 4 KPI Metric Cards */}
-          <TailAdminKpiCards
-            totalCount={counts.all}
-            pendingCount={counts.pending}
-            completedCount={counts.completed}
-            urgentCount={counts.urgent}
-            onFilterStatus={(s) => setStatusFilter(s)}
-            activeStatus={statusFilter}
-          />
-
-          {/* Quick Filter Bar */}
-          <HomeworkFilters
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            statusFilter={statusFilter}
-            onStatusFilterChange={setStatusFilter}
-            institutionFilter={institutionFilter}
-            onInstitutionFilterChange={setInstitutionFilter}
-            subjectFilter={subjectFilter}
-            onSubjectFilterChange={setSubjectFilter}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-            viewMode={viewMode}
-            onViewModeChange={(m) => {
-              setViewMode(m);
-              if (m === 'timeline') setSidebarTab('timeline');
-              else setSidebarTab('tables');
-            }}
-            availableSubjects={availableSubjects}
-            counts={counts}
-          />
-
-          {/* Homework Content: TailAdmin Basic Table View or Timeline */}
-          {filteredAndSortedList.length > 0 ? (
-            viewMode === 'timeline' ? (
-              <div className="space-y-4">
-                {/* 1. Urgent / Today */}
-                {timelineBuckets.urgent.length > 0 && (
-                  <TimelineSection
-                    bucket="urgent"
-                    items={timelineBuckets.urgent}
-                    onToggleComplete={handleToggleComplete}
-                    onToggleSubtask={handleToggleSubtask}
-                    onUpdateNote={handleUpdateNote}
-                    onDeleteCustom={handleDeleteCustom}
-                  />
-                )}
-
-                {/* 2. Weekend / Monday */}
-                {timelineBuckets.monday.length > 0 && (
-                  <TimelineSection
-                    bucket="monday"
-                    items={timelineBuckets.monday}
-                    onToggleComplete={handleToggleComplete}
-                    onToggleSubtask={handleToggleSubtask}
-                    onUpdateNote={handleUpdateNote}
-                    onDeleteCustom={handleDeleteCustom}
-                  />
-                )}
-
-                {/* 3. Later next week */}
-                {timelineBuckets.later.length > 0 && (
-                  <TimelineSection
-                    bucket="later"
-                    items={timelineBuckets.later}
-                    onToggleComplete={handleToggleComplete}
-                    onToggleSubtask={handleToggleSubtask}
-                    onUpdateNote={handleUpdateNote}
-                    onDeleteCustom={handleDeleteCustom}
-                  />
-                )}
-
-                {/* 4. Completed Section (Collapsible) */}
-                {timelineBuckets.completed.length > 0 && (
-                  <TimelineSection
-                    bucket="completed"
-                    items={timelineBuckets.completed}
-                    onToggleComplete={handleToggleComplete}
-                    onToggleSubtask={handleToggleSubtask}
-                    onUpdateNote={handleUpdateNote}
-                    onDeleteCustom={handleDeleteCustom}
-                    defaultExpanded={statusFilter === 'completed' || (timelineBuckets.urgent.length === 0 && timelineBuckets.monday.length === 0 && timelineBuckets.later.length === 0)}
-                  />
-                )}
-              </div>
-            ) : viewMode === 'table' ? (
-              <HomeworkDataTable
-                items={filteredAndSortedList}
-                onToggleComplete={handleToggleComplete}
-                onToggleSubtask={handleToggleSubtask}
-                onUpdateNote={handleUpdateNote}
-                onDeleteCustom={handleDeleteCustom}
-                onOpenAddModal={() => setAddModalOpen(true)}
-              />
-            ) : (
-              <div className="space-y-3">
-                {filteredAndSortedList.map((hw) => (
-                  <HomeworkCard
-                    key={hw.id}
-                    homework={hw}
-                    onToggleComplete={handleToggleComplete}
-                    onToggleSubtask={handleToggleSubtask}
-                    onUpdateNote={handleUpdateNote}
-                    onDeleteCustom={hw.isCustom ? handleDeleteCustom : undefined}
-                  />
-                ))}
-              </div>
-            )
+          {/* Main Content: Mistakes Analysis View or Homework Tables/Timeline */}
+          {sidebarTab === 'mistakes' ? (
+            <MistakeAnalysisView
+              studentName={studentName}
+              mistakes={mistakes}
+              onAddMistake={handleAddMistake}
+              onUpdateMistakeStatus={handleUpdateMistakeStatus}
+              onDeleteMistake={handleDeleteMistake}
+            />
           ) : (
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-10 text-center border border-gray-200 dark:border-gray-800 shadow-2xs">
-              <div className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-400 mx-auto flex items-center justify-center mb-3">
-                <Inbox className="w-6 h-6" />
-              </div>
-              <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">
-                Bu filtrede ödev bulunamadı
-              </h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-xs mx-auto">
-                Filtreleri sıfırlayarak tüm kurum ve derslerin ödevlerini görüntüleyebilirsiniz.
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery('');
-                  setStatusFilter('all');
-                  setSubjectFilter('all');
-                  setInstitutionFilter('all');
+            <>
+              {/* TailAdmin 4 KPI Metric Cards */}
+              <TailAdminKpiCards
+                totalCount={counts.all}
+                pendingCount={counts.pending}
+                completedCount={counts.completed}
+                urgentCount={counts.urgent}
+                onFilterStatus={(s) => setStatusFilter(s)}
+                activeStatus={statusFilter}
+              />
+
+              {/* Quick Filter Bar */}
+              <HomeworkFilters
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+                statusFilter={statusFilter}
+                onStatusFilterChange={setStatusFilter}
+                institutionFilter={institutionFilter}
+                onInstitutionFilterChange={setInstitutionFilter}
+                subjectFilter={subjectFilter}
+                onSubjectFilterChange={setSubjectFilter}
+                sortBy={sortBy}
+                onSortChange={setSortBy}
+                viewMode={viewMode}
+                onViewModeChange={(m) => {
+                  setViewMode(m);
+                  if (m === 'timeline') setSidebarTab('timeline');
+                  else setSidebarTab('tables');
                 }}
-                className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer shadow-xs transition"
-              >
-                Tüm Ödevleri Göster
-              </button>
-            </div>
+                availableSubjects={availableSubjects}
+                counts={counts}
+              />
+
+              {/* Homework Content: TailAdmin Basic Table View or Timeline */}
+              {filteredAndSortedList.length > 0 ? (
+                viewMode === 'timeline' ? (
+                  <div className="space-y-4">
+                    {/* 1. Urgent / Today */}
+                    {timelineBuckets.urgent.length > 0 && (
+                      <TimelineSection
+                        bucket="urgent"
+                        items={timelineBuckets.urgent}
+                        onToggleComplete={handleToggleComplete}
+                        onToggleSubtask={handleToggleSubtask}
+                        onUpdateNote={handleUpdateNote}
+                        onDeleteCustom={handleDeleteCustom}
+                      />
+                    )}
+
+                    {/* 2. Weekend / Monday */}
+                    {timelineBuckets.monday.length > 0 && (
+                      <TimelineSection
+                        bucket="monday"
+                        items={timelineBuckets.monday}
+                        onToggleComplete={handleToggleComplete}
+                        onToggleSubtask={handleToggleSubtask}
+                        onUpdateNote={handleUpdateNote}
+                        onDeleteCustom={handleDeleteCustom}
+                      />
+                    )}
+
+                    {/* 3. Later next week */}
+                    {timelineBuckets.later.length > 0 && (
+                      <TimelineSection
+                        bucket="later"
+                        items={timelineBuckets.later}
+                        onToggleComplete={handleToggleComplete}
+                        onToggleSubtask={handleToggleSubtask}
+                        onUpdateNote={handleUpdateNote}
+                        onDeleteCustom={handleDeleteCustom}
+                      />
+                    )}
+
+                    {/* 4. Completed Section (Collapsible) */}
+                    {timelineBuckets.completed.length > 0 && (
+                      <TimelineSection
+                        bucket="completed"
+                        items={timelineBuckets.completed}
+                        onToggleComplete={handleToggleComplete}
+                        onToggleSubtask={handleToggleSubtask}
+                        onUpdateNote={handleUpdateNote}
+                        onDeleteCustom={handleDeleteCustom}
+                        defaultExpanded={statusFilter === 'completed' || (timelineBuckets.urgent.length === 0 && timelineBuckets.monday.length === 0 && timelineBuckets.later.length === 0)}
+                      />
+                    )}
+                  </div>
+                ) : viewMode === 'table' ? (
+                  <HomeworkDataTable
+                    items={filteredAndSortedList}
+                    onToggleComplete={handleToggleComplete}
+                    onToggleSubtask={handleToggleSubtask}
+                    onUpdateNote={handleUpdateNote}
+                    onDeleteCustom={handleDeleteCustom}
+                    onOpenAddModal={() => setAddModalOpen(true)}
+                  />
+                ) : (
+                  <div className="space-y-3">
+                    {filteredAndSortedList.map((hw) => (
+                      <HomeworkCard
+                        key={hw.id}
+                        homework={hw}
+                        onToggleComplete={handleToggleComplete}
+                        onToggleSubtask={handleToggleSubtask}
+                        onUpdateNote={handleUpdateNote}
+                        onDeleteCustom={hw.isCustom ? handleDeleteCustom : undefined}
+                      />
+                    ))}
+                  </div>
+                )
+              ) : (
+                <div className="bg-white dark:bg-gray-900 rounded-xl p-10 text-center border border-gray-200 dark:border-gray-800 shadow-2xs">
+                  <div className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-800 text-gray-400 mx-auto flex items-center justify-center mb-3">
+                    <Inbox className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">
+                    Bu filtrede ödev bulunamadı
+                  </h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 max-w-xs mx-auto">
+                    Filtreleri sıfırlayarak tüm kurum ve derslerin ödevlerini görüntüleyebilirsiniz.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSearchQuery('');
+                      setStatusFilter('all');
+                      setSubjectFilter('all');
+                      setInstitutionFilter('all');
+                    }}
+                    className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer shadow-xs transition"
+                  >
+                    Tüm Ödevleri Göster
+                  </button>
+                </div>
+              )}
+            </>
           )}
 
         </main>

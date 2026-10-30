@@ -14,11 +14,12 @@ import {
   CheckCircle2, 
   X,
   ChevronRight,
-  Database
+  Database,
+  Target
 } from 'lucide-react';
 import { InstitutionType, INSTITUTION_META } from '../types/homework';
 
-export type SidebarTab = 'tables' | 'dashboard' | 'timeline';
+export type SidebarTab = 'tables' | 'dashboard' | 'timeline' | 'mistakes';
 
 interface TailAdminSidebarProps {
   isOpen: boolean;
@@ -158,6 +159,26 @@ export const TailAdminSidebar: React.FC<TailAdminSidebarProps> = ({
                 </div>
                 <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400">
                   Akış
+                </span>
+              </button>
+
+              <button
+                onClick={() => {
+                  onSelectTab('mistakes');
+                  onClose();
+                }}
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg font-medium transition cursor-pointer text-left ${
+                  activeTab === 'mistakes'
+                    ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 shadow-xs'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/60'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <Target className="w-4 h-4 text-rose-500" />
+                  <span className="font-semibold">Yanlış Analizi</span>
+                </div>
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400">
+                  LGS Odak
                 </span>
               </button>
 

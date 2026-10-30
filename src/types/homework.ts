@@ -66,3 +66,22 @@ export interface StudentProgress {
   personalNotes: Record<string, string>; // homeworkId -> note
   lastUpdated: string;
 }
+
+export type MistakeSeverity = 'high' | 'medium' | 'low';
+export type MistakeStatus = 'needs_work' | 'reviewing' | 'resolved';
+
+export interface MistakeItem {
+  id: string;
+  studentName: string;
+  subjectType: SubjectType;
+  examName: string; // Örn: Maya Kurumsal Deneme 2, Startfen 5. Hafta, Aydın Tarama 3
+  topic: string; // Örn: Üslü Sayılar - Çarpma Kuralı, Hücre Bölünmesi - Mitoz
+  questionNo?: string; // Örn: Soru 7, Test 2 Soru 14
+  mistakeReason: string; // Örn: İşlem hatası, Formülü yanlış hatırlama, Soru kökünü olumsuz okuma
+  recommendedStudy: string; // Örn: Modül 1 sf 34-36 konu tekrarı + 20 soru çöz
+  recommendedBooks?: string; // Örn: 3 Adım Soru Bankası Test 4, Startfen sf. 22
+  status: MistakeStatus;
+  date: string; // ISO
+  resolvedAt?: string;
+  notes?: string;
+}
