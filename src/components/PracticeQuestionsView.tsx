@@ -138,6 +138,7 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
   const examProgressPercent = totalInExam > 0 ? Math.round((solvedInExam / totalInExam) * 100) : 0;
 
   // Counts by subject in this exam
+  const mathQuestions = examQuestions.filter((q) => q.subjectType === 'MATEMATİK');
   const turkishQuestions = examQuestions.filter((q) => q.subjectType === 'TÜRKÇE');
   const inkilapQuestions = examQuestions.filter((q) => q.subjectType === 'İNKILAP TARİHİ');
   const englishQuestions = examQuestions.filter((q) => q.subjectType === 'ENGLISH LGS');
@@ -294,6 +295,19 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
 
             <button
               type="button"
+              onClick={() => setSubjectFilter('MATEMATİK')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${
+                subjectFilter === 'MATEMATİK'
+                  ? 'bg-blue-600 text-white shadow-xs'
+                  : 'bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 hover:bg-blue-100 border border-blue-200/60'
+              }`}
+            >
+              <span>📐 Matematik</span>
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20 font-bold">{mathQuestions.length} Soru</span>
+            </button>
+
+            <button
+              type="button"
               onClick={() => setSubjectFilter('TÜRKÇE')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${
                 subjectFilter === 'TÜRKÇE'
@@ -401,13 +415,17 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
-                        q.subjectType === 'ENGLISH LGS'
+                        q.subjectType === 'MATEMATİK'
+                          ? 'bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200/60'
+                          : q.subjectType === 'ENGLISH LGS'
                           ? 'bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200/60'
                           : q.subjectType === 'TÜRKÇE'
                           ? 'bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-200/60'
                           : 'bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200/60'
                       }`}>
-                        {q.subjectType === 'ENGLISH LGS'
+                        {q.subjectType === 'MATEMATİK'
+                          ? '📐 Matematik'
+                          : q.subjectType === 'ENGLISH LGS'
                           ? '🇬🇧 İngilizce LGS'
                           : q.subjectType === 'TÜRKÇE'
                           ? '📖 Türkçe'

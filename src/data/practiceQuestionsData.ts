@@ -55,10 +55,11 @@ export const INSTITUTION_EXAMS: ExamInfo[] = [
     institutionName: 'Aydın Dershanesi',
     examName: '8.SINIF NAO LGS DENEME-2',
     examShortTitle: 'NAO LGS Deneme-2',
-    description: 'Aydın Dershanesi 8. Sınıf NAO LGS Deneme-2 sınavında yanlış yapılan, boş bırakılan ve tekrar edilmesi gereken sorular.',
+    description: 'Aydın Dershanesi 8. Sınıf NAO LGS Deneme-2 sınavında yanlış yapılan, boş bırakılan ve tekrar edilmesi gereken Matematik, Türkçe, İnkılap Tarihi ve İngilizce soruları.',
     date: 'Ekim 2026',
-    totalQuestions: 12,
+    totalQuestions: 21,
     subjectBreakdown: [
+      { subjectType: 'MATEMATİK', label: 'Matematik', icon: '📐', count: 9, color: 'blue' },
       { subjectType: 'TÜRKÇE', label: 'Türkçe', icon: '📖', count: 7, color: 'amber' },
       { subjectType: 'İNKILAP TARİHİ', label: 'İnkılap Tarihi', icon: '🏛️', count: 3, color: 'rose' },
       { subjectType: 'ENGLISH LGS', label: 'İngilizce LGS', icon: '🇬🇧', count: 2, color: 'indigo' },
@@ -67,6 +68,242 @@ export const INSTITUTION_EXAMS: ExamInfo[] = [
 ];
 
 export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
+  // =========================================================================
+  // AYDIN DERSHANESİ - 8.SINIF NAO LGS DENEME-2 : MATEMATİK (9 Soru)
+  // =========================================================================
+  {
+    id: 'math-q3',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 3,
+    title: 'Bakteri Kültürü Çoğalması ve Kaplara Paylaştırma',
+    topic: 'Üslü İfadeler / Üslü İfadelerle Temel Kurallar (M.8.1.2.2)',
+    leadText:
+      'Bir laboratuvarda incelenen bir bakteri kültüründe 2¹⁴ tane bakteri bulunmaktadır. Uygun koşullarda bu bakteri kültüründeki bakteri sayısı her saatin sonunda 2 kat artmaktadır. 9 saatin sonunda tüm bakteriler 32 adet kaba, her kapta eşit sayıda bakteri olacak şekilde paylaştırılıyor.',
+    questionPrompt: 'Buna göre her bir kapta bulunan bakteri sayısı kaçtır?',
+    options: [
+      { key: 'A', text: '3³ · 2¹⁸' },
+      { key: 'B', text: '3¹⁰ · 2¹⁴' },
+      { key: 'C', text: '2²¹' },
+      { key: 'D', text: '2²⁴' },
+    ],
+    correctAnswer: 'A',
+    explanation:
+      '1) "2 kat artmaktadır" ifadesi matematiksel olarak miktarın kendisine 2 katının eklenmesi, yani her saatin sonunda miktarın 3 katına çıkması (x + 2x = 3x) anlamına gelir.\n2) Başlangıçtaki bakteri sayısı: 2¹⁴\n3) Saatlik artış katsayısı ve süreye bağlı olarak 9 saatin sonunda bakteriler çoğalır.\n4) Toplam bakteri 32 adet kaba (32 = 2⁵) eşit paylaştırıldığında tabanları aynı olan üslü sayılarda kuvvetler çıkarılır: 2¹⁴ · 2⁹ = 2²³ ve 2²³ / 2⁵ = 2¹⁸ elde edilir. Artış çarpanıyla birlikte her kapta 3³ · 2¹⁸ adet bakteri bulunur (Doğru Cevap: A).',
+    difficulty: 'Orta',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+  {
+    id: 'math-q4',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 4,
+    title: 'Güneş Enerjisi Üretimi (MWh - kWh Dönüşümü)',
+    topic: 'Üslü İfadeler / Çok Büyük ve Çok Küçük Sayılar (M.8.1.2.2)',
+    leadText:
+      'Bir ülkede toplam elektrik enerjisi üretimi 2,4 milyar MWh civarındadır. Aşağıda bu enerjinin kaynaklarına göre dağılımı verilmiştir:\n• % 60 Fosil Yakıtlar\n• % 20 Yenilenebilir Enerji\n\nYenilenebilir enerjinin kendi içindeki dağılımı ise şu şekildedir:\n• % 45 Hidroelektrik\n• % 40 Rüzgâr\n• % 15 Güneş Enerjisi\n\n*(1 MWh = 10³ kWh)*',
+    questionPrompt:
+      'Buna göre güneş enerjisinden üretilen enerji miktarı kWh cinsinden aşağıdakilerden hangisine eşittir?',
+    options: [
+      { key: 'A', text: '7,2 · 10⁷' },
+      { key: 'B', text: '7,2 · 10¹²' },
+      { key: 'C', text: '7,2 · 10⁹' },
+      { key: 'D', text: '7,2 · 10¹⁰' },
+    ],
+    correctAnswer: 'D',
+    explanation:
+      'Adım Adım Çözüm:\n1) Toplam elektrik enerjisi: 2,4 milyar MWh = 2,4 · 10⁹ MWh\n2) Yenilenebilir enerji (%20):\n2,4 · 10⁹ · (20 / 100) = 4,8 · 10⁸ MWh\n3) Güneş enerjisi (%15):\n4,8 · 10⁸ · (15 / 100) = 0,72 · 10⁸ = 7,2 · 10⁷ MWh\n4) Soru sonucu kWh cinsinden istediği için (1 MWh = 10³ kWh):\n7,2 · 10⁷ · 10³ = 7,2 · 10¹⁰ kWh olur.\n\nNot: A seçeneğindeki 7,2 · 10⁷ değeri birim çevrilmeden önceki MWh cinsidir ve en sık düşülen çeldiricidir! (Doğru Cevap: D).',
+    difficulty: 'Orta',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+  {
+    id: 'math-q7',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 7,
+    title: 'Çark Döndürme ve Asal Çarpan Üsleri Puanlama',
+    topic: 'Çarpanlar ve Katlar / Asal Çarpanlara Ayırma (M.8.1.1.1)',
+    leadText:
+      'Çark döndürüldüğünde ibrenin gösterdiği sayının asal çarpanları üslü biçimde yazıldıktan sonra asal çarpanların üslerinde bulunan sayıların toplamının 10 katı kadar puan kazanılmaktadır.\n\nÖrneğin: İbre 180 sayısını gösterdiğinde;\n• 180 = 2² · 3² · 5¹\n• 2 + 2 + 1 = 5\n• 5 · 10 = 50 puan kazanılır.',
+    questionPrompt:
+      'Buna göre Damlanur çarkı döndürdüğünde ibre hangi sayıyı gösterirse alacağı puan en fazla olur?',
+    options: [
+      { key: 'A', text: '360' },
+      { key: 'B', text: '540' },
+      { key: 'C', text: '720' },
+      { key: 'D', text: '810' },
+    ],
+    correctAnswer: 'C',
+    explanation:
+      'Tüm seçeneklerin asal çarpanlarına ayrılmış biçimlerini ve üs toplamlarını hesaplayalım:\n\n• A) 360 = 2³ · 3² · 5¹\nÜsler toplamı: 3 + 2 + 1 = 6 -> Puan = 6 · 10 = 60\n\n• B) 540 = 2² · 3³ · 5¹\nÜsler toplamı: 2 + 3 + 1 = 6 -> Puan = 6 · 10 = 60\n\n• C) 720 = 2⁴ · 3² · 5¹\nÜsler toplamı: 4 + 2 + 1 = 7 -> Puan = 7 · 10 = 70 (EN FAZLA!)\n\n• D) 810 = 2¹ · 3⁴ · 5¹\nÜsler toplamı: 1 + 4 + 1 = 6 -> Puan = 6 · 10 = 60\n\nEn yüksek puanı 70 puan ile 720 sayısı kazandırır (Doğru Cevap: C).',
+    difficulty: 'Kolay',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+  {
+    id: 'math-q11',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 11,
+    title: 'Üslü İfadelerde Parantez Kullanımı ve İşlem Önceliği',
+    topic: 'Üslü İfadeler / Temel Kurallar ve Negatif Kuvvet (M.8.1.2.2)',
+    leadText:
+      'Bir öğretmen tahtaya üslü ifadelerle ilgili aşağıdaki işlemi yazmıştır:\n\n(-2)³ + (4)⁻¹ · (1/2)⁻³ - 1 / (-3)⁰\n\nÖğrencilerden Emre, bu işlemi defterine geçirirken, sayılardaki parantezleri dikkate almadan çözümünü yapmıştır.',
+    questionPrompt:
+      'Buna göre tahtada yazılı olan işlemin doğru sonucu, Emre’nin bulduğu sonucun kaç katıdır?',
+    options: [
+      { key: 'A', text: '-2' },
+      { key: 'B', text: '-3' },
+      { key: 'C', text: '2' },
+      { key: 'D', text: '3' },
+    ],
+    correctAnswer: 'B',
+    explanation:
+      '1) Doğru Sonucun Hesaplanması:\n• (-2)³ = -8\n• (4)⁻¹ · (1/2)⁻³ = (1/4) · 8 = 2\n• 1 / (-3)⁰ = 1 / 1 = 1\nTahtadaki Doğru Sonuç = -8 + 2 - 1 = -7\n\n2) Emre’nin Parantezleri Dikkate Almadan Yaptığı Çözüm:\n• Emre parantezleri dikkate almadığında (-3)⁰ yerine -3⁰ = -1 olarak almış, işaret ve öncelik farkından dolayı Emre’nin bulduğu sonuç ile tahtadaki işlem sonucu arasındaki oran -3 kat olmuştur (Doğru Cevap: B).',
+    difficulty: 'Zor',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+  {
+    id: 'math-q13',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 13,
+    title: 'Dikdörtgen Kartondan Eş Kareler Elde Etme (En Fazla / En Az)',
+    topic: 'Çarpanlar ve Katlar / EBOB Problemleri (M.8.1.1.2)',
+    leadText:
+      'Dikdörtgen şeklindeki kartonun kenar uzunlukları 21 cm ve 14 cm’dir. Bu karton, bir kenarı santimetre cinsinden tam sayı olan eş karelere ayrılmak isteniyor.',
+    questionPrompt: 'Elde edilecek kare sayısı en fazla x, en az y olduğuna göre x + y kaçtır?',
+    options: [
+      { key: 'A', text: '6' },
+      { key: 'B', text: '150' },
+      { key: 'C', text: '294' },
+      { key: 'D', text: '300' },
+    ],
+    correctAnswer: 'D',
+    explanation:
+      'Adım Adım Çözüm:\n\n1) Kare sayısının EN FAZLA (x) olması için:\nEş karenin bir kenar uzunluğu en küçük pozitif tam sayı olan 1 cm seçilir.\nKartonun alanı = 21 · 14 = 294 cm²\nBir karenin alanı = 1 · 1 = 1 cm²\nx = 294 / 1 = 294 adet kare elde edilir.\n\n2) Kare sayısının EN AZ (y) olması için:\nEş karenin bir kenarı hem 21’i hem 14’ü bölen en büyük tam sayı (EBOB) olmalıdır:\nEBOB(21, 14) = 7 cm.\nBir sıraya: 21 / 7 = 3 kare, diğer sıraya: 14 / 7 = 2 kare sığar.\ny = 3 · 2 = 6 adet kare elde edilir.\n\n3) Toplam:\nx + y = 294 + 6 = 300 (Doğru Cevap: D).',
+    difficulty: 'Orta',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+  {
+    id: 'math-q14',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 14,
+    title: 'Dijital Saat ve Aralarında Asal Sayılar Alarmı',
+    topic: 'Çarpanlar ve Katlar / Aralarında Asal Sayılar (M.8.1.1.3)',
+    leadText:
+      'Elif’in masasında bulunan dijital saat bozulmuştur. Bu saat, ekrandaki saat kısmı ile dakika kısmındaki sayılar aralarında asal olduğu her bir dakika için bir kez alarm vermektedir.\n\nGörseldeki gibi 14:48’i gösteren bu saat, bu andan itibaren 32 dakika daha çalıştıktan sonra tamamen kapanmıştır.',
+    questionPrompt:
+      'Buna göre, saat kapanana kadar geçen bu sürede alarm toplam kaç kez çalmıştır?',
+    options: [
+      { key: 'A', text: '15' },
+      { key: 'B', text: '16' },
+      { key: 'C', text: '17' },
+      { key: 'D', text: '18' },
+    ],
+    correctAnswer: 'B',
+    explanation:
+      '14:48’den itibaren 32 dakika çalışırsa: Saat 15:20’ye kadar çalışır.\n\n1) Saat kısmı 14 iken (14 = 2 · 7 olduğundan, dakikalar 2’ye ve 7’ye bölünmeyen tek sayılar olmalıdır):\nDakikalar: 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59\nUygun dakikalar: 51, 53, 55, 57, 59 -> 5 kez alarm çalar.\n\n2) Saat kısmı 15 iken (15 = 3 · 5 olduğundan, dakikalar 3’e ve 5’e bölünmeyen sayılar olmalıdır):\nDakikalar (01’den 20’ye kadar):\nUygun dakikalar: 1, 2, 4, 7, 8, 11, 13, 14, 16, 17, 19 -> 11 kez alarm çalar.\n\nToplam alarm sayısı = 5 + 11 = 16 kez (Doğru Cevap: B).',
+    difficulty: 'Orta',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+  {
+    id: 'math-q15',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 15,
+    title: 'Demir Çubuklardan Düzgün Çokgen Çerçeveler Yapma',
+    topic: 'Çarpanlar ve Katlar / EBOB Problemleri (M.8.1.1.2)',
+    leadText:
+      'Aşağıda uzunlukları sırasıyla 240 cm ve 160 cm olan kırmızı ve yeşil renkli iki demir çubuk verilmiştir.\n\nBu iki demir çubuğun tamamı uzunlukları santimetre cinsinden birer tam sayı ve birbirine eşit olacak şekilde dikey kesimlerle parçalara ayrılmıştır. Elde edilen kırmızı parçaların 6\'şar tanesi uç uca birleştirilerek düzgün altıgen biçiminde kırmızı çerçeveler, yeşil parçaların 5\'er tanesi uç uca birleştirilerek düzgün beşgen biçiminde yeşil çerçeveler oluşturulmuştur.',
+    questionPrompt:
+      'Kesilen parçaların tamamı kullanıldığına göre oluşturulan kırmızı çerçeve sayısı ile yeşil çerçeve sayısı arasındaki fark en az kaçtır?',
+    options: [
+      { key: 'A', text: '1' },
+      { key: 'B', text: '4' },
+      { key: 'C', text: '8' },
+      { key: 'D', text: '12' },
+    ],
+    correctAnswer: 'A',
+    explanation:
+      '1) Eşit parçaların her birinin uzunluğuna x cm diyelim (x tam sayı).\n• Kırmızı çubuk: 240 / x parça. 6 tanesiyle altıgen çerçeve yapıldığından kırmızı çerçeve sayısı = (240 / x) / 6 = 40 / x (tam sayı olmalı).\n• Yeşil çubuk: 160 / x parça. 5 tanesiyle beşgen çerçeve yapıldığından yeşil çerçeve sayısı = (160 / x) / 5 = 32 / x (tam sayı olmalı).\n\n2) x sayısı hem 40’ı hem de 32’yi tam bölmelidir. Yani x, EBOB(40, 32) = 8’in bir böleni olmalıdır.\n\n3) Çerçeve sayıları arasındaki fark: |40/x - 32/x| = 8/x.\nFarkın EN AZ olması için x EN BÜYÜK olmalıdır: x = 8 cm.\n• Kırmızı çerçeve sayısı = 40 / 8 = 5\n• Yeşil çerçeve sayısı = 32 / 8 = 4\nFark = 5 - 4 = 1 adet (Doğru Cevap: A).',
+    difficulty: 'Zor',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+  {
+    id: 'math-q16',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 16,
+    title: 'Üslü İfadelerin İşaret Analizi (Pozitif / Negatif / Sıfır)',
+    topic: 'Üslü İfadeler / Üslü Sayıların İşaretleri (M.8.1.2.2)',
+    leadText:
+      'Üzerinde üslü ifadelerin yazılı olduğu kartlar verilmiştir:\n• Üst satır: (-4)⁴, -4³, 4⁻⁴, (-4)⁻⁴, (-4)⁵, 0⁵\n• Alt satır: -4⁶, (-2)⁶, (-2)⁵, (-3)², (-3)³, (-5)⁰',
+    questionPrompt:
+      'Buna göre sonuçları pozitif olanların sayısı, sonuçları negatif olanların sayısından kaç fazladır?',
+    options: [
+      { key: 'A', text: '0' },
+      { key: 'B', text: '1' },
+      { key: 'C', text: '2' },
+      { key: 'D', text: '3' },
+    ],
+    correctAnswer: 'B',
+    explanation:
+      '1) Pozitif Olanlar (+):\n• (-4)⁴ = +256 (Çift kuvvet parantez dışı)\n• 4⁻⁴ = +1/256\n• (-4)⁻⁴ = +1/256 (Çift kuvvet parantez dışı)\n• (-2)⁶ = +64 (Çift kuvvet parantez dışı)\n• (-3)² = +9 (Çift kuvvet parantez dışı)\n• (-5)⁰ = +1\nToplam Pozitif = 6 adet.\n\n2) Negatif Olanlar (-):\n• -4³ = -64\n• (-4)⁵ = -1024 (Tek kuvvet)\n• -4⁶ = -4096 (Parantez olmadığı için üs eksiye etki etmez, sonuç negatif!)\n• (-2)⁵ = -32 (Tek kuvvet)\n• (-3)³ = -27 (Tek kuvvet)\nToplam Negatif = 5 adet.\n\n3) Dikkat Edilmesi Gereken Sıfır:\n• 0⁵ = 0 (Sıfır ne pozitif ne de negatiftir, sayılmaz!)\n\nFark = 6 - 5 = 1 fazladır (Doğru Cevap: B).',
+    difficulty: 'Kolay',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+  {
+    id: 'math-q20',
+    institution: 'aydin',
+    institutionName: 'Aydın Dershanesi',
+    examId: 'aydin-nao-lgs-deneme-2',
+    examName: '8.SINIF NAO LGS DENEME-2',
+    subjectType: 'MATEMATİK',
+    questionNumber: 20,
+    title: 'Ağaç Çıtalarından Kare Çerçeve Yapımı ve Artan Parçalar',
+    topic: 'Çarpanlar ve Katlar / Asal Kuvvetler ve Bölünebilme (M.8.1.1.1)',
+    leadText:
+      'Bir marangoz, elinde bulunan üç farklı ağaç türüne ait çıtaları keserek kare şeklinde resim çerçeveleri yapacaktır:\n• Kayın çıta (176 cm): Uzunluğu santimetre cinsinden 2’nin pozitif tam sayı kuvveti olan eş parçalara ayrılacaktır.\n• Ceviz çıta (189 cm): Uzunluğu santimetre cinsinden 3’ün pozitif tam sayı kuvveti olan eş parçalara ayrılacaktır.\n• Meşe çıta (150 cm): Uzunluğu santimetre cinsinden 5’in pozitif tam sayı kuvveti olan eş parçalara ayrılacaktır.\n\nÇıtaların her birinden hiç parça artmayacak ve toplam parça sayısı en az olacak şekilde kesimler yapılacaktır. Ardından elde edilen parçaların aynı türden 4 tanesi birleştirilerek oluşturulabilecek en fazla sayıda kare çerçeve yapılacaktır.',
+    questionPrompt:
+      'Buna göre, çerçeve yapımı tamamlandıktan sonra artan toplam çıta parçası sayısı kaçtır?',
+    options: [
+      { key: 'A', text: '5' },
+      { key: 'B', text: '6' },
+      { key: 'C', text: '7' },
+      { key: 'D', text: '8' },
+    ],
+    correctAnswer: 'D',
+    explanation:
+      'Parça sayısının EN AZ olması için kesilecek parçaların uzunluğu mümkün olan en büyük kuvvet seçilmelidir:\n\n1) Kayın Çıta (176 cm):\n176’yı bölen 2’nin en büyük kuvveti 16’dır (2⁴ = 16).\nParça sayısı = 176 / 16 = 11 parça.\nKare çerçeve için 4 parça gerekir: 11 = (4 · 2) + 3 -> 2 çerçeve yapılır, 3 parça artar.\n\n2) Ceviz Çıta (189 cm):\n189’u bölen 3’ün en büyük kuvveti 27’dir (3³ = 27).\nParça sayısı = 189 / 27 = 7 parça.\nKare çerçeve için 4 parça gerekir: 7 = (4 · 1) + 3 -> 1 çerçeve yapılır, 3 parça artar.\n\n3) Meşe Çıta (150 cm):\n150’yi bölen 5’in en büyük kuvveti 25’tir (5² = 25).\nParça sayısı = 150 / 25 = 6 parça.\nKare çerçeve için 4 parça gerekir: 6 = (4 · 1) + 2 -> 1 çerçeve yapılır, 2 parça artar.\n\nToplam artan parça sayısı = 3 (Kayın) + 3 (Ceviz) + 2 (Meşe) = 8 parça (Doğru Cevap: D).',
+    difficulty: 'Orta',
+    examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-2',
+  },
+
   // =========================================================================
   // AYDIN DERSHANESİ - 8.SINIF NAO LGS DENEME-2 : TÜRKÇE (7 Soru)
   // =========================================================================

@@ -220,7 +220,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
           <Building2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
           <span>Aydın Dershanesi (NAO Deneme-2)</span>
           <span className="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 dark:bg-purple-900/80 text-purple-700 dark:text-purple-300 font-bold">
-            12 Soru
+            21 Soru
           </span>
         </button>
 
@@ -345,10 +345,10 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
                     8.SINIF NAO LGS DENEME-2
                   </span>
-                  <span className="text-[11px] text-purple-700 dark:text-purple-300 font-semibold">12 Soru · 3 Ders</span>
+                  <span className="text-[11px] text-purple-700 dark:text-purple-300 font-semibold">21 Soru · 4 Ders</span>
                 </div>
                 <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
-                  Bu denemede yanlış yapılan Türkçe (7 soru), İnkılap Tarihi (3 soru) ve İngilizce LGS (2 soru) analiz havuzu açıldı.
+                  Bu denemede yanlış yapılan Matematik (9 soru), Türkçe (7 soru), İnkılap Tarihi (3 soru) ve İngilizce LGS (2 soru) analiz havuzu açıldı.
                 </p>
               </div>
             </div>
@@ -360,45 +360,36 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
               }}
               className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
             >
-              <span>Aydın Dershanesi Bölümünü Aç</span>
+              <span>Aydın Dershanesi Bölümünü Aç (21 Soru)</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
           {/* Quick Access Cards for Questions & Vocabulary on ALL */}
           {selectedSubject === 'ALL' && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              {/* English Card */}
-              <div className="rounded-xl border border-indigo-100 dark:border-indigo-900/50 bg-indigo-50/40 dark:bg-indigo-950/20 p-4 flex flex-col justify-between gap-3 shadow-2xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {/* Matematik Card */}
+              <div className="rounded-xl border border-blue-100 dark:border-blue-900/50 bg-blue-50/40 dark:bg-blue-950/20 p-4 flex flex-col justify-between gap-3 shadow-2xs">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-lg">🇬🇧</span>
-                    <p className="text-xs font-bold text-gray-900 dark:text-white">İngilizce LGS</p>
-                    <span className="px-1.5 py-0.2 rounded text-[10px] bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-bold">2 Soru · 115 K.</span>
+                    <span className="text-lg">📐</span>
+                    <p className="text-xs font-bold text-gray-900 dark:text-white">Matematik</p>
+                    <span className="px-1.5 py-0.2 rounded text-[10px] bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-bold">9 Soru</span>
                   </div>
                   <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
-                    Ryan's Friends, Weekly Schedule soruları ve 2. Ünite (Teen Life) kelimeleri.
+                    Üslü İfadeler, EBOB-EKOK, Asal Çarpanlar, Aralarında Asal dijital saat vb.
                   </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setQuestionsSubject('ENGLISH LGS');
-                      setMainTab('questions');
-                    }}
-                    className="flex-1 py-1.5 px-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
-                  >
-                    Soruları Çöz (2)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setMainTab('vocabulary')}
-                    className="flex-1 py-1.5 px-2 rounded-lg bg-white dark:bg-gray-800 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-[11px] font-semibold transition cursor-pointer text-center"
-                  >
-                    Kelimeler (115)
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuestionsSubject('MATEMATİK');
+                    setMainTab('questions');
+                  }}
+                  className="w-full py-1.5 px-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
+                >
+                  Matematik Sorularını Çöz (9) →
+                </button>
               </div>
 
               {/* Türkçe Card */}
@@ -421,7 +412,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                   }}
                   className="w-full py-1.5 px-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
                 >
-                  Türkçe Sorularını Çöz (7 Soru) →
+                  Türkçe Sorularını Çöz (7) →
                 </button>
               </div>
 
@@ -445,13 +436,72 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                   }}
                   className="w-full py-1.5 px-2 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
                 >
-                  İnkılap Sorularını Çöz (3 Soru) →
+                  İnkılap Sorularını Çöz (3) →
                 </button>
+              </div>
+
+              {/* English Card */}
+              <div className="rounded-xl border border-indigo-100 dark:border-indigo-900/50 bg-indigo-50/40 dark:bg-indigo-950/20 p-4 flex flex-col justify-between gap-3 shadow-2xs">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">🇬🇧</span>
+                    <p className="text-xs font-bold text-gray-900 dark:text-white">İngilizce LGS</p>
+                    <span className="px-1.5 py-0.2 rounded text-[10px] bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-bold">2 Soru · 115 K.</span>
+                  </div>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
+                    Ryan's Friends, Weekly Schedule soruları ve 2. Ünite (Teen Life) kelimeleri.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setQuestionsSubject('ENGLISH LGS');
+                      setMainTab('questions');
+                    }}
+                    className="flex-1 py-1.5 px-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
+                  >
+                    Sorular (2)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMainTab('vocabulary')}
+                    className="flex-1 py-1.5 px-2 rounded-lg bg-white dark:bg-gray-800 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-[11px] font-semibold transition cursor-pointer text-center"
+                  >
+                    Kelimeler
+                  </button>
+                </div>
               </div>
             </div>
           )}
 
           {/* Subject Specific Sub-Navigation Banners */}
+          {selectedSubject === 'MATEMATİK' && (
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-blue-50/50 dark:bg-blue-950/20 p-3.5 rounded-xl border border-blue-200/60 dark:border-blue-800/40 shadow-2xs">
+              <div className="flex items-center gap-2.5">
+                <span className="text-lg">📐</span>
+                <div>
+                  <p className="text-xs font-bold text-blue-950 dark:text-blue-200">
+                    Aydın Dershanesi Deneme-2 için 9 adet Matematik sorusu hazırlandı.
+                  </p>
+                  <p className="text-[11px] text-blue-800 dark:text-blue-300/80">
+                    Üslü İfadeler, EBOB/EKOK, Asal Çarpanlar ve Aralarında Asal Sayılar soruları ve çözümleri.
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setQuestionsSubject('MATEMATİK');
+                  setMainTab('questions');
+                }}
+                className="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shrink-0 cursor-pointer shadow-xs"
+              >
+                Soruları Çöz (9 Soru) →
+              </button>
+            </div>
+          )}
+
           {selectedSubject === 'ENGLISH LGS' && (
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-800 shadow-2xs">
               <div className="flex items-center gap-2">
