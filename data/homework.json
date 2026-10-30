@@ -1,0 +1,770 @@
+[
+  {
+    "id": "hw-1",
+    "topic": "LGS-W5",
+    "title": "LGS-W5 İngilizce Testleri",
+    "course": "ENGLISH LGS 8/D",
+    "subjectType": "ENGLISH LGS",
+    "teacher": "ŞULE ARTIK",
+    "description": "Dear students, the upcoming tests will have been completed.\n\n- Team ELT - English Ahead Test Book: Unit 3 Vocabulary Test + Practice Test 1-2 (up to pg 57)\n\nHave a nice week!",
+    "startDate": "2026-10-16T08:00:00",
+    "dueDate": "2026-10-22T23:00:00",
+    "displayDueDate": "22 Ekim 2026 Perşembe, 23:00",
+    "booksAndPages": [
+      "Team ELT - English Ahead Test Book: Unit 3 & sf. 57'ye kadar"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-1-1",
+        "title": "Team ELT - Unit 3 Vocabulary Test",
+        "completed": false
+      },
+      {
+        "id": "hw-1-2",
+        "title": "English Ahead Practice Test 1",
+        "completed": false
+      },
+      {
+        "id": "hw-1-3",
+        "title": "English Ahead Practice Test 2 (sf. 57'ye kadar)",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-2",
+    "topic": "8. Sınıf Din Kültürü Ödevi",
+    "title": "Yaprak Test & Bumerang Ödevi",
+    "course": "DİN KÜLTÜRÜ VE AHLAK BİLGİSİ 8/D",
+    "subjectType": "DİN KÜLTÜRÜ",
+    "teacher": "MERVE DUMAN GÜNGÖR",
+    "description": "Merhaba sevgili çocuklar, bu haftaki ödeviniz Yaprak testinizden sayfa 15 e kadar ve Bumerang sayfa 55 e kadar çözünüz. Kolaylıklar dilerim.",
+    "startDate": "2026-10-15T08:00:00",
+    "dueDate": "2026-10-22T23:00:00",
+    "displayDueDate": "22 Ekim 2026 Perşembe, 23:00",
+    "booksAndPages": [
+      "Yaprak Test: sf. 15'e kadar",
+      "Bumerang: sf. 55'e kadar"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-2-1",
+        "title": "Yaprak Test (Sayfa 15'e kadar tamamla)",
+        "completed": false
+      },
+      {
+        "id": "hw-2-2",
+        "title": "Bumerang (Sayfa 55'e kadar tamamla)",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-3",
+    "topic": "Hafta sonu ödevi",
+    "title": "Çanta Kitapçığı Soru Çözümü",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba çocuklar hafta sonu ödeviniz çanta kitapçığından 68-88 (66-88) arası. Kolay gelsin.",
+    "startDate": "2026-10-14T08:00:00",
+    "dueDate": "2026-10-19T23:00:00",
+    "displayDueDate": "19 Ekim 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "Çanta Soru Bankası: Sayfa 66-88 arası"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-3-1",
+        "title": "Çanta Kitapçığı / Soru Bankası sf. 66-76",
+        "completed": false
+      },
+      {
+        "id": "hw-3-2",
+        "title": "Çanta Kitapçığı / Soru Bankası sf. 77-88",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-4",
+    "topic": "İnkilap tarihi Prestij soru bankası ödevi(Nartest)",
+    "title": "Prestij Soru Bankası (Nartest)",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim prestij yayınları 39-44 arası ödevinizdir. İyi çalışmalar dilerim.",
+    "startDate": "2026-10-15T08:00:00",
+    "dueDate": "2026-10-19T23:00:00",
+    "displayDueDate": "19 Ekim 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "Prestij Yayınları (Nartest): Sayfa 39-44"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-4-1",
+        "title": "Prestij Yayınları sayfa 39-44 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-5",
+    "topic": "MLJ HOMEWORK WEEK 5",
+    "title": "MLJ Weekend Mission (Week 5)",
+    "course": "ENGLISH MAIN COURSE 8/D",
+    "subjectType": "ENGLISH MAIN COURSE",
+    "teacher": "ŞENNUR DURSUN",
+    "description": "Hi there :)\nYour weekend mission is here! Please complete your homework before Monday - MLJ Pages 18-21.\n“I forgot” is NOT an acceptable answer! :)\nHave a great weekend, enjoy yourselves,\nSee you on Monday!",
+    "startDate": "2026-10-16T08:00:00",
+    "dueDate": "2026-10-19T08:00:00",
+    "displayDueDate": "19 Ekim 2026 Pazartesi, 08:00 (Sabah)",
+    "booksAndPages": [
+      "MLJ Workbook: Pages 18-21"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-5-1",
+        "title": "MLJ Book Page 18-19",
+        "completed": false
+      },
+      {
+        "id": "hw-5-2",
+        "title": "MLJ Book Page 20-21",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-6",
+    "topic": "Matematik ödevi",
+    "title": "Startfen Kurumsal 5. Hafta Çalışmaları",
+    "course": "MATEMATİK 8/D",
+    "subjectType": "MATEMATİK",
+    "teacher": "ÜLKÜ TANRIVERDİ GÜVEN",
+    "description": "Ödeviniz startfen kurumsal 5. Hafta çalışmalarıdır. Pazartesi sabahına kadar hazır ediniz.",
+    "startDate": "2026-10-16T08:00:00",
+    "dueDate": "2026-10-19T08:00:00",
+    "displayDueDate": "19 Ekim 2026 Pazartesi, 08:00 (Sabah)",
+    "booksAndPages": [
+      "Startfen Kurumsal: 5. Hafta"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-6-1",
+        "title": "Startfen Kurumsal 5. Hafta Testleri ve Etkinlikleri",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-7",
+    "topic": "8.sınıflar Din Ödevi",
+    "title": "Soru Bankası & LGS Çıkmış Sorular",
+    "course": "DİN KÜLTÜRÜ VE AHLAK BİLGİSİ 8/D",
+    "subjectType": "DİN KÜLTÜRÜ",
+    "teacher": "MERVE DUMAN GÜNGÖR",
+    "description": "Merhaba sevgili çocuklar bu haftaki din ödeviniz soru bankası sayfa 25 -36 arasıdır. Dersimize Lgs çalışma kitabı çıkmış sorular kitabını getirmeyi unutmayınız.",
+    "startDate": "2026-10-10T08:00:00",
+    "dueDate": "2026-10-17T23:00:00",
+    "displayDueDate": "17 Ekim 2026 Cumartesi, 23:00 (Bugün!)",
+    "booksAndPages": [
+      "Din Soru Bankası: Sayfa 25-36",
+      "LGS Çıkmış Sorular Kitabı"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-7-1",
+        "title": "Din Soru Bankası sayfa 25-36 arası çözümü",
+        "completed": false
+      },
+      {
+        "id": "hw-7-2",
+        "title": "LGS çalışma kitabı çıkmış sorular kitabını çantaya koy",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-8",
+    "topic": "Hafta içi ödevi",
+    "title": "Bumerang Haftalık 5. Deneme",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba çocuklar Hafta içi ödeviniz Bumerang haftalık deneme kitabı, 5. Deneme. Kolay gelsin ❤️",
+    "startDate": "2026-10-12T08:00:00",
+    "dueDate": "2026-10-16T23:00:00",
+    "displayDueDate": "16 Ekim 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Bumerang Haftalık Deneme: 5. Deneme"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-8-1",
+        "title": "Bumerang 5. Deneme Sınavını çöz ve yanlışlarını kontrol et",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-9",
+    "topic": "Türkçe Paragraf & Soru Bankası",
+    "title": "ZOOM Paragraf & SUPER 8A Testleri",
+    "course": "TÜRKÇE 8/D",
+    "subjectType": "TÜRKÇE",
+    "teacher": "TÜRKÇE ZÜMRESİ 8/D",
+    "description": "ZOOM PARAGRAF sayfa 51-56 ve SUPER 8A sayfa 84-90 testleri tamamlanacak.",
+    "startDate": "2026-10-15T08:00:00",
+    "dueDate": "2026-10-19T23:00:00",
+    "displayDueDate": "19 Ekim 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "ZOOM Paragraf: sf. 51-56",
+      "SUPER 8A: sf. 84-90"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-9-1",
+        "title": "ZOOM Paragraf sf. 51-56 (Soruları süre tutarak çöz)",
+        "completed": false
+      },
+      {
+        "id": "hw-9-2",
+        "title": "SUPER 8A sf. 84-90 (Testleri tamamla)",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-10",
+    "topic": "LGS Çıkmış Sorular",
+    "title": "Lgs Çalışma kitabı (lgs çıkmış sorular kitabı)",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim lgs çalışma kitabı 8-18 arası sayfalarındaki testler ödevinizdir.İyi çalışmalar dilerim.",
+    "startDate": "2026-10-28T08:00:00",
+    "dueDate": "2026-11-02T23:00:00",
+    "displayDueDate": "2 Kasım 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "LGS Çalışma Kitabı: Sayfa 8-18"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-10-1",
+        "title": "LGS Çalışma Kitabı (Çıkmış Sorular) sf. 8-18 testlerini çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-11",
+    "topic": "8. Sınıf Din Kültürü Ödevi",
+    "title": "8.sınıf Din Kültürü Ödevi",
+    "course": "DİN KÜLTÜRÜ VE AHLAK BİLGİSİ 8/D",
+    "subjectType": "DİN KÜLTÜRÜ",
+    "teacher": "MERVE DUMAN GÜNGÖR",
+    "description": "Merhaba sevgili çocuklar , bu haftaki ödeviniz sözel çalışma kitabından sayfa 102-124 arasıdır . kolaylıklar dilerim",
+    "startDate": "2026-10-27T08:00:00",
+    "dueDate": "2026-11-06T23:00:00",
+    "displayDueDate": "6 Kasım 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Sözel Çalışma Kitabı: Sayfa 102-124"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-11-1",
+        "title": "Sözel Çalışma Kitabı sf. 102-124 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-12",
+    "topic": "Hafta sonu ödevi",
+    "title": "Hafta sonu ödevi (Ankara Yayıncılık)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba çocuklar hafta sonu ödeviniz Ankara yayıncılık güçlendiren 51-78\nKolay gelsin",
+    "startDate": "2026-10-27T08:00:00",
+    "dueDate": "2026-11-02T23:00:00",
+    "displayDueDate": "2 Kasım 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "Ankara Yayıncılık Güçlendiren: Sayfa 51-78"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-12-1",
+        "title": "Ankara Yayıncılık Güçlendiren sf. 51-78 arası soruları çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-13",
+    "topic": "Hafta içi ödevi",
+    "title": "Hafta içi ödevi (Bumerang 7. Deneme)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba çocuklar hafta içi ödeviniz bumerang haftalık deneme kitabından 7. haftalık deneme\nKolay gelsin🌺",
+    "startDate": "2026-10-27T08:00:00",
+    "dueDate": "2026-11-06T23:00:00",
+    "displayDueDate": "6 Kasım 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Bumerang Haftalık Deneme: 7. Deneme"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-13-1",
+        "title": "Bumerang 7. Haftalık Deneme Sınavını çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-14",
+    "topic": "Matematik ödevi",
+    "title": "Matematik ödevi (Hız Yayınları)",
+    "course": "MATEMATİK 8/D",
+    "subjectType": "MATEMATİK",
+    "teacher": "ÜLKÜ TANRIVERDİ GÜVEN",
+    "description": "Hiz yayinlari 46-61 odevinizdir. Odeviniz pazartesi gunu kontrol edilecektir.",
+    "startDate": "2026-10-26T08:00:00",
+    "dueDate": "2026-11-02T08:00:00",
+    "displayDueDate": "2 Kasım 2026 Pazartesi, 08:00",
+    "booksAndPages": [
+      "Hız Yayınları: Sayfa 46-61"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-14-1",
+        "title": "Hız Yayınları sf. 46-61 testlerini tamamla",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-15",
+    "topic": "İnkılap tarihi haftaiçi ödevi",
+    "title": "İnkilap tarihi haftaiçi ödevi (Hız Yayınları)",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim, hız yayınları soru bankası 42-43-44-45 sayfaları ödevinizdir.İyi çalışmalar dilerim",
+    "startDate": "2026-10-26T08:00:00",
+    "dueDate": "2026-10-30T23:00:00",
+    "displayDueDate": "30 Ekim 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Hız Yayınları Soru Bankası: Sayfa 42-45"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-15-1",
+        "title": "Hız Yayınları sf. 42-45 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-16",
+    "topic": "MLJ HOMEWORK WEEK 6",
+    "title": "MLJ HOMEWORK WEEK 6",
+    "course": "ENGLISH MAIN COURSE 8/D",
+    "subjectType": "ENGLISH MAIN COURSE",
+    "teacher": "ŞENNUR DURSUN",
+    "description": "Hi there :)\n\nYour weekend mission is here! Please complete your homework before Monday- MLJ Pages 22-25.\n\n“I forgot” is NOT an acceptable answer! :)\n\nHave a great weekend, enjoy yourselves,\n\nSee you on Monday!",
+    "startDate": "2026-10-23T08:00:00",
+    "dueDate": "2026-10-26T08:00:00",
+    "displayDueDate": "26 Ekim 2026 Pazartesi, 08:00",
+    "booksAndPages": [
+      "MLJ Workbook: Pages 22-25"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-16-1",
+        "title": "MLJ Book Pages 22-25",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-17",
+    "topic": "LGS- W6",
+    "title": "LGS- W6 İngilizce Testleri",
+    "course": "ENGLISH LGS 8/D",
+    "subjectType": "ENGLISH LGS",
+    "teacher": "ŞULE ARTIK",
+    "description": "Dear students, the upcoming tests will have been completed.\n\nTeam ELT - English Ahead Test Book: Unit 3 Practice Test 3-4 (up to pg 66)\n\nHave a nice week!",
+    "startDate": "2026-10-23T08:00:00",
+    "dueDate": "2026-10-29T23:00:00",
+    "displayDueDate": "29 Ekim 2026 Perşembe, 23:00",
+    "booksAndPages": [
+      "Team ELT - English Ahead Test Book: Unit 3 sf. 66'ya kadar"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-17-1",
+        "title": "English Ahead Practice Test 3",
+        "completed": false
+      },
+      {
+        "id": "hw-17-2",
+        "title": "English Ahead Practice Test 4 (sf. 66'ya kadar)",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-18",
+    "topic": "Hız yayınları haftasonu ödevi",
+    "title": "Hız yayınları haftasonu ödevi",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "institution": "maya",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim hız yayınları soru bankası 35-42 ödevinizdir.İyi çalışmalar dilerim",
+    "startDate": "2026-10-22T08:00:00",
+    "dueDate": "2026-10-26T23:00:00",
+    "displayDueDate": "26 Ekim 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "Hız Yayınları Soru Bankası: Sayfa 35-42"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-18-1",
+        "title": "Hız Yayınları sf. 35-42 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-19",
+    "topic": "hafta sonu ödevi",
+    "title": "hafta sonu ödevi (MEB Kitabı)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "institution": "maya",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba Çocuklar hafta sonu ödeviniz MEB kitabımızdandır. (MEB kitabı önemli, kitapta verilen örnekler, kavramlar çok değerli, eğer ödevi yaparken bilmediğinizi soru ya da kavramlarla karşılaşırsanız kitabın anlatım kısmından tekrarlarınızı yapınız.)\n\nİyi tatiller çocuklar\n\nMEB ders kitabı: 35-36-37-38-39-40-41-61-66-67-72-73",
+    "startDate": "2026-10-22T08:00:00",
+    "dueDate": "2026-10-26T23:00:00",
+    "displayDueDate": "26 Ekim 2026 Pazartesi, 23:00",
+    "booksAndPages": [
+      "MEB Ders Kitabı: Sayfa 35-41, 61, 66-67, 72-73"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-19-1",
+        "title": "MEB Ders Kitabı sf. 35-41, 61, 66-67, 72-73 test ve etkinlikleri tamamla",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-20",
+    "topic": "Hafta içi ödevi",
+    "title": "Hafta içi ödevi (Bumerang 6. Deneme)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "institution": "maya",
+    "teacher": "HANİFE GAYE ALAY",
+    "description": "Merhaba çocuklar hafta içi ödeviniz bumerang deneme kitabı altıncı deneme",
+    "startDate": "2026-10-21T08:00:00",
+    "dueDate": "2026-10-23T23:00:00",
+    "displayDueDate": "23 Ekim 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Bumerang Deneme Kitabı: 6. Deneme"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-20-1",
+        "title": "Bumerang 6. Deneme Sınavını çöz ve yanlışlarını kontrol et",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-21",
+    "topic": "Prestij yayınları haftaiçi ödevi",
+    "title": "Prestij yayınları haftaiçi ödevi",
+    "course": "T.C. İNKILAP TARİHİ VE ATATÜRKÇÜLÜK 8/D",
+    "subjectType": "İNKILAP TARİHİ",
+    "institution": "maya",
+    "teacher": "BÜŞRA CAN",
+    "description": "Sevgili öğrencim prestij yayınları 45-50 sayfaları ödevinizdir.İyi çalışmalar diliyorum",
+    "startDate": "2026-10-19T08:00:00",
+    "dueDate": "2026-10-23T23:00:00",
+    "displayDueDate": "23 Ekim 2026 Cuma, 23:00",
+    "booksAndPages": [
+      "Prestij Yayınları: Sayfa 45-50"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-21-1",
+        "title": "Prestij Yayınları sf. 45-50 arası testleri çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-22",
+    "topic": "Matematik ödevi",
+    "title": "Matematik ödevi (Startfen 5. Hafta)",
+    "course": "MATEMATİK 8/D",
+    "subjectType": "MATEMATİK",
+    "institution": "maya",
+    "teacher": "ÜLKÜ TANRIVERDİ GÜVEN",
+    "description": "Odeviniz startfen kurumsal 5. Hafta calismalaridir.",
+    "startDate": "2026-10-16T08:00:00",
+    "dueDate": "2026-10-19T08:00:00",
+    "displayDueDate": "19 Ekim 2026 Pazartesi, 08:00",
+    "booksAndPages": [
+      "Startfen Kurumsal: 5. Hafta"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-22-1",
+        "title": "Startfen Kurumsal 5. Hafta test ve çalışmalarını yap",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-23",
+    "topic": "ÜSLÜ İFADELER",
+    "title": "Matematik Modül 1 Karma Test 1-2 ve Yeni Nesil Test",
+    "course": "MATEMATİK 8/D",
+    "subjectType": "MATEMATİK",
+    "institution": "aydin",
+    "teacher": "MEHMET SADIK CAN",
+    "description": "Matematik Modül 1 Karma test 1-2 ve Yeni Nesil Test",
+    "startDate": "2026-10-24T08:00:00",
+    "dueDate": "2026-10-31T23:00:00",
+    "displayDueDate": "31 Ekim 2026 Cumartesi, 23:00",
+    "booksAndPages": [
+      "Matematik Modül 1: Karma Test 1-2",
+      "Yeni Nesil Test"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-23-1",
+        "title": "Matematik Modül 1 Karma Test 1 çöz",
+        "completed": false
+      },
+      {
+        "id": "hw-23-2",
+        "title": "Matematik Modül 1 Karma Test 2 çöz",
+        "completed": false
+      },
+      {
+        "id": "hw-23-3",
+        "title": "Yeni Nesil Test çöz ve kontrol et",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-24",
+    "topic": "KADER İNANCI",
+    "title": "Dinlendiren Defter Sayfa 24-35",
+    "course": "DİN KÜLTÜRÜ VE AHLAK BİLGİSİ 8/D",
+    "subjectType": "DİN KÜLTÜRÜ",
+    "institution": "aydin",
+    "teacher": "ZÜLEYHA EKER YANIK",
+    "description": "Sevgili öğrencilerim bu haftaki ödeviniz Dinlendiren defterden 24- 35 arasıdır . Eksikleri olan öğrencilerimin bir an önce tamamlaması gerekmektedir.🌸",
+    "startDate": "2026-10-26T08:00:00",
+    "dueDate": "2026-10-31T23:00:00",
+    "displayDueDate": "31 Ekim 2026 Cumartesi, 23:00",
+    "booksAndPages": [
+      "Dinlendiren Defter: Sayfa 24-35"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-24-1",
+        "title": "Dinlendiren Defter sayfa 24-35 arasını çöz",
+        "completed": false
+      },
+      {
+        "id": "hw-24-2",
+        "title": "Eksik din kültürü ödevlerini tamamla",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-25",
+    "topic": "KADER İNANCI",
+    "title": "1. Ünite Tekrarı & Yazılıya Hazırlık",
+    "course": "DİN KÜLTÜRÜ VE AHLAK BİLGİSİ 8/D",
+    "subjectType": "DİN KÜLTÜRÜ",
+    "institution": "aydin",
+    "teacher": "ZÜLEYHA EKER YANIK",
+    "description": "Sevgili öğrencilerim bu hafta din kültürü dersinde yazılıya hazırlık çalışması yapacağız. Eksik ödevleri olanların tamamlamasını istiyorum.Derse hazırlıklı bir şekilde 1. Uniteyi tekrar etmis olarak gelmenizi istiyorum.",
+    "startDate": "2026-10-19T08:00:00",
+    "dueDate": "2026-10-24T23:00:00",
+    "displayDueDate": "24 Ekim 2026 Cumartesi, 23:00",
+    "booksAndPages": [
+      "1. Ünite Konu Tekrarı",
+      "Yazılıya Hazırlık"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-25-1",
+        "title": "1. Üniteyi baştan tekrar et",
+        "completed": false
+      },
+      {
+        "id": "hw-25-2",
+        "title": "Eksik din kültürü çalışmalarını bitir",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-26",
+    "topic": "ÜSLÜ İFADELER",
+    "title": "Üç Adım Soru Bankası Test 15-19",
+    "course": "MATEMATİK 8/D",
+    "subjectType": "MATEMATİK",
+    "institution": "aydin",
+    "teacher": "MEHMET SADIK CAN",
+    "description": "Üç Adım Soru Bankası Test 15-19",
+    "startDate": "2026-10-12T08:00:00",
+    "dueDate": "2026-10-17T23:00:00",
+    "displayDueDate": "17 Ekim 2026 Cumartesi, 23:00",
+    "booksAndPages": [
+      "Üç Adım Soru Bankası: Test 15-19"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-26-1",
+        "title": "Üç Adım Soru Bankası Test 15-19 arası soruları çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-27",
+    "topic": "Kader ve Kaza İnancı",
+    "title": "Din Kültürü Üç Adım Sayfa 56-61",
+    "course": "DİN KÜLTÜRÜ VE AHLAK BİLGİSİ 8/D",
+    "subjectType": "DİN KÜLTÜRÜ",
+    "institution": "aydin",
+    "teacher": "ZÜLEYHA EKER YANIK",
+    "description": "Din kültürü Üç adım sayfa 56- 61 arası sorular çözülecektir.",
+    "startDate": "2026-10-12T08:00:00",
+    "dueDate": "2026-10-17T23:00:00",
+    "displayDueDate": "17 Ekim 2026 Cumartesi, 23:00",
+    "booksAndPages": [
+      "Üç Adım Soru Bankası: Sayfa 56-61"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-27-1",
+        "title": "Üç Adım sayfa 56-61 arası soruları çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-28",
+    "topic": "ADAPTASYON VE ÖNCEKİ KONULAR",
+    "title": "Ders İşleyiş Modülü, 3 Adım & Beceri Temelli (Adaptasyona Kadar)",
+    "course": "FEN BİLİMLERİ 8/D",
+    "subjectType": "FEN BİLİMLERİ",
+    "institution": "aydin",
+    "teacher": "Aydın Dershanesi Fen Zümresi",
+    "description": "Değerli velilerim, Fen Bilimleri ödevlerimiz aşağıdaki kaynaklardan, adaptasyon konusuna kadar olan bölümlerdir: 1. Fen Bilimleri Ders İşleyiş Modülü 2. 3 Adım Soru Bankası 3. Beceri Temelli Soru Bankası. Ödev kontrolü 1 Kasım’da yapılacaktır.",
+    "startDate": "2026-10-24T08:00:00",
+    "dueDate": "2026-11-01T23:00:00",
+    "displayDueDate": "1 Kasım 2026 Pazar, 23:00",
+    "booksAndPages": [
+      "Fen İşleyiş Modülü (Adaptasyona kadar)",
+      "3 Adım Soru Bankası",
+      "Beceri Temelli Soru Bankası"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-28-1",
+        "title": "Fen Bilimleri Ders İşleyiş Modülü adaptasyona kadar çöz",
+        "completed": false
+      },
+      {
+        "id": "hw-28-2",
+        "title": "3 Adım Soru Bankası adaptasyona kadar çöz",
+        "completed": false
+      },
+      {
+        "id": "hw-28-3",
+        "title": "Beceri Temelli Soru Bankası adaptasyona kadar çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  },
+  {
+    "id": "hw-29",
+    "topic": "Fiilimsiler, Sözcükte Anlam, Söz Sanatları",
+    "title": "Modül 1 Bitirme, 3 Adım sf. 26 & Miray sf. 48",
+    "course": "TÜRKÇE 8/D",
+    "subjectType": "TÜRKÇE",
+    "institution": "aydin",
+    "teacher": "Aydın Dershanesi Türkçe Zümresi",
+    "description": "Öğrencilerimizin Türkçe dersinden ödevi Modül 1'deki testler bitirilecektir. 3 Adım soru bankası sayfa 26'ya kadar olan kısım ve Miray soru bankasından sayfa 48'e kadar olan kısım çözülecektir. Fiilimsiler, sözcükte anlam, sözcükler arası anlam ilişkileri, söz sanatları ve söz öbeklerinde anlam konularımız bitmiş olup 2. modüle geçmiş bulunuyoruz. Kontrol haftaya pazar günüdür.",
+    "startDate": "2026-10-25T08:00:00",
+    "dueDate": "2026-11-01T23:00:00",
+    "displayDueDate": "1 Kasım 2026 Pazar, 23:00",
+    "booksAndPages": [
+      "Türkçe Modül 1 (Kalan testler)",
+      "3 Adım Soru Bankası: sf. 26'ya kadar",
+      "Miray Soru Bankası: sf. 48'e kadar"
+    ],
+    "subtasks": [
+      {
+        "id": "hw-29-1",
+        "title": "Modül 1'deki kalan testleri bitir",
+        "completed": false
+      },
+      {
+        "id": "hw-29-2",
+        "title": "3 Adım soru bankası sayfa 26'ya kadar çöz",
+        "completed": false
+      },
+      {
+        "id": "hw-29-3",
+        "title": "Miray soru bankası sayfa 48'e kadar çöz",
+        "completed": false
+      }
+    ],
+    "completed": false
+  }
+]

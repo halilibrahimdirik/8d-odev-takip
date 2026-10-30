@@ -47,7 +47,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
   onUpdateMistakeStatus,
   onDeleteMistake,
 }) => {
-  const [mainTab, setMainTab] = useState<'mistakes' | 'questions' | 'shadow-test' | 'vocabulary'>('mistakes');
+  const [mainTab, setMainTab] = useState<'mistakes' | 'questions-deneme1' | 'questions-deneme2' | 'shadow-deneme1' | 'shadow-deneme2' | 'vocabulary'>('mistakes');
   const [questionsSubject, setQuestionsSubject] = useState<SubjectType | 'ALL'>('ALL');
   const [targetShadowParentId, setTargetShadowParentId] = useState<string | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<SubjectType | 'ALL'>('ALL');
@@ -193,8 +193,8 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
         </div>
       </div>
 
-      {/* 2. Ana Gezinme Sekmeleri (Konu Yanlışları, Çözülecek Sorular, Eksik Kelimeler) */}
-      <div className="flex flex-wrap items-center gap-2 p-1.5 bg-gray-100 dark:bg-gray-800/80 rounded-2xl w-fit">
+      {/* 2. Ana Gezinme Sekmeleri (Konu Yanlışları, Deneme-1, Deneme-2, Gölge Testler, Kelimeler) */}
+      <div className="flex flex-wrap items-center gap-2 p-1.5 bg-gray-100 dark:bg-gray-800/80 rounded-2xl">
         <button
           type="button"
           onClick={() => setMainTab('mistakes')}
@@ -211,17 +211,36 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
         <button
           type="button"
           onClick={() => {
-            setMainTab('questions');
+            setMainTab('questions-deneme1');
             setQuestionsSubject('ALL');
           }}
           className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
-            mainTab === 'questions'
+            mainTab === 'questions-deneme1'
               ? 'bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 shadow-xs ring-1 ring-purple-500/20'
               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
           <Building2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-          <span>Aydın Dershanesi (NAO Deneme-2)</span>
+          <span>8.SINIF NAO LGS DENEME-1</span>
+          <span className="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 dark:bg-purple-900/80 text-purple-700 dark:text-purple-300 font-bold">
+            18 Soru
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setMainTab('questions-deneme2');
+            setQuestionsSubject('ALL');
+          }}
+          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+            mainTab === 'questions-deneme2'
+              ? 'bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 shadow-xs ring-1 ring-purple-500/20'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <Building2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+          <span>8.SINIF NAO LGS DENEME-2</span>
           <span className="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 dark:bg-purple-900/80 text-purple-700 dark:text-purple-300 font-bold">
             21 Soru
           </span>
@@ -230,17 +249,36 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
         <button
           type="button"
           onClick={() => {
-            setMainTab('shadow-test');
+            setMainTab('shadow-deneme1');
             setTargetShadowParentId(null);
           }}
           className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
-            mainTab === 'shadow-test'
-              ? 'bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 shadow-xs ring-1 ring-purple-500/20'
+            mainTab === 'shadow-deneme1'
+              ? 'bg-white dark:bg-gray-900 text-amber-600 dark:text-amber-400 shadow-xs ring-1 ring-amber-500/20'
               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
-          <BrainCircuit className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-          <span>Gölge Testi (Deneme-2)</span>
+          <BrainCircuit className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+          <span>Gölge Test (Deneme-1)</span>
+          <span className="px-2 py-0.5 rounded-full text-[10px] bg-amber-100 dark:bg-amber-900/80 text-amber-800 dark:text-amber-300 font-bold">
+            36 Soru
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setMainTab('shadow-deneme2');
+            setTargetShadowParentId(null);
+          }}
+          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+            mainTab === 'shadow-deneme2'
+              ? 'bg-white dark:bg-gray-900 text-amber-600 dark:text-amber-400 shadow-xs ring-1 ring-amber-500/20'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <BrainCircuit className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+          <span>Gölge Test (Deneme-2)</span>
           <span className="px-2 py-0.5 rounded-full text-[10px] bg-amber-100 dark:bg-amber-900/80 text-amber-800 dark:text-amber-300 font-bold">
             42 Soru
           </span>
@@ -256,40 +294,70 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
           }`}
         >
           <Languages className="w-4 h-4" />
-          <span>İngilizce Eksik Kelimeler (Teen Life)</span>
+          <span>İngilizce Eksik Kelimeler</span>
           <span className="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 dark:bg-emerald-900/80 text-emerald-700 dark:text-emerald-300 font-bold">
             115 Kelime
           </span>
         </button>
       </div>
 
-      {/* Main Tab 1: Questions View */}
-      {mainTab === 'questions' && (
+      {/* Main Tab: Deneme-1 Questions */}
+      {mainTab === 'questions-deneme1' && (
         <PracticeQuestionsView
           studentName={studentName}
           initialSubject={questionsSubject}
+          initialExamId="aydin-nao-lgs-deneme-1"
           onOpenShadowTest={(parentId) => {
             setTargetShadowParentId(parentId || null);
-            setMainTab('shadow-test');
+            setMainTab('shadow-deneme1');
           }}
         />
       )}
 
-      {/* Main Tab 2: Shadow Test View (42 Paralel Soru) */}
-      {mainTab === 'shadow-test' && (
+      {/* Main Tab: Deneme-2 Questions */}
+      {mainTab === 'questions-deneme2' && (
+        <PracticeQuestionsView
+          studentName={studentName}
+          initialSubject={questionsSubject}
+          initialExamId="aydin-nao-lgs-deneme-2"
+          onOpenShadowTest={(parentId) => {
+            setTargetShadowParentId(parentId || null);
+            setMainTab('shadow-deneme2');
+          }}
+        />
+      )}
+
+      {/* Main Tab: Shadow Test Deneme-1 */}
+      {mainTab === 'shadow-deneme1' && (
         <ShadowTestView
           studentName={studentName}
           initialSubject={questionsSubject}
+          initialExamId="aydin-nao-lgs-deneme-1"
           targetParentQuestionId={targetShadowParentId}
           onClearTargetParent={() => setTargetShadowParentId(null)}
           onNavigateToOriginal={() => {
             setTargetShadowParentId(null);
-            setMainTab('questions');
+            setMainTab('questions-deneme1');
           }}
         />
       )}
 
-      {/* Main Tab 3: Vocabulary Table */}
+      {/* Main Tab: Shadow Test Deneme-2 */}
+      {mainTab === 'shadow-deneme2' && (
+        <ShadowTestView
+          studentName={studentName}
+          initialSubject={questionsSubject}
+          initialExamId="aydin-nao-lgs-deneme-2"
+          targetParentQuestionId={targetShadowParentId}
+          onClearTargetParent={() => setTargetShadowParentId(null)}
+          onNavigateToOriginal={() => {
+            setTargetShadowParentId(null);
+            setMainTab('questions-deneme2');
+          }}
+        />
+      )}
+
+      {/* Main Tab: Vocabulary Table */}
       {mainTab === 'vocabulary' && (
         <VocabularyStudyTable studentName={studentName} />
       )}
@@ -399,7 +467,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
               <button
                 type="button"
                 onClick={() => {
-                  setMainTab('questions');
+                  setMainTab('questions-deneme2');
                   setQuestionsSubject('ALL');
                 }}
                 className="px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
@@ -411,7 +479,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
               <button
                 type="button"
                 onClick={() => {
-                  setMainTab('shadow-test');
+                  setMainTab('shadow-deneme2');
                   setTargetShadowParentId(null);
                 }}
                 className="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-gray-950 text-xs font-black transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
@@ -441,7 +509,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                   type="button"
                   onClick={() => {
                     setQuestionsSubject('MATEMATİK');
-                    setMainTab('questions');
+                    setMainTab('questions-deneme2');
                   }}
                   className="w-full py-1.5 px-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
                 >
@@ -465,7 +533,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                   type="button"
                   onClick={() => {
                     setQuestionsSubject('TÜRKÇE');
-                    setMainTab('questions');
+                    setMainTab('questions-deneme2');
                   }}
                   className="w-full py-1.5 px-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
                 >
@@ -489,7 +557,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                   type="button"
                   onClick={() => {
                     setQuestionsSubject('İNKILAP TARİHİ');
-                    setMainTab('questions');
+                    setMainTab('questions-deneme2');
                   }}
                   className="w-full py-1.5 px-2 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
                 >
@@ -514,7 +582,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                     type="button"
                     onClick={() => {
                       setQuestionsSubject('ENGLISH LGS');
-                      setMainTab('questions');
+                      setMainTab('questions-deneme2');
                     }}
                     className="flex-1 py-1.5 px-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
                   >
@@ -550,7 +618,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                 type="button"
                 onClick={() => {
                   setQuestionsSubject('MATEMATİK');
-                  setMainTab('questions');
+                  setMainTab('questions-deneme2');
                 }}
                 className="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shrink-0 cursor-pointer shadow-xs"
               >
@@ -569,7 +637,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                   type="button"
                   onClick={() => {
                     setQuestionsSubject('ENGLISH LGS');
-                    setMainTab('questions');
+                    setMainTab('questions-deneme2');
                   }}
                   className="px-3 py-1.5 rounded-md transition cursor-pointer font-bold flex items-center gap-2 bg-indigo-600 text-white shadow-2xs"
                 >
@@ -605,7 +673,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                 type="button"
                 onClick={() => {
                   setQuestionsSubject('TÜRKÇE');
-                  setMainTab('questions');
+                  setMainTab('questions-deneme2');
                 }}
                 className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition shrink-0 cursor-pointer shadow-xs"
               >
@@ -631,7 +699,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                 type="button"
                 onClick={() => {
                   setQuestionsSubject('İNKILAP TARİHİ');
-                  setMainTab('questions');
+                  setMainTab('questions-deneme2');
                 }}
                 className="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shrink-0 cursor-pointer shadow-xs"
               >

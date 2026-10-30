@@ -23,11 +23,13 @@ import {
   Search
 } from 'lucide-react';
 import { SHADOW_QUESTIONS, ShadowQuestion } from '../data/shadowQuestionsData';
+import { INSTITUTION_EXAMS, ExamInfo } from '../data/practiceQuestionsData';
 import { SubjectType } from '../types/homework';
 
 interface ShadowTestViewProps {
   studentName: string;
   initialSubject?: SubjectType | 'ALL';
+  initialExamId?: string;
   targetParentQuestionId?: string | null;
   onClearTargetParent?: () => void;
   onNavigateToOriginal?: (parentQuestionId: string) => void;
@@ -42,6 +44,7 @@ interface UserAnswerState {
 export const ShadowTestView: React.FC<ShadowTestViewProps> = ({
   studentName,
   initialSubject = 'ALL',
+  initialExamId = 'aydin-nao-lgs-deneme-2',
   targetParentQuestionId,
   onClearTargetParent,
   onNavigateToOriginal,
@@ -59,12 +62,20 @@ export const ShadowTestView: React.FC<ShadowTestViewProps> = ({
     }
   });
 
+  const [selectedExamId, setSelectedExamId] = useState<string>(initialExamId);
+  const currentExam = INSTITUTION_EXAMS.find((e) => e.id === selectedExamId) || INSTITUTION_EXAMS[0];
+
   const [subjectFilter, setSubjectFilter] = useState<SubjectType | 'ALL'>(initialSubject);
   const [shadowIndexFilter, setShadowIndexFilter] = useState<'ALL' | 1 | 2>('ALL');
   const [statusFilter, setStatusFilter] = useState<'ALL' | 'solved' | 'unsolved' | 'wrong'>('ALL');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [expandedSolutions, setExpandedSolutions] = useState<Record<string, boolean>>({});
+  const [expandedMicroSummaries, setExpandedMicroSummaries] = useState<Record<string, boolean>>({});
   const [activeParentFilter, setActiveParentFilter] = useState<string | null>(targetParentQuestionId || null);
+
+  const toggleMicro = (questionId: string) => {
+    setExpandedMicroSummaries((prev) => ({ ...prev, [questionId]: !prev[questionId] }));
+  };
 
   const saveAnswers = (newAnswers: Record<string, UserAnswerState>) => {
     setAnswers(newAnswers);
@@ -125,9 +136,10 @@ export const ShadowTestView: React.FC<ShadowTestViewProps> = ({
     setExpandedSolutions((prev) => ({ ...prev, [questionId]: !prev[questionId] }));
   };
 
-  // Filter questions
+  // Filter questions for the selected exam
   const filteredQuestions = useMemo(() => {
     return SHADOW_QUESTIONS.filter((q) => {
+      if (q.examId !== currentExam.id) return false;
       if (activeParentFilter && q.parentQuestionId !== activeParentFilter) return false;
       if (subjectFilter !== 'ALL' && q.subjectType !== subjectFilter) return false;
       if (shadowIndexFilter !== 'ALL' && q.shadowIndex !== shadowIndexFilter) return false;
@@ -149,7 +161,7 @@ export const ShadowTestView: React.FC<ShadowTestViewProps> = ({
 
       return true;
     });
-  }, [subjectFilter, shadowIndexFilter, statusFilter, searchQuery, activeParentFilter, answers]);
+  }, [selectedExamId, subjectFilter, shadowIndexFilter, statusFilter, searchQuery, activeParentFilter, answers]);
 
   // Overall statistics
   const totalQuestions = SHADOW_QUESTIONS.length;
@@ -721,6 +733,27 @@ export const ShadowTestView: React.FC<ShadowTestViewProps> = ({
                     {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                   </button>
                 </div>
+
+                {/* 📌 Akılda Kalsın (Mikro Konu Özeti) - Önce kapalı sonra açılabilen */}
+                {q.microSummary && (
+                  <div className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-800">
+                    <button
+                      type="button"
+                      onClick={() => toggleMicro(q.id)}
+                      className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 hover:bg-amber-100 transition flex items-center gap-1.5 cursor-pointer border border-amber-200 dark:border-amber-800"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                      <span>{expandedMicroSummaries[q.id] ? '📌 Akılda Kalsın (Mikro Konu Özetini Gizle)' : '📌 Akılda Kalsın (Mikro Konu Özeti - Aç/Kapa)'}</span>
+                      {expandedMicroSummaries[q.id] ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                    </button>
+
+                    {expandedMicroSummaries[q.id] && (
+                      <div className="mt-2 p-3.5 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 text-xs sm:text-sm text-amber-950 dark:text-amber-200 font-medium leading-relaxed animate-in fade-in duration-150">
+                        {q.microSummary}
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 {/* Çözüm & Çeldirici Analizi Paneli (Accordion) */}
                 {isExpanded && (

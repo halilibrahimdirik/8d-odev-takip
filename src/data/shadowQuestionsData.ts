@@ -37,6 +37,7 @@ export interface ShadowQuestion {
     C: string;
     D: string;
   };
+  microSummary: string;
 }
 
 export const SHADOW_QUESTIONS: ShadowQuestion[] = [
@@ -76,6 +77,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Kural Hatası Çeldiricisi: Farklı taban ve üslere sahip sayıları tabanları çarpıp üsleri toplayarak (3·2=6, 10+3=13) işlem yapma yanılgısı.',
       D: 'İşlem Yönü Çeldiricisi: Kap sayısına bölmek yerine kap sayısının üssünü toplayarak (10 + 3 = 13) çarpma hatası yapılmıştır.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q3-2',
@@ -110,6 +112,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Üs Yanılgısı: 2 tabanını doğru bölüp (2¹⁰) ancak 3’ün kuvvetini periyotsuz 8 alan öğrenci.',
       D: 'Bölme Hatası: 64 sayısını 2² alarak 16 - 2 = 14 hesaplayan öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -148,6 +151,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: Hem %40 hem %25 kademeli yüzdeleri hesaplayıp 10³ ile çarpan eksiksiz çözüm.',
       D: 'İlk Yüzdede Kalma Hatası: Yalnızca geri kazanım suyunu litreye çevirip %25’lik ikinci yüzdeliği almayan öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q4-2',
@@ -182,6 +186,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: İki kademeli yüzdeyi doğru çarpıp 10³ ile grama çeviren çözüm.',
       D: 'Yüzde Hesabı Yapılmadı: Toplam rekolteyi doğrudan 10² ile çarpan öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -220,6 +225,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: '3 Asal Çarpan Tuzağı: 600 sayısında 3 farklı asal çarpan (2, 3, 5) olduğu için puanın yüksek çıkacağını sanan öğrenci.',
       D: 'Hatalı Asal Ayırma: 500 sayısını 5³ · 4 olarak düşünüp üsleri yanlış toplayan öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q7-2',
@@ -254,6 +260,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: 288 = 2⁵ · 3² olup üsler toplamı 7’dir ve 105 puan kazandırır.',
       D: 'En büyük sayı olan 300’ün en çok puanı getireceğini düşünen sezgisel yaklaşım tuzağı.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -292,6 +299,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'İşaret Hatası Çeldiricisi: Mert’in sonucunu -6 hesaplayıp 10 - (-6) = 16 bulan öğrenci.',
       D: 'Eksi Eksi Çarpımını Unutan: 10 - 4 = 6 veya 10 - 2 = 8 hesaplayan çıkarma hatası.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q11-2',
@@ -326,6 +334,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Parantez Yok Sayma Hatası: (-2)⁴ yerine -16 yazıp -16 - 4 + 6 = -14 bulan öğrenci.',
       D: 'Çıkarma Yerine Toplama Hatası: Ortadaki eksiyi artı alarak 16 + 4 + 6 = 26 bulan öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -364,6 +373,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'EBOB Hatası: EBOB’u 6 yerine 8 zannedip hatalı toplam yapan öğrenci.',
       D: 'Doğru Seçenek: a = 432 ve b = 12 değerlerini doğru bulup toplayan eksiksiz çözüm.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q13-2',
@@ -398,6 +408,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'EBOB’u kenar sayısı zannedip 600 - 10 = 590 hesaplayan çeldirici.',
       D: 'Kare kenarlarını birbirinden çıkarıp (60 - 6 = 54) işlem hatası yapan öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -436,6 +447,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: 16 ile tekleri (5 adet), 17 ile tüm dakikaları (15 adet) eksiksiz toplayan çözüm (20 kez).',
       D: 'Aralık Sınırını Yanlış Alan: 16:50’yi ve 17:15’i çift sayıp fazladan ekleme yapan öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q14-2',
@@ -470,6 +482,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: '11:00’ı veya 11:11’i aralıkta sanıp fazladan 1 ekleyen öğrenci.',
       D: '49 veya 51 sayısını asal sanıp 10 ile aralarında asal olamayacağını zanneden öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -508,6 +521,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'x = 2 cm seçildiğinde fark 45 - 40 = 5 olur; öğrenci x’i küçük seçme yanılgısına düşmüştür.',
       D: 'Doğrudan EBOB değerini fark zanneden öğrenci çeldiricisi.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q15-2',
@@ -542,6 +556,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'x = 10 cm alıp 6 - 3 = 3 bulan öğrenci.',
       D: 'Tel uzunluklarını birbirine bölüp fark arayan kural dışı yaklaşım.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -580,6 +595,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: '-2⁶ ifadesindeki parantezsizliği fark etmeyip onu da pozitif sayarak 7 - 5 = 2 bulan öğrenci.',
       D: 'Negatif kuvvetli sayıları (5⁻², (-2)⁻⁴) negatif zanneden ters kuvvet yanılgısı.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q16-2',
@@ -614,6 +630,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Parantezsiz -6² sayısını çift kuvvet sanıp pozitif alan öğrenci.',
       D: '3⁻⁴ sayısını negatif sanan kuvvet yanılgısı.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -652,6 +669,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: 3 + 1 + 3 = 7 parça artar.',
       D: 'Orijinal sorunun cevabını (8) ezbere işaretleyen dikkatsiz öğrenci tuzağı.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-math-q20-2',
@@ -686,6 +704,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Ihlamur çıtada 25 yerine 5 alıp parça hesabını karıştıran öğrenci.',
       D: 'Tüm artanları yüzeysel tahmin eden öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -724,6 +743,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Zıt Anlam Çeldiricisi: Yılgınlığın tersine motivasyon ve güven durumudur.',
       D: 'İlgisiz Davranış: Sunum becerisini anlatan alakasız cümle.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-tr-q1-2',
@@ -758,6 +778,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Merak ve istek durumunu belirten zıt çeldirici.',
       D: 'Yüksek hevesi belirten tam karşıt çeldirici.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -796,6 +817,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Karakter seçimiyle ilgili alakasız çeldirici.',
       D: 'Yalnızca üslup yalınlığına değinen yüzeysel çeldirici.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-tr-q2-2',
@@ -830,6 +852,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Biçimsel ölçü kurallarına değinen gereksiz detay.',
       D: 'Yazma zorluğuyla ilgili konu dışı fikir.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -868,6 +891,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: "yaşadıklarını" kelimesinde isim düşmüş ve adlaşmış sıfat-fiil olmuştur.',
       D: '"uçuşan yapraklar" tamlamasında isim mevcuttur.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-tr-q3-2',
@@ -902,6 +926,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: '"teslim edilecek dosyalar" sıfat tamlamasıdır.',
       D: '"duran saat" sıfat tamlamasıdır.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -940,6 +965,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Metindeki ustanın "bana bağımlı olma" uyarısıyla çelişen abartılı iddia.',
       D: 'Tehlike konusuna değinen alakasız yan fikir.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-tr-q4-2',
@@ -974,6 +1000,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Kopyalamayı öven metin karşıtı çeldirici.',
       D: 'Öğrenciyi pasifleştiren yanlış yaklaşım.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -1013,6 +1040,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'III. cümlede ev halkının iç işlerine geçilmiştir.',
       D: 'IV. cümlede pencerelere ve ışık açısına geçilmiştir.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-tr-q5-2',
@@ -1048,6 +1076,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: III. cümlenin hemen ardından gelerek koku şeridinin kitlesel etkisini açıklar.',
       D: 'IV. cümle tehlike alarmına geçtiği için besin akını buraya bağlanamaz.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -1086,6 +1115,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: Metinde sınav puanı veya doğru orantılı başarı iddiası yoktur; aşırı genelleme çeldiricisidir.',
       D: 'Metinde geçer: "Dijital ekranlarda hızlıca taranan metinler dikkat dağınıklığına yol açarken".',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-tr-q6-2',
@@ -1120,6 +1150,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: Metinde bulunmayan mutlaklık/kesinlik içeren çeldirici.',
       D: 'Metinde geçer ("farkına bile varamıyorlar").',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -1166,6 +1197,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: Hep 1. harf art arda değiştirilerek 4. kural açıkça çiğnenmiştir.',
       D: 'Farklı adımlarda kurallara riayet edilmiştir.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-tr-q7-2',
@@ -1200,6 +1232,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Farklı basamak değişimleri.',
       D: 'Doğru Seçenek: Sürekli olarak 1. harfin değiştirilmesi kural ihlalidir.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -1239,6 +1272,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Aydınlanma filozoflarının millî egemenlik kavramıyla bağını kuramayan öğrenci.',
       D: 'Doğru Seçenek: I, II ve III öncüllerinin üçü de metinden doğrudan çıkarılır.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-ink-q1-2',
@@ -1274,6 +1308,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Parlamento gözlemini atlayan öğrenci.',
       D: 'Doğru Seçenek: I, II ve III.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -1313,6 +1348,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'III. öncülü mantıksız şekilde doğru kabul eden dikkatsizlik.',
       D: 'Tüm cepheleri aynı sanan genel bilgi eksikliği.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-ink-q2-2',
@@ -1348,6 +1384,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'İttifak ve İtilaf bloklarını karıştıran öğrenci.',
       D: 'Metni okumadan her öncülü doğru sayan genel tuzak.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -1386,6 +1423,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Osmanlı hammadde ithal eden değil, hammadde ihraç eden (veren) konumdadır.',
       D: 'Osmanlı sanayi kenti olamamış, tarım ülkesi olarak kalmıştır.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-ink-q3-2',
@@ -1420,6 +1458,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: Dış ticaret açığı ve ekonomik bağımsızlığın kaybedilmesi.',
       D: 'Tarihsel gerçeklikle ilgisi olmayan hayalî çeldirici.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -1464,6 +1503,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: Clara cömerttir (generous); "stingy" (cimri) demek bariz bir bilgi çelişkisidir.',
       D: '"nervous in front of strangers" = shy ifadesi doğru bir eşleştirmedir.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-eng-q1-2',
@@ -1503,6 +1543,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Nora kolay arkadaş edinir -> outgoing/sociable doğrudur.',
       D: 'David sakin ve rahattır -> laid-back doğrudur.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 
   // =========================================================================
@@ -1555,6 +1596,7 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Doğru Seçenek: Saturday (Derya) ve Sunday (Cem) hafta sonu aktiviteleridir.',
       D: 'Monday ile Saturday’i eşleştiren öğrenci.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
   {
     id: 'shadow-eng-q2-2',
@@ -1603,5 +1645,6 @@ export const SHADOW_QUESTIONS: ShadowQuestion[] = [
       C: 'Eric Salı (Tuesday) yani hafta içi aktivite yapmaktadır.',
       D: 'Doğru Seçenek: Lisa Pazar (Sunday) günü yani hafta sonu aktivite yapmaktadır; hafta içi etkinliği yoktur.',
     },
+    microSummary: "📌 Akılda Kalsın: Orijinal sorudaki MEB kazanım mantığını ve çözüm adımını gölge soruda da aynı şekilde uygulayınız.",
   },
 ];
