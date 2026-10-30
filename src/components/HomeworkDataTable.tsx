@@ -166,9 +166,9 @@ export const HomeworkDataTable: React.FC<HomeworkDataTableProps> = ({
                 className="py-3.5 px-5 text-xs font-medium uppercase tracking-wider cursor-pointer hover:text-gray-900 dark:hover:text-white" 
                 onClick={() => handleSort('dueDate')}
               >
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-semibold">
                   <span>Son Teslim</span>
-                  <ArrowUpDown className="w-3 h-3 opacity-60" />
+                  <ArrowUpDown className="w-3.5 h-3.5" />
                 </div>
               </th>
               <th className="py-3.5 px-4 w-12 text-center"></th>

@@ -641,11 +641,11 @@ export default function App() {
         {/* TailAdmin Page Content Container */}
         <main className="p-4 sm:p-6 lg:p-8 space-y-6 flex-1 max-w-full">
           
-          {/* Breadcrumb & Title Area (Matches TailAdmin screenshot image_5d7984d3.png) */}
+          {/* Breadcrumb & Title Area (TailAdmin Modern Dashboard Header) */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
-                {sidebarTab === 'tables' ? 'Basic Tables' : sidebarTab === 'timeline' ? 'Haftalık Akış' : 'Genel Bakış'}
+                {sidebarTab === 'tables' ? 'Ödev Listesi & Takip Tablosu' : sidebarTab === 'timeline' ? 'Haftalık Akış' : 'Genel Bakış'}
               </h1>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                 8/D Sınıfı · Maya Okulu, Aydın Dershanesi ve Kişisel Çalışmalar
@@ -655,11 +655,11 @@ export default function App() {
             {/* Breadcrumb */}
             <nav className="flex items-center gap-1.5 text-xs text-gray-400">
               <span className="hover:text-gray-600 dark:hover:text-gray-300 transition cursor-pointer" onClick={() => setSidebarTab('tables')}>
-                Home
+                Ana Sayfa
               </span>
               <span>&gt;</span>
               <span className="text-gray-900 dark:text-gray-200 font-semibold">
-                {sidebarTab === 'tables' ? 'Basic Tables' : 'Timeline'}
+                {sidebarTab === 'tables' ? 'Ödev Listesi' : 'Haftalık Akış'}
               </span>
             </nav>
           </div>
