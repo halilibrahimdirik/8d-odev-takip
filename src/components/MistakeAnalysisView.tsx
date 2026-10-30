@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { MistakeItem, SubjectType, MistakeStatus } from '../types/homework';
 import { VocabularyStudyTable } from './VocabularyStudyTable';
+import { PracticeQuestionsView } from './PracticeQuestionsView';
 
 interface MistakeAnalysisViewProps {
   studentName: string;
@@ -43,8 +44,10 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
   onUpdateMistakeStatus,
   onDeleteMistake,
 }) => {
+  const [mainTab, setMainTab] = useState<'mistakes' | 'questions' | 'vocabulary'>('mistakes');
+  const [questionsSubject, setQuestionsSubject] = useState<SubjectType | 'ALL'>('ALL');
   const [selectedSubject, setSelectedSubject] = useState<SubjectType | 'ALL'>('ALL');
-  const [englishSubTab, setEnglishSubTab] = useState<'mistakes' | 'vocabulary'>('vocabulary');
+  const [englishSubTab, setEnglishSubTab] = useState<'mistakes' | 'vocabulary'>('mistakes');
   const [statusFilter, setStatusFilter] = useState<'ALL' | MistakeStatus>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
@@ -186,145 +189,316 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
         </div>
       </div>
 
-      {/* 2. Ders Bazlı Kartlar (Her Ders İçin Ayrı Bölüm) */}
-      <div>
-        <div className="flex items-center justify-between mb-3 px-1">
-          <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
-            Derslere Göre Yanlış & Eksik Dağılımı
-          </h3>
-          <span className="text-xs text-gray-400">
-            Ders kartına tıklayarak o derse ait eksikleri filtreleyin
+      {/* 2. Ana Gezinme Sekmeleri (Konu Yanlışları, Çözülecek Sorular, Eksik Kelimeler) */}
+      <div className="flex flex-wrap items-center gap-2 p-1.5 bg-gray-100 dark:bg-gray-800/80 rounded-2xl w-fit">
+        <button
+          type="button"
+          onClick={() => setMainTab('mistakes')}
+          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+            mainTab === 'mistakes'
+              ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-xs'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <Target className="w-4 h-4" />
+          <span>Konu & Sınav Yanlışları</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setMainTab('questions');
+            setQuestionsSubject('ALL');
+          }}
+          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+            mainTab === 'questions'
+              ? 'bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <FileText className="w-4 h-4" />
+          <span>Çözülecek Hata Soruları</span>
+          <span className="px-2 py-0.5 rounded-full text-[10px] bg-indigo-100 dark:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 font-bold">
+            12 Soru
           </span>
-        </div>
+        </button>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {/* Tümü Butonu */}
-          <button
-            type="button"
-            onClick={() => setSelectedSubject('ALL')}
-            className={`p-3.5 rounded-xl border text-left transition cursor-pointer ${
-              selectedSubject === 'ALL'
-                ? 'border-blue-500 bg-blue-50/60 dark:bg-blue-950/60 ring-2 ring-blue-500/10'
-                : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-gray-300'
-            }`}
-          >
-            <div className="text-xl mb-1">📚</div>
-            <p className="text-xs font-bold text-gray-900 dark:text-white">Tüm Dersler</p>
-            <p className="text-[11px] text-gray-500 mt-1">
-              <span className="font-semibold text-rose-600">{activeMistakes}</span> aktif / {totalMistakes}
-            </p>
-          </button>
+        <button
+          type="button"
+          onClick={() => setMainTab('vocabulary')}
+          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+            mainTab === 'vocabulary'
+              ? 'bg-white dark:bg-gray-900 text-emerald-600 dark:text-emerald-400 shadow-xs'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <Languages className="w-4 h-4" />
+          <span>İngilizce Eksik Kelimeler (Teen Life)</span>
+          <span className="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 dark:bg-emerald-900/80 text-emerald-700 dark:text-emerald-300 font-bold">
+            115 Kelime
+          </span>
+        </button>
+      </div>
 
-          {/* 6 Ana LGS Dersi */}
-          {subjectStats.map((sub) => {
-            const isSelected = selectedSubject === sub.type;
-            return (
+      {/* Main Tab 1: Questions View */}
+      {mainTab === 'questions' && (
+        <PracticeQuestionsView studentName={studentName} initialSubject={questionsSubject} />
+      )}
+
+      {/* Main Tab 2: Vocabulary Table */}
+      {mainTab === 'vocabulary' && (
+        <VocabularyStudyTable studentName={studentName} />
+      )}
+
+      {/* Main Tab 3: Mistake Topics & Exams View */}
+      {mainTab === 'mistakes' && (
+        <div className="space-y-6">
+          {/* Ders Bazlı Kartlar */}
+          <div>
+            <div className="flex items-center justify-between mb-3 px-1">
+              <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
+                Derslere Göre Yanlış & Eksik Dağılımı
+              </h3>
+              <span className="text-xs text-gray-400">
+                Ders kartına tıklayarak o derse ait eksikleri filtreleyin
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {/* Tümü Butonu */}
               <button
-                key={sub.type}
                 type="button"
-                onClick={() => setSelectedSubject(sub.type)}
-                className={`p-3.5 rounded-xl border text-left transition cursor-pointer relative overflow-hidden ${
-                  isSelected
+                onClick={() => setSelectedSubject('ALL')}
+                className={`p-3.5 rounded-xl border text-left transition cursor-pointer ${
+                  selectedSubject === 'ALL'
                     ? 'border-blue-500 bg-blue-50/60 dark:bg-blue-950/60 ring-2 ring-blue-500/10'
                     : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-gray-300'
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-xl">{sub.icon}</span>
-                  {sub.active > 0 && (
-                    <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400">
-                      {sub.active} eksik
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs font-bold text-gray-900 dark:text-white mt-1 truncate">
-                  {sub.label}
+                <div className="text-xl mb-1">📚</div>
+                <p className="text-xs font-bold text-gray-900 dark:text-white">Tüm Dersler</p>
+                <p className="text-[11px] text-gray-500 mt-1">
+                  <span className="font-semibold text-rose-600">{activeMistakes}</span> aktif / {totalMistakes}
                 </p>
-                {sub.type === 'ENGLISH LGS' && (
-                  <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
-                    📖 115 Kelime
-                  </span>
-                )}
-                <div className="flex items-center justify-between text-[11px] text-gray-400 mt-1">
-                  <span>{sub.total} soru</span>
-                  <span className="text-emerald-600 font-semibold">{sub.resolved} bitti</span>
-                </div>
               </button>
-            );
-          })}
-        </div>
-      </div>
 
-      {/* Banner for English Vocabulary when on ALL */}
-      {selectedSubject === 'ALL' && (
-        <div className="rounded-xl border border-indigo-100 dark:border-indigo-900/50 bg-indigo-50/40 dark:bg-indigo-950/20 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-300 flex items-center justify-center shrink-0">
-              <Languages className="w-5 h-5" />
+              {/* 6 Ana LGS Dersi */}
+              {subjectStats.map((sub) => {
+                const isSelected = selectedSubject === sub.type;
+                return (
+                  <button
+                    key={sub.type}
+                    type="button"
+                    onClick={() => setSelectedSubject(sub.type)}
+                    className={`p-3.5 rounded-xl border text-left transition cursor-pointer relative overflow-hidden ${
+                      isSelected
+                        ? 'border-blue-500 bg-blue-50/60 dark:bg-blue-950/60 ring-2 ring-blue-500/10'
+                        : 'border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:border-gray-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl">{sub.icon}</span>
+                      {sub.active > 0 && (
+                        <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400">
+                          {sub.active} eksik
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs font-bold text-gray-900 dark:text-white mt-1 truncate">
+                      {sub.label}
+                    </p>
+                    {sub.type === 'ENGLISH LGS' && (
+                      <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+                        📝 2 Soru · 📖 115 K.
+                      </span>
+                    )}
+                    {sub.type === 'TÜRKÇE' && (
+                      <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-400">
+                        📝 7 Çözülecek Soru
+                      </span>
+                    )}
+                    {sub.type === 'İNKILAP TARİHİ' && (
+                      <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-rose-50 dark:bg-rose-950 text-rose-600 dark:text-rose-400">
+                        📝 3 Çözülecek Soru
+                      </span>
+                    )}
+                    <div className="flex items-center justify-between text-[11px] text-gray-400 mt-1">
+                      <span>{sub.total} soru</span>
+                      <span className="text-emerald-600 font-semibold">{sub.resolved} bitti</span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
-            <div>
-              <p className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <span>İngilizce LGS 2. Ünite (Teen Life) Eksik Kelime Listesi</span>
-                <span className="px-2 py-0.5 rounded-full text-[10px] bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-bold">115 Kelime</span>
-              </p>
-              <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
-                Öğrencinin çalışması gereken kelime listesi, Türkçe anlamları, sesli okuma ve ezber takip kutucuklarıyla hazırlandı.
-              </p>
+          </div>
+
+          {/* Quick Access Cards for Questions & Vocabulary on ALL */}
+          {selectedSubject === 'ALL' && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {/* English Card */}
+              <div className="rounded-xl border border-indigo-100 dark:border-indigo-900/50 bg-indigo-50/40 dark:bg-indigo-950/20 p-4 flex flex-col justify-between gap-3 shadow-2xs">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">🇬🇧</span>
+                    <p className="text-xs font-bold text-gray-900 dark:text-white">İngilizce LGS</p>
+                    <span className="px-1.5 py-0.2 rounded text-[10px] bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-bold">2 Soru · 115 K.</span>
+                  </div>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
+                    Ryan's Friends, Weekly Schedule soruları ve 2. Ünite (Teen Life) kelimeleri.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setQuestionsSubject('ENGLISH LGS');
+                      setMainTab('questions');
+                    }}
+                    className="flex-1 py-1.5 px-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
+                  >
+                    Soruları Çöz (2)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMainTab('vocabulary')}
+                    className="flex-1 py-1.5 px-2 rounded-lg bg-white dark:bg-gray-800 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-[11px] font-semibold transition cursor-pointer text-center"
+                  >
+                    Kelimeler (115)
+                  </button>
+                </div>
+              </div>
+
+              {/* Türkçe Card */}
+              <div className="rounded-xl border border-amber-100 dark:border-amber-900/50 bg-amber-50/40 dark:bg-amber-950/20 p-4 flex flex-col justify-between gap-3 shadow-2xs">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">📖</span>
+                    <p className="text-xs font-bold text-gray-900 dark:text-white">Türkçe</p>
+                    <span className="px-1.5 py-0.2 rounded text-[10px] bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 font-bold">7 Soru</span>
+                  </div>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
+                    Harf Merdiveni, Fiilimsiler (Sıfat-Fiil), Bezgin, Hattat ana fikir, Mimar Sinan vb.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuestionsSubject('TÜRKÇE');
+                    setMainTab('questions');
+                  }}
+                  className="w-full py-1.5 px-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
+                >
+                  Türkçe Sorularını Çöz (7 Soru) →
+                </button>
+              </div>
+
+              {/* İnkılap Tarihi Card */}
+              <div className="rounded-xl border border-rose-100 dark:border-rose-900/50 bg-rose-50/40 dark:bg-rose-950/20 p-4 flex flex-col justify-between gap-3 shadow-2xs">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">🏛️</span>
+                    <p className="text-xs font-bold text-gray-900 dark:text-white">İnkılap Tarihi</p>
+                    <span className="px-1.5 py-0.2 rounded text-[10px] bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 font-bold">3 Soru</span>
+                  </div>
+                  <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1">
+                    Manastır Askerî İdadisi, Irak Cephesi (Kut'ül Amare), Sanayi İnkılabı ve Osmanlı.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuestionsSubject('İNKILAP TARİHİ');
+                    setMainTab('questions');
+                  }}
+                  className="w-full py-1.5 px-2 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-semibold transition cursor-pointer text-center"
+                >
+                  İnkılap Sorularını Çöz (3 Soru) →
+                </button>
+              </div>
             </div>
-          </div>
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedSubject('ENGLISH LGS');
-              setEnglishSubTab('vocabulary');
-            }}
-            className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
-          >
-            <span>Kelime Tablosunu Aç</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      )}
+          )}
 
-      {/* English LGS Sub-Tabs: Sınav Yanlışları vs Eksik Kelimeler */}
-      {selectedSubject === 'ENGLISH LGS' && (
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-800 shadow-2xs">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-gray-900 dark:text-white">İngilizce LGS Görünümü:</span>
-          </div>
-          <div className="flex items-center p-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-xs gap-1">
-            <button
-              type="button"
-              onClick={() => setEnglishSubTab('vocabulary')}
-              className={`px-3 py-1.5 rounded-md transition cursor-pointer font-bold flex items-center gap-2 ${
-                englishSubTab === 'vocabulary'
-                  ? 'bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-400 shadow-2xs'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              }`}
-            >
-              <Languages className="w-3.5 h-3.5" />
-              <span>Eksik Kelimeler (Teen Life · 115)</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setEnglishSubTab('mistakes')}
-              className={`px-3 py-1.5 rounded-md transition cursor-pointer font-bold flex items-center gap-2 ${
-                englishSubTab === 'mistakes'
-                  ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-2xs'
-                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-              }`}
-            >
-              <Target className="w-3.5 h-3.5" />
-              <span>Sınav Yanlışları ({mistakes.filter((m) => m.subjectType === 'ENGLISH LGS').length})</span>
-            </button>
-          </div>
-        </div>
-      )}
+          {/* Subject Specific Sub-Navigation Banners */}
+          {selectedSubject === 'ENGLISH LGS' && (
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-800 shadow-2xs">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-gray-900 dark:text-white">İngilizce LGS Modülleri:</span>
+              </div>
+              <div className="flex items-center p-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-xs gap-1 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuestionsSubject('ENGLISH LGS');
+                    setMainTab('questions');
+                  }}
+                  className="px-3 py-1.5 rounded-md transition cursor-pointer font-bold flex items-center gap-2 bg-indigo-600 text-white shadow-2xs"
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Çözülecek Sorular (2 Soru)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMainTab('vocabulary')}
+                  className="px-3 py-1.5 rounded-md transition cursor-pointer font-bold flex items-center gap-2 bg-white dark:bg-gray-900 text-emerald-600 dark:text-emerald-400 shadow-2xs"
+                >
+                  <Languages className="w-3.5 h-3.5" />
+                  <span>Eksik Kelimeler (115)</span>
+                </button>
+              </div>
+            </div>
+          )}
 
-      {/* Conditional: If English and Vocabulary subtab is selected, show VocabularyStudyTable */}
-      {selectedSubject === 'ENGLISH LGS' && englishSubTab === 'vocabulary' ? (
-        <VocabularyStudyTable studentName={studentName} />
-      ) : (
+          {selectedSubject === 'TÜRKÇE' && (
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-amber-50/50 dark:bg-amber-950/20 p-3.5 rounded-xl border border-amber-200/60 dark:border-amber-800/40 shadow-2xs">
+              <div className="flex items-center gap-2.5">
+                <span className="text-lg">📖</span>
+                <div>
+                  <p className="text-xs font-bold text-amber-950 dark:text-amber-200">
+                    Türkçe dersi için 7 adet deneme hata ve pekiştirme sorusu hazırlandı.
+                  </p>
+                  <p className="text-[11px] text-amber-800 dark:text-amber-300/80">
+                    Harf Merdiveni, Fiilimsiler, Paragraf Yorumu vb. soruları hemen çözün.
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setQuestionsSubject('TÜRKÇE');
+                  setMainTab('questions');
+                }}
+                className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition shrink-0 cursor-pointer shadow-xs"
+              >
+                Soruları Çöz (7 Soru) →
+              </button>
+            </div>
+          )}
+
+          {selectedSubject === 'İNKILAP TARİHİ' && (
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-rose-50/50 dark:bg-rose-950/20 p-3.5 rounded-xl border border-rose-200/60 dark:border-rose-800/40 shadow-2xs">
+              <div className="flex items-center gap-2.5">
+                <span className="text-lg">🏛️</span>
+                <div>
+                  <p className="text-xs font-bold text-rose-950 dark:text-rose-200">
+                    İnkılap Tarihi için 3 adet deneme hata ve pekiştirme sorusu hazırlandı.
+                  </p>
+                  <p className="text-[11px] text-rose-800 dark:text-rose-300/80">
+                    Manastır İdadisi, Kut'ül Amare (Irak Cephesi), Sanayi İnkılabı soruları.
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setQuestionsSubject('İNKILAP TARİHİ');
+                  setMainTab('questions');
+                }}
+                className="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shrink-0 cursor-pointer shadow-xs"
+              >
+                Soruları Çöz (3 Soru) →
+              </button>
+            </div>
+          )}
         /* 3. Yanlış Listesi & İlgili Çalışmalar Tablosu */
         <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs overflow-hidden">
         
@@ -521,6 +695,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
             </div>
           )}
         </div>
+      </div>
       </div>
       )}
 
