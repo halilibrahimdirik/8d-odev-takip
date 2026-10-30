@@ -12,14 +12,24 @@ import {
   ChevronUp,
   Languages,
   ArrowRight,
-  Lightbulb
+  Lightbulb,
+  Building2,
+  Calendar,
+  Layers,
+  ChevronRight
 } from 'lucide-react';
-import { PRACTICE_QUESTIONS, PracticeQuestion } from '../data/practiceQuestionsData';
-import { SubjectType } from '../types/homework';
+import { 
+  PRACTICE_QUESTIONS, 
+  PracticeQuestion, 
+  INSTITUTION_EXAMS,
+  ExamInfo 
+} from '../data/practiceQuestionsData';
+import { SubjectType, InstitutionType } from '../types/homework';
 
 interface PracticeQuestionsViewProps {
   studentName: string;
   initialSubject?: SubjectType | 'ALL';
+  initialInstitution?: InstitutionType | 'aydin';
 }
 
 interface UserAnswerState {
@@ -31,6 +41,7 @@ interface UserAnswerState {
 export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
   studentName,
   initialSubject = 'ALL',
+  initialInstitution = 'aydin',
 }) => {
   const STORAGE_KEY = `odev_takip_practice_questions_${studentName}`;
 
@@ -45,6 +56,9 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
     }
   });
 
+  // Hierarchy Navigation States
+  const [selectedInstitution, setSelectedInstitution] = useState<InstitutionType>(initialInstitution);
+  const [selectedExamId, setSelectedExamId] = useState<string>('aydin-nao-lgs-deneme-2');
   const [subjectFilter, setSubjectFilter] = useState<SubjectType | 'ALL'>(initialSubject);
   const [statusFilter, setStatusFilter] = useState<'ALL' | 'solved' | 'unsolved'>('ALL');
   const [expandedSolutions, setExpandedSolutions] = useState<Record<string, boolean>>({});
@@ -60,7 +74,7 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
 
   const handleSelectOption = (questionId: string, optionKey: 'A' | 'B' | 'C' | 'D') => {
     const current = answers[questionId];
-    if (current?.isSubmitted) return; // Prevent changing after submission without resetting
+    if (current?.isSubmitted) return;
 
     const updated = {
       ...answers,
@@ -88,7 +102,7 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
     };
     saveAnswers(updated);
 
-    // Auto expand solution on submit
+    // Auto expand solution explanation
     setExpandedSolutions((prev) => ({ ...prev, [question.id]: true }));
   };
 
@@ -103,8 +117,14 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
     setExpandedSolutions((prev) => ({ ...prev, [questionId]: !prev[questionId] }));
   };
 
-  // Filter questions
-  const filteredQuestions = PRACTICE_QUESTIONS.filter((q) => {
+  // Current Exam Data
+  const currentExam = INSTITUTION_EXAMS.find((e) => e.id === selectedExamId) || INSTITUTION_EXAMS[0];
+
+  // Filter questions for the selected exam
+  const examQuestions = PRACTICE_QUESTIONS.filter((q) => q.examId === currentExam.id);
+
+  // Filter by subject and status
+  const filteredQuestions = examQuestions.filter((q) => {
     if (subjectFilter !== 'ALL' && q.subjectType !== subjectFilter) return false;
     const answer = answers[q.id];
     if (statusFilter === 'solved' && (!answer?.isSubmitted || !answer.isCorrect)) return false;
@@ -113,105 +133,202 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
   });
 
   // Stats calculation
-  const totalQuestions = PRACTICE_QUESTIONS.length;
-  const englishTotal = PRACTICE_QUESTIONS.filter((q) => q.subjectType === 'ENGLISH LGS').length;
-  const turkishTotal = PRACTICE_QUESTIONS.filter((q) => q.subjectType === 'TÜRKÇE').length;
-  const inkilapTotal = PRACTICE_QUESTIONS.filter((q) => q.subjectType === 'İNKILAP TARİHİ').length;
+  const totalInExam = examQuestions.length;
+  const solvedInExam = examQuestions.filter((q) => answers[q.id]?.isSubmitted && answers[q.id]?.isCorrect).length;
+  const examProgressPercent = totalInExam > 0 ? Math.round((solvedInExam / totalInExam) * 100) : 0;
 
-  const correctAnswersCount = Object.values(answers).filter((a) => a.isSubmitted && a.isCorrect).length;
-  const progressPercent = totalQuestions > 0 ? Math.round((correctAnswersCount / totalQuestions) * 100) : 0;
+  // Counts by subject in this exam
+  const turkishQuestions = examQuestions.filter((q) => q.subjectType === 'TÜRKÇE');
+  const inkilapQuestions = examQuestions.filter((q) => q.subjectType === 'İNKILAP TARİHİ');
+  const englishQuestions = examQuestions.filter((q) => q.subjectType === 'ENGLISH LGS');
 
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       
-      {/* 1. Header Card */}
-      <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-2xs">
+      {/* 1. Breadcrumb Hierarchy Navigator */}
+      <div className="flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400">
+        <span>Yanlış Analizi</span>
+        <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
+        <span className="text-purple-600 dark:text-purple-400 font-bold flex items-center gap-1">
+          <span>🏛️</span>
+          <span>Aydın Dershanesi</span>
+        </span>
+        <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
+        <span className="text-gray-900 dark:text-white font-bold bg-purple-50 dark:bg-purple-950/60 px-2.5 py-0.5 rounded-full border border-purple-200/60 dark:border-purple-800/60">
+          {currentExam.examName}
+        </span>
+      </div>
+
+      {/* 2. Kurum Bölümü (Aydın Dershanesi) */}
+      <div className="rounded-2xl border border-purple-200 dark:border-purple-900/60 bg-linear-to-r from-purple-50/70 via-white to-purple-50/30 dark:from-purple-950/40 dark:via-gray-900 dark:to-gray-900 p-6 shadow-2xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-lg">
-                📝
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2.5">
+              <span className="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-xl shadow-xs shadow-purple-600/20">
+                🏛️
               </span>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
-                Sınav Hata Analizi: Çözülecek Sorular Havuzu
-              </h2>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+                    Aydın Dershanesi Deneme & Hata Analizleri
+                  </h2>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
+                    Kurum Bölümü
+                  </span>
+                </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Öğrencinin Aydın Dershanesi bünyesinde girdiği LGS deneme sınavlarının soru bazlı analizleri ve ders ders çalışma havuzu.
+                </p>
+              </div>
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 max-w-2xl">
-              Öğrencinin ({studentName}) denemelerde yanlış yaptığı ya da eksik kaldığı soruları buradan doğrudan çözebilir, şıkları işaretleyerek doğru/yanlış analizini ve detaylı çözüm açıklamalarını inceleyebilirsiniz.
-            </p>
           </div>
 
-          <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-800/60 p-3 rounded-xl border border-gray-100 dark:border-gray-800">
-            <div className="text-right">
-              <p className="text-xs font-bold text-gray-900 dark:text-white">
-                {correctAnswersCount} / {totalQuestions} Tamamlandı
+          <div className="flex items-center gap-2 self-start md:self-auto">
+            <div className="p-1 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 flex items-center gap-1 text-xs">
+              <button
+                type="button"
+                onClick={() => setSelectedInstitution('aydin')}
+                className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition cursor-pointer ${
+                  selectedInstitution === 'aydin'
+                    ? 'bg-purple-600 text-white shadow-xs'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900'
+                }`}
+              >
+                <span>🏛️ Aydın Dershanesi</span>
+                <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20">1 Sınav</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedInstitution('maya')}
+                className={`px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 transition cursor-pointer ${
+                  selectedInstitution === 'maya'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900'
+                }`}
+              >
+                <span>🏫 Maya Okulları</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. Sınav Bölümü Kartı (8.SINIF NAO LGS DENEME-2) */}
+        <div className="mt-5 pt-5 border-t border-purple-100 dark:border-purple-900/40">
+          <div className="bg-white dark:bg-gray-900 rounded-xl p-4 sm:p-5 border border-purple-200/80 dark:border-purple-800/80 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-purple-600 text-white">
+                  Sınav
+                </span>
+                <h3 className="text-base font-extrabold text-gray-900 dark:text-white">
+                  {currentExam.examName}
+                </h3>
+                <span className="text-xs text-gray-400 font-medium flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>{currentExam.date || 'Ekim 2026'}</span>
+                </span>
+              </div>
+              <p className="text-xs text-gray-600 dark:text-gray-300 max-w-2xl">
+                {currentExam.description}
               </p>
-              <p className="text-[11px] text-gray-500">%{progressPercent} Başarı Oranı</p>
+
+              {/* Subject Badges */}
+              <div className="flex items-center gap-2 pt-1 flex-wrap">
+                {currentExam.subjectBreakdown.map((sb) => (
+                  <span
+                    key={sb.subjectType}
+                    className="inline-flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700"
+                  >
+                    <span>{sb.icon}</span>
+                    <span>{sb.label}:</span>
+                    <span className="text-purple-600 dark:text-purple-400 font-extrabold">{sb.count} Soru</span>
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="w-12 h-12 rounded-full border-4 border-indigo-100 dark:border-indigo-950 flex items-center justify-center font-bold text-xs text-indigo-600 dark:text-indigo-400 relative">
-              %{progressPercent}
+
+            {/* Exam Completion Metric */}
+            <div className="flex items-center gap-3 shrink-0 bg-purple-50/60 dark:bg-purple-950/40 p-3 rounded-xl border border-purple-100 dark:border-purple-900/50">
+              <div className="text-right">
+                <p className="text-xs font-bold text-gray-900 dark:text-white">
+                  {solvedInExam} / {totalInExam} Doğru Çözüldü
+                </p>
+                <p className="text-[11px] text-purple-700 dark:text-purple-300 font-medium">
+                  %{examProgressPercent} Başarı Oranı
+                </p>
+              </div>
+              <div className="w-11 h-11 rounded-full border-4 border-purple-200 dark:border-purple-900 flex items-center justify-center font-bold text-xs text-purple-600 dark:text-purple-400">
+                %{examProgressPercent}
+              </div>
             </div>
+
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="w-full bg-gray-100 dark:bg-gray-800 h-2 rounded-full mt-5 overflow-hidden">
-          <div
-            className="bg-indigo-600 h-2 rounded-full transition-all duration-500 ease-out"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
+      </div>
 
-        {/* Filter Bar */}
-        <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          {/* Subject Pills */}
-          <div className="flex items-center gap-2 flex-wrap">
+      {/* 4. Sınav İçi Ders Ders Sekmeler & Filtreler */}
+      <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-2xs space-y-3">
+        
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          
+          {/* Subject Pills for this Exam */}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-xs font-bold text-gray-400 mr-1 uppercase tracking-wider">
+              Dersler:
+            </span>
+            
             <button
               type="button"
               onClick={() => setSubjectFilter('ALL')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${
                 subjectFilter === 'ALL'
-                  ? 'bg-indigo-600 text-white shadow-xs'
+                  ? 'bg-purple-600 text-white shadow-xs'
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200'
               }`}
             >
-              Tüm Sorular ({totalQuestions})
+              <span>📚 Tüm Dersler</span>
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20">{totalInExam} Soru</span>
             </button>
-            <button
-              type="button"
-              onClick={() => setSubjectFilter('ENGLISH LGS')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer ${
-                subjectFilter === 'ENGLISH LGS'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200'
-              }`}
-            >
-              <span>🇬🇧 İngilizce LGS</span>
-              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20">{englishTotal} Soru</span>
-            </button>
+
             <button
               type="button"
               onClick={() => setSubjectFilter('TÜRKÇE')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${
                 subjectFilter === 'TÜRKÇE'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200'
+                  ? 'bg-amber-600 text-white shadow-xs'
+                  : 'bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 hover:bg-amber-100 border border-amber-200/60'
               }`}
             >
               <span>📖 Türkçe</span>
-              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20">{turkishTotal} Soru</span>
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20 font-bold">{turkishQuestions.length} Soru</span>
             </button>
+
             <button
               type="button"
               onClick={() => setSubjectFilter('İNKILAP TARİHİ')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${
                 subjectFilter === 'İNKILAP TARİHİ'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200'
+                  ? 'bg-rose-600 text-white shadow-xs'
+                  : 'bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 hover:bg-rose-100 border border-rose-200/60'
               }`}
             >
               <span>🏛️ İnkılap Tarihi</span>
-              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20">{inkilapTotal} Soru</span>
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20 font-bold">{inkilapQuestions.length} Soru</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setSubjectFilter('ENGLISH LGS')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 ${
+                subjectFilter === 'ENGLISH LGS'
+                  ? 'bg-indigo-600 text-white shadow-xs'
+                  : 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 hover:bg-indigo-100 border border-indigo-200/60'
+              }`}
+            >
+              <span>🇬🇧 İngilizce LGS</span>
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20 font-bold">{englishQuestions.length} Soru</span>
             </button>
           </div>
 
@@ -251,10 +368,12 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
               Doğru Çözülenler
             </button>
           </div>
+
         </div>
+
       </div>
 
-      {/* 2. Questions List */}
+      {/* 5. Sorular Listesi */}
       <div className="space-y-6">
         {filteredQuestions.map((q) => {
           const answerState = answers[q.id];
@@ -298,7 +417,9 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
                         {q.topic}
                       </span>
                     </div>
-                    <p className="text-[11px] text-gray-400 mt-0.5">{q.examType}</p>
+                    <p className="text-[11px] text-gray-400 mt-0.5">
+                      🏛️ {q.institutionName} · {q.examName}
+                    </p>
                   </div>
                 </div>
 
@@ -426,7 +547,7 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
                 )}
 
                 {/* Question Prompt (Bold root question) */}
-                <div className="p-3.5 rounded-xl bg-indigo-50/40 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/40">
+                <div className="p-3.5 rounded-xl bg-purple-50/50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40">
                   <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-relaxed">
                     {q.questionPrompt}
                   </p>
@@ -453,8 +574,8 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
                         optionClass = 'border-gray-200 dark:border-gray-800 opacity-60';
                       }
                     } else if (isSelected) {
-                      optionClass = 'border-indigo-600 bg-indigo-50/70 dark:bg-indigo-950/60 ring-2 ring-indigo-500/20';
-                      keyBadgeClass = 'bg-indigo-600 text-white font-bold';
+                      optionClass = 'border-purple-600 bg-purple-50/70 dark:bg-purple-950/60 ring-2 ring-purple-500/20';
+                      keyBadgeClass = 'bg-purple-600 text-white font-bold';
                     }
 
                     return (
@@ -485,7 +606,7 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
                       onClick={() => handleSubmitAnswer(q)}
                       className={`px-5 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
                         answerState?.selectedOption
-                          ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-600/10'
+                          ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-purple-600/10'
                           : 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed'
                       }`}
                     >
@@ -533,8 +654,8 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
 
                 {/* Solution & Explanation Box */}
                 {isSubmitted && isExpanded && (
-                  <div className="mt-4 p-4 sm:p-5 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/50 space-y-2 animate-in fade-in duration-150">
-                    <div className="flex items-center gap-2 text-indigo-700 dark:text-indigo-300 font-bold text-xs">
+                  <div className="mt-4 p-4 sm:p-5 rounded-xl bg-purple-50/50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/50 space-y-2 animate-in fade-in duration-150">
+                    <div className="flex items-center gap-2 text-purple-700 dark:text-purple-300 font-bold text-xs">
                       <Lightbulb className="w-4 h-4 text-amber-500" />
                       <span>Detaylı Soru Çözümü & Hata Analizi</span>
                     </div>
@@ -551,12 +672,12 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
 
         {filteredQuestions.length === 0 && (
           <div className="p-12 text-center text-gray-400 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-            <Sparkles className="w-8 h-8 text-indigo-500 mx-auto opacity-70 mb-2" />
+            <Sparkles className="w-8 h-8 text-purple-500 mx-auto opacity-70 mb-2" />
             <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-              Seçilen filtreye uygun soru bulunamadı.
+              Seçilen derste soru bulunamadı.
             </p>
             <p className="text-xs text-gray-400 mt-1">
-              Filtreleri sıfırlayarak tüm soruları görebilirsiniz.
+              "Tüm Dersler" sekmesine tıklayarak tüm soruları görebilirsiniz.
             </p>
           </div>
         )}

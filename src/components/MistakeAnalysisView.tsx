@@ -14,7 +14,8 @@ import {
   Check,
   X,
   Target,
-  Languages
+  Languages,
+  Building2
 } from 'lucide-react';
 import { MistakeItem, SubjectType, MistakeStatus } from '../types/homework';
 import { VocabularyStudyTable } from './VocabularyStudyTable';
@@ -212,13 +213,13 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
           }}
           className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
             mainTab === 'questions'
-              ? 'bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-400 shadow-xs'
+              ? 'bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 shadow-xs ring-1 ring-purple-500/20'
               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
-          <FileText className="w-4 h-4" />
-          <span>Çözülecek Hata Soruları</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] bg-indigo-100 dark:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 font-bold">
+          <Building2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+          <span>Aydın Dershanesi (NAO Deneme-2)</span>
+          <span className="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 dark:bg-purple-900/80 text-purple-700 dark:text-purple-300 font-bold">
             12 Soru
           </span>
         </button>
@@ -330,6 +331,38 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                 );
               })}
             </div>
+          </div>
+
+          {/* Aydın Dershanesi 8.SINIF NAO LGS DENEME-2 Özel Bölüm Bannerı */}
+          <div className="rounded-xl border border-purple-200 dark:border-purple-800 bg-linear-to-r from-purple-50 via-white to-purple-50/50 dark:from-purple-950/40 dark:via-gray-900 dark:to-gray-900 p-4 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-xl shrink-0 shadow-xs">
+                🏛️
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-extrabold text-gray-900 dark:text-white">Aydın Dershanesi</span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
+                    8.SINIF NAO LGS DENEME-2
+                  </span>
+                  <span className="text-[11px] text-purple-700 dark:text-purple-300 font-semibold">12 Soru · 3 Ders</span>
+                </div>
+                <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+                  Bu denemede yanlış yapılan Türkçe (7 soru), İnkılap Tarihi (3 soru) ve İngilizce LGS (2 soru) analiz havuzu açıldı.
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setMainTab('questions');
+                setQuestionsSubject('ALL');
+              }}
+              className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
+            >
+              <span>Aydın Dershanesi Bölümünü Aç</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           {/* Quick Access Cards for Questions & Vocabulary on ALL */}
