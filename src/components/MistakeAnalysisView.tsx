@@ -13,9 +13,11 @@ import {
   Filter,
   Check,
   X,
-  Target
+  Target,
+  Languages
 } from 'lucide-react';
 import { MistakeItem, SubjectType, MistakeStatus } from '../types/homework';
+import { VocabularyStudyTable } from './VocabularyStudyTable';
 
 interface MistakeAnalysisViewProps {
   studentName: string;
@@ -42,6 +44,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
   onDeleteMistake,
 }) => {
   const [selectedSubject, setSelectedSubject] = useState<SubjectType | 'ALL'>('ALL');
+  const [englishSubTab, setEnglishSubTab] = useState<'mistakes' | 'vocabulary'>('vocabulary');
   const [statusFilter, setStatusFilter] = useState<'ALL' | MistakeStatus>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
@@ -237,6 +240,11 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                 <p className="text-xs font-bold text-gray-900 dark:text-white mt-1 truncate">
                   {sub.label}
                 </p>
+                {sub.type === 'ENGLISH LGS' && (
+                  <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[10px] font-semibold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+                    📖 115 Kelime
+                  </span>
+                )}
                 <div className="flex items-center justify-between text-[11px] text-gray-400 mt-1">
                   <span>{sub.total} soru</span>
                   <span className="text-emerald-600 font-semibold">{sub.resolved} bitti</span>
@@ -247,8 +255,78 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
         </div>
       </div>
 
-      {/* 3. Yanlış Listesi & İlgili Çalışmalar Tablosu */}
-      <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs overflow-hidden">
+      {/* Banner for English Vocabulary when on ALL */}
+      {selectedSubject === 'ALL' && (
+        <div className="rounded-xl border border-indigo-100 dark:border-indigo-900/50 bg-indigo-50/40 dark:bg-indigo-950/20 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-300 flex items-center justify-center shrink-0">
+              <Languages className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <span>İngilizce LGS 2. Ünite (Teen Life) Eksik Kelime Listesi</span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-bold">115 Kelime</span>
+              </p>
+              <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+                Öğrencinin çalışması gereken kelime listesi, Türkçe anlamları, sesli okuma ve ezber takip kutucuklarıyla hazırlandı.
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setSelectedSubject('ENGLISH LGS');
+              setEnglishSubTab('vocabulary');
+            }}
+            className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
+          >
+            <span>Kelime Tablosunu Aç</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      )}
+
+      {/* English LGS Sub-Tabs: Sınav Yanlışları vs Eksik Kelimeler */}
+      {selectedSubject === 'ENGLISH LGS' && (
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-gray-900 p-3 rounded-xl border border-gray-200 dark:border-gray-800 shadow-2xs">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-gray-900 dark:text-white">İngilizce LGS Görünümü:</span>
+          </div>
+          <div className="flex items-center p-1 bg-gray-100 dark:bg-gray-800 rounded-lg text-xs gap-1">
+            <button
+              type="button"
+              onClick={() => setEnglishSubTab('vocabulary')}
+              className={`px-3 py-1.5 rounded-md transition cursor-pointer font-bold flex items-center gap-2 ${
+                englishSubTab === 'vocabulary'
+                  ? 'bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-400 shadow-2xs'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+              }`}
+            >
+              <Languages className="w-3.5 h-3.5" />
+              <span>Eksik Kelimeler (Teen Life · 115)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setEnglishSubTab('mistakes')}
+              className={`px-3 py-1.5 rounded-md transition cursor-pointer font-bold flex items-center gap-2 ${
+                englishSubTab === 'mistakes'
+                  ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-2xs'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+              }`}
+            >
+              <Target className="w-3.5 h-3.5" />
+              <span>Sınav Yanlışları ({mistakes.filter((m) => m.subjectType === 'ENGLISH LGS').length})</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Conditional: If English and Vocabulary subtab is selected, show VocabularyStudyTable */}
+      {selectedSubject === 'ENGLISH LGS' && englishSubTab === 'vocabulary' ? (
+        <VocabularyStudyTable studentName={studentName} />
+      ) : (
+        /* 3. Yanlış Listesi & İlgili Çalışmalar Tablosu */
+        <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs overflow-hidden">
         
         {/* Table Filters & Search */}
         <div className="p-4 border-b border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-gray-50/50 dark:bg-gray-800/30">
@@ -444,6 +522,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
           )}
         </div>
       </div>
+      )}
 
       {/* 4. Add Mistake Modal */}
       {modalOpen && (
