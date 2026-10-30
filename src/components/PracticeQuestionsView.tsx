@@ -16,7 +16,8 @@ import {
   Building2,
   Calendar,
   Layers,
-  ChevronRight
+  ChevronRight,
+  BrainCircuit
 } from 'lucide-react';
 import { 
   PRACTICE_QUESTIONS, 
@@ -30,6 +31,7 @@ interface PracticeQuestionsViewProps {
   studentName: string;
   initialSubject?: SubjectType | 'ALL';
   initialInstitution?: InstitutionType | 'aydin';
+  onOpenShadowTest?: (parentQuestionId?: string) => void;
 }
 
 interface UserAnswerState {
@@ -42,6 +44,7 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
   studentName,
   initialSubject = 'ALL',
   initialInstitution = 'aydin',
+  onOpenShadowTest,
 }) => {
   const STORAGE_KEY = `odev_takip_practice_questions_${studentName}`;
 
@@ -680,6 +683,26 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
                     <div className="text-xs sm:text-[13px] text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line pl-6">
                       {q.explanation}
                     </div>
+                  </div>
+                )}
+
+                {/* Parallel Shadow Questions Callout */}
+                {onOpenShadowTest && (
+                  <div className="mt-4 pt-3.5 border-t border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-purple-50/50 dark:bg-purple-950/20 p-3.5 rounded-xl border border-purple-100 dark:border-purple-900/40">
+                    <div className="flex items-center gap-2 text-xs text-purple-900 dark:text-purple-200">
+                      <BrainCircuit className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
+                      <span>
+                        Bu sorunun MEB kazanımını pekiştirmek için <strong>2 adet Gölge Soru</strong> hazırlandı.
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => onOpenShadowTest(q.id)}
+                      className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-purple-600 hover:bg-purple-700 text-white transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs shrink-0"
+                    >
+                      <span>2 Gölge Soruyu Çöz</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 )}
 

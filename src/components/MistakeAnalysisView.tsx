@@ -15,11 +15,13 @@ import {
   X,
   Target,
   Languages,
-  Building2
+  Building2,
+  BrainCircuit
 } from 'lucide-react';
 import { MistakeItem, SubjectType, MistakeStatus } from '../types/homework';
 import { VocabularyStudyTable } from './VocabularyStudyTable';
 import { PracticeQuestionsView } from './PracticeQuestionsView';
+import { ShadowTestView } from './ShadowTestView';
 
 interface MistakeAnalysisViewProps {
   studentName: string;
@@ -45,8 +47,9 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
   onUpdateMistakeStatus,
   onDeleteMistake,
 }) => {
-  const [mainTab, setMainTab] = useState<'mistakes' | 'questions' | 'vocabulary'>('mistakes');
+  const [mainTab, setMainTab] = useState<'mistakes' | 'questions' | 'shadow-test' | 'vocabulary'>('mistakes');
   const [questionsSubject, setQuestionsSubject] = useState<SubjectType | 'ALL'>('ALL');
+  const [targetShadowParentId, setTargetShadowParentId] = useState<string | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<SubjectType | 'ALL'>('ALL');
   const [englishSubTab, setEnglishSubTab] = useState<'mistakes' | 'vocabulary'>('mistakes');
   const [statusFilter, setStatusFilter] = useState<'ALL' | MistakeStatus>('ALL');
@@ -226,6 +229,25 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
 
         <button
           type="button"
+          onClick={() => {
+            setMainTab('shadow-test');
+            setTargetShadowParentId(null);
+          }}
+          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+            mainTab === 'shadow-test'
+              ? 'bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 shadow-xs ring-1 ring-purple-500/20'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <BrainCircuit className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+          <span>Gölge Testi (Deneme-2)</span>
+          <span className="px-2 py-0.5 rounded-full text-[10px] bg-amber-100 dark:bg-amber-900/80 text-amber-800 dark:text-amber-300 font-bold">
+            42 Soru
+          </span>
+        </button>
+
+        <button
+          type="button"
           onClick={() => setMainTab('vocabulary')}
           className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
             mainTab === 'vocabulary'
@@ -243,10 +265,31 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
 
       {/* Main Tab 1: Questions View */}
       {mainTab === 'questions' && (
-        <PracticeQuestionsView studentName={studentName} initialSubject={questionsSubject} />
+        <PracticeQuestionsView
+          studentName={studentName}
+          initialSubject={questionsSubject}
+          onOpenShadowTest={(parentId) => {
+            setTargetShadowParentId(parentId || null);
+            setMainTab('shadow-test');
+          }}
+        />
       )}
 
-      {/* Main Tab 2: Vocabulary Table */}
+      {/* Main Tab 2: Shadow Test View (42 Paralel Soru) */}
+      {mainTab === 'shadow-test' && (
+        <ShadowTestView
+          studentName={studentName}
+          initialSubject={questionsSubject}
+          targetParentQuestionId={targetShadowParentId}
+          onClearTargetParent={() => setTargetShadowParentId(null)}
+          onNavigateToOriginal={() => {
+            setTargetShadowParentId(null);
+            setMainTab('questions');
+          }}
+        />
+      )}
+
+      {/* Main Tab 3: Vocabulary Table */}
       {mainTab === 'vocabulary' && (
         <VocabularyStudyTable studentName={studentName} />
       )}
@@ -352,17 +395,31 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                 </p>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={() => {
-                setMainTab('questions');
-                setQuestionsSubject('ALL');
-              }}
-              className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
-            >
-              <span>Aydın Dershanesi Bölümünü Aç (21 Soru)</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </button>
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                onClick={() => {
+                  setMainTab('questions');
+                  setQuestionsSubject('ALL');
+                }}
+                className="px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
+              >
+                <span>Deneme Soruları (21 Soru)</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setMainTab('shadow-test');
+                  setTargetShadowParentId(null);
+                }}
+                className="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-gray-950 text-xs font-black transition shrink-0 cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
+              >
+                <BrainCircuit className="w-3.5 h-3.5" />
+                <span>Gölge Testi (42 Soru)</span>
+              </button>
+            </div>
           </div>
 
           {/* Quick Access Cards for Questions & Vocabulary on ALL */}
