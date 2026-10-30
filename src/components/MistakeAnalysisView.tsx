@@ -47,7 +47,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
   onUpdateMistakeStatus,
   onDeleteMistake,
 }) => {
-  const [mainTab, setMainTab] = useState<'mistakes' | 'questions-deneme1' | 'questions-deneme2' | 'shadow-deneme1' | 'shadow-deneme2' | 'vocabulary'>('mistakes');
+  const [mainTab, setMainTab] = useState<'hub' | 'mistakes' | 'questions-deneme1' | 'questions-deneme2' | 'shadow-deneme1' | 'shadow-deneme2' | 'vocabulary'>('hub');
   const [questionsSubject, setQuestionsSubject] = useState<SubjectType | 'ALL'>('ALL');
   const [targetShadowParentId, setTargetShadowParentId] = useState<string | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<SubjectType | 'ALL'>('ALL');
@@ -146,17 +146,27 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
               </h2>
             </div>
             <p className="text-xs text-gray-500 dark:text-gray-400 max-w-2xl">
-              Öğrencinin ({studentName}) girdiği deneme ve tarama sınavlarında boş veya yanlış yaptığı soruları ders bazında kaydedip, tekrar etmesi gereken konu, test ve özel çalışma adımlarını buradan takip edin.
+              Öğrencinin ({studentName}) girdiği deneme sınavlarında boş/yanlış yaptığı soruları, MEB standartlarında hazırlanan 2 katı Gölge Testleri ve konu analizlerini buradan yönetin.
             </p>
           </div>
 
-          <button
-            onClick={() => setModalOpen(true)}
-            className="self-start md:self-auto px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-xs flex items-center gap-2 transition cursor-pointer"
-          >
-            <Plus className="w-4 h-4" />
-            <span>Yeni Yanlış / Hedef Ekle</span>
-          </button>
+          <div className="flex items-center gap-2 flex-wrap self-start md:self-auto">
+            {mainTab !== 'hub' && (
+              <button
+                onClick={() => setMainTab('hub')}
+                className="px-3.5 py-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1.5"
+              >
+                <span>⬅️ Ana Menüye Dön</span>
+              </button>
+            )}
+            <button
+              onClick={() => setModalOpen(true)}
+              className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-xs flex items-center gap-2 transition cursor-pointer"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Yeni Yanlış / Hedef Ekle</span>
+            </button>
+          </div>
         </div>
 
         {/* 3 Overview Quick Badges */}
@@ -193,19 +203,18 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
         </div>
       </div>
 
-      {/* 2. Ana Gezinme Sekmeleri (Konu Yanlışları, Deneme-1, Deneme-2, Gölge Testler, Kelimeler) */}
+      {/* Top Quick Navigation Bar (always present) */}
       <div className="flex flex-wrap items-center gap-2 p-1.5 bg-gray-100 dark:bg-gray-800/80 rounded-2xl">
         <button
           type="button"
-          onClick={() => setMainTab('mistakes')}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
-            mainTab === 'mistakes'
-              ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-xs'
+          onClick={() => setMainTab('hub')}
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
+            mainTab === 'hub'
+              ? 'bg-blue-600 text-white shadow-xs'
               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
-          <Target className="w-4 h-4" />
-          <span>Konu & Sınav Yanlışları</span>
+          <span>🏛️ Menü Hub</span>
         </button>
 
         <button
@@ -214,17 +223,30 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
             setMainTab('questions-deneme1');
             setQuestionsSubject('ALL');
           }}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
             mainTab === 'questions-deneme1'
               ? 'bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 shadow-xs ring-1 ring-purple-500/20'
               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
-          <Building2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-          <span>8.SINIF NAO LGS DENEME-1</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 dark:bg-purple-900/80 text-purple-700 dark:text-purple-300 font-bold">
-            18 Soru
-          </span>
+          <Building2 className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+          <span>NAO LGS DENEME-1 (18)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setMainTab('shadow-deneme1');
+            setTargetShadowParentId(null);
+          }}
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
+            mainTab === 'shadow-deneme1'
+              ? 'bg-white dark:bg-gray-900 text-amber-600 dark:text-amber-400 shadow-xs ring-1 ring-amber-500/20'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <BrainCircuit className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+          <span>Gölge Test-1 (36)</span>
         </button>
 
         <button
@@ -233,36 +255,14 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
             setMainTab('questions-deneme2');
             setQuestionsSubject('ALL');
           }}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
             mainTab === 'questions-deneme2'
               ? 'bg-white dark:bg-gray-900 text-purple-600 dark:text-purple-400 shadow-xs ring-1 ring-purple-500/20'
               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
-          <Building2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-          <span>8.SINIF NAO LGS DENEME-2</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 dark:bg-purple-900/80 text-purple-700 dark:text-purple-300 font-bold">
-            21 Soru
-          </span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            setMainTab('shadow-deneme1');
-            setTargetShadowParentId(null);
-          }}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
-            mainTab === 'shadow-deneme1'
-              ? 'bg-white dark:bg-gray-900 text-amber-600 dark:text-amber-400 shadow-xs ring-1 ring-amber-500/20'
-              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-          }`}
-        >
-          <BrainCircuit className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-          <span>Gölge Test (Deneme-1)</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] bg-amber-100 dark:bg-amber-900/80 text-amber-800 dark:text-amber-300 font-bold">
-            36 Soru
-          </span>
+          <Building2 className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+          <span>NAO LGS DENEME-2 (21)</span>
         </button>
 
         <button
@@ -271,95 +271,401 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
             setMainTab('shadow-deneme2');
             setTargetShadowParentId(null);
           }}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
             mainTab === 'shadow-deneme2'
               ? 'bg-white dark:bg-gray-900 text-amber-600 dark:text-amber-400 shadow-xs ring-1 ring-amber-500/20'
               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
-          <BrainCircuit className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-          <span>Gölge Test (Deneme-2)</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] bg-amber-100 dark:bg-amber-900/80 text-amber-800 dark:text-amber-300 font-bold">
-            42 Soru
-          </span>
+          <BrainCircuit className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+          <span>Gölge Test-2 (42)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setMainTab('mistakes')}
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
+            mainTab === 'mistakes'
+              ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-xs'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <Target className="w-3.5 h-3.5" />
+          <span>Konu Yanlışları</span>
         </button>
 
         <button
           type="button"
           onClick={() => setMainTab('vocabulary')}
-          className={`px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 transition cursor-pointer ${
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
             mainTab === 'vocabulary'
               ? 'bg-white dark:bg-gray-900 text-emerald-600 dark:text-emerald-400 shadow-xs'
               : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
-          <Languages className="w-4 h-4" />
-          <span>İngilizce Eksik Kelimeler</span>
-          <span className="px-2 py-0.5 rounded-full text-[10px] bg-emerald-100 dark:bg-emerald-900/80 text-emerald-700 dark:text-emerald-300 font-bold">
-            115 Kelime
-          </span>
+          <Languages className="w-3.5 h-3.5" />
+          <span>İngilizce Kelimeler</span>
         </button>
       </div>
 
+      {/* 3. HUB / MAIN DASHBOARD SELECTION MENU */}
+      {mainTab === 'hub' && (
+        <div className="space-y-6">
+          <div className="text-center max-w-xl mx-auto space-y-1 py-2">
+            <h3 className="text-lg font-extrabold text-gray-900 dark:text-white">
+              Sınav & Gölge Test Çalışma Portalı
+            </h3>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Lütfen çalışmak istediğiniz deneme sınavını, gölge testini veya eksik konu analizini seçin.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* Card 1: 8.SINIF NAO LGS DENEME-1 */}
+            <div className="rounded-2xl border border-purple-200 dark:border-purple-900/60 bg-linear-to-br from-purple-50/70 via-white to-purple-50/30 dark:from-purple-950/30 dark:via-gray-900 dark:to-gray-900 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-11 h-11 rounded-xl bg-purple-600 text-white flex items-center justify-center text-xl font-bold shadow-xs">
+                      🏛️
+                    </div>
+                    <div>
+                      <h4 className="text-base font-extrabold text-gray-900 dark:text-white">
+                        8.SINIF NAO LGS DENEME-1
+                      </h4>
+                      <p className="text-xs text-purple-700 dark:text-purple-300 font-semibold">
+                        Aydın Dershanesi · 18 Soru · 4 Branş
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
+                    Yeni eklendi
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Türkçe (7), Matematik (4), Fen Bilimleri (4) ve İnkılap Tarihi (3) branşlarında öğrencinin yanlış yaptığı sorular, mikro konu özetleri ve adımlı çözümleri.
+                </p>
+
+                <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500 dark:text-gray-400 flex-wrap">
+                  <span className="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200/60">
+                    18 Yanlış Analizi
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200/60 font-bold">
+                    36 Gölge Soru (2x)
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-purple-100 dark:border-purple-900/40">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMainTab('questions-deneme1');
+                    setQuestionsSubject('ALL');
+                  }}
+                  className="py-2.5 px-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition cursor-pointer flex items-center justify-center gap-1 shadow-2xs"
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Sorular (18)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMainTab('shadow-deneme1');
+                    setTargetShadowParentId(null);
+                  }}
+                  className="py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-gray-950 text-xs font-black transition cursor-pointer flex items-center justify-center gap-1 shadow-2xs"
+                >
+                  <BrainCircuit className="w-3.5 h-3.5" />
+                  <span>Gölge Test (36)</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2: 8.SINIF NAO LGS DENEME-2 */}
+            <div className="rounded-2xl border border-purple-200 dark:border-purple-900/60 bg-linear-to-br from-purple-50/70 via-white to-purple-50/30 dark:from-purple-950/30 dark:via-gray-900 dark:to-gray-900 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-11 h-11 rounded-xl bg-purple-600 text-white flex items-center justify-center text-xl font-bold shadow-xs">
+                      🏛️
+                    </div>
+                    <div>
+                      <h4 className="text-base font-extrabold text-gray-900 dark:text-white">
+                        8.SINIF NAO LGS DENEME-2
+                      </h4>
+                      <p className="text-xs text-purple-700 dark:text-purple-300 font-semibold">
+                        Aydın Dershanesi · 21 Soru · 4 Branş
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
+                    Aktif
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Matematik (9), Türkçe (7), İnkılap Tarihi (3) ve İngilizce LGS (2) branşlarındaki 21 hatalı soru ve 42 adet özel hazırlanmış MEB çeldiricili gölge sorusu.
+                </p>
+
+                <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500 dark:text-gray-400 flex-wrap">
+                  <span className="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200/60">
+                    21 Yanlış Analizi
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200/60 font-bold">
+                    42 Gölge Soru (2x)
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-purple-100 dark:border-purple-900/40">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMainTab('questions-deneme2');
+                    setQuestionsSubject('ALL');
+                  }}
+                  className="py-2.5 px-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition cursor-pointer flex items-center justify-center gap-1 shadow-2xs"
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Sorular (21)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMainTab('shadow-deneme2');
+                    setTargetShadowParentId(null);
+                  }}
+                  className="py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-gray-950 text-xs font-black transition cursor-pointer flex items-center justify-center gap-1 shadow-2xs"
+                >
+                  <BrainCircuit className="w-3.5 h-3.5" />
+                  <span>Gölge Test (42)</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Card 3: Konu & Sınav Yanlış Analizi Tablosu */}
+            <div className="rounded-2xl border border-blue-200 dark:border-blue-900/60 bg-linear-to-br from-blue-50/60 via-white to-blue-50/20 dark:from-blue-950/30 dark:via-gray-900 dark:to-gray-900 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-4">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-11 h-11 rounded-xl bg-blue-600 text-white flex items-center justify-center text-xl font-bold shadow-xs">
+                    📊
+                  </div>
+                  <div>
+                    <h4 className="text-base font-extrabold text-gray-900 dark:text-white">
+                      Konu & Sınav Yanlış Analiz Tablosu
+                    </h4>
+                    <p className="text-xs text-blue-700 dark:text-blue-300 font-semibold">
+                      Kayıtlı Yanlış Konular & Çalışma Önerileri
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Öğrencinin okul veya dershane sınavlarında yanlış yaptığı konular, hata nedenleri, önerilen test kitapları ve çözüldü/çalışılacak durum filtreleri.
+                </p>
+
+                <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500 dark:text-gray-400">
+                  <span className="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-bold">
+                    {totalMistakes} Kayıtlı Konu Yanlışı
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 font-bold">
+                    {resolvedMistakes} Tamamlandı
+                  </span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setMainTab('mistakes')}
+                className="w-full py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
+              >
+                <Target className="w-4 h-4" />
+                <span>Yanlış Analiz Tablosunu Aç →</span>
+              </button>
+            </div>
+
+            {/* Card 4: İngilizce LGS Eksik Kelimeler */}
+            <div className="rounded-2xl border border-emerald-200 dark:border-emerald-900/60 bg-linear-to-br from-emerald-50/60 via-white to-emerald-50/20 dark:from-emerald-950/30 dark:via-gray-900 dark:to-gray-900 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-4">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xl font-bold shadow-xs">
+                    🇬🇧
+                  </div>
+                  <div>
+                    <h4 className="text-base font-extrabold text-gray-900 dark:text-white">
+                      İngilizce Eksik Kelime Havuzu
+                    </h4>
+                    <p className="text-xs text-emerald-700 dark:text-emerald-300 font-semibold">
+                      115 LGS Kelimesi, Türkçe Anlamlar ve Örnek Cümleler
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+                  LGS İngilizce müfredatındaki (Friendship, Teen Life, In the Kitchen vb.) 115 hedef kelime, telaffuz ve öğrenilme durum takibi.
+                </p>
+
+                <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500 dark:text-gray-400">
+                  <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 font-bold">
+                    115 Kelime Kartı
+                  </span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setMainTab('vocabulary')}
+                className="w-full py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
+              >
+                <Languages className="w-4 h-4" />
+                <span>Kelime Havuzuna Git →</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Main Tab: Deneme-1 Questions */}
       {mainTab === 'questions-deneme1' && (
-        <PracticeQuestionsView
-          studentName={studentName}
-          initialSubject={questionsSubject}
-          initialExamId="aydin-nao-lgs-deneme-1"
-          onOpenShadowTest={(parentId) => {
-            setTargetShadowParentId(parentId || null);
-            setMainTab('shadow-deneme1');
-          }}
-        />
+        <div className="space-y-4">
+          <div className="flex items-center justify-between bg-purple-50 dark:bg-purple-950/40 p-3 rounded-xl border border-purple-200/80 dark:border-purple-800/60">
+            <button
+              type="button"
+              onClick={() => setMainTab('hub')}
+              className="px-3.5 py-1.5 rounded-lg bg-white dark:bg-gray-900 hover:bg-purple-100 dark:hover:bg-purple-900/60 text-purple-700 dark:text-purple-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs border border-purple-200 dark:border-purple-800"
+            >
+              <span>⬅️</span>
+              <span>Sınav ve Gölge Test Seçim Menüsüne Dön</span>
+            </button>
+            <span className="text-xs font-extrabold text-purple-900 dark:text-purple-200">
+              8.SINIF NAO LGS DENEME-1 (18 Yanlış Soru)
+            </span>
+          </div>
+
+          <PracticeQuestionsView
+            studentName={studentName}
+            initialSubject={questionsSubject}
+            initialExamId="aydin-nao-lgs-deneme-1"
+            onOpenShadowTest={(parentId) => {
+              setTargetShadowParentId(parentId || null);
+              setMainTab('shadow-deneme1');
+            }}
+          />
+        </div>
       )}
 
       {/* Main Tab: Deneme-2 Questions */}
       {mainTab === 'questions-deneme2' && (
-        <PracticeQuestionsView
-          studentName={studentName}
-          initialSubject={questionsSubject}
-          initialExamId="aydin-nao-lgs-deneme-2"
-          onOpenShadowTest={(parentId) => {
-            setTargetShadowParentId(parentId || null);
-            setMainTab('shadow-deneme2');
-          }}
-        />
+        <div className="space-y-4">
+          <div className="flex items-center justify-between bg-purple-50 dark:bg-purple-950/40 p-3 rounded-xl border border-purple-200/80 dark:border-purple-800/60">
+            <button
+              type="button"
+              onClick={() => setMainTab('hub')}
+              className="px-3.5 py-1.5 rounded-lg bg-white dark:bg-gray-900 hover:bg-purple-100 dark:hover:bg-purple-900/60 text-purple-700 dark:text-purple-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs border border-purple-200 dark:border-purple-800"
+            >
+              <span>⬅️</span>
+              <span>Sınav ve Gölge Test Seçim Menüsüne Dön</span>
+            </button>
+            <span className="text-xs font-extrabold text-purple-900 dark:text-purple-200">
+              8.SINIF NAO LGS DENEME-2 (21 Yanlış Soru)
+            </span>
+          </div>
+
+          <PracticeQuestionsView
+            studentName={studentName}
+            initialSubject={questionsSubject}
+            initialExamId="aydin-nao-lgs-deneme-2"
+            onOpenShadowTest={(parentId) => {
+              setTargetShadowParentId(parentId || null);
+              setMainTab('shadow-deneme2');
+            }}
+          />
+        </div>
       )}
 
       {/* Main Tab: Shadow Test Deneme-1 */}
       {mainTab === 'shadow-deneme1' && (
-        <ShadowTestView
-          studentName={studentName}
-          initialSubject={questionsSubject}
-          initialExamId="aydin-nao-lgs-deneme-1"
-          targetParentQuestionId={targetShadowParentId}
-          onClearTargetParent={() => setTargetShadowParentId(null)}
-          onNavigateToOriginal={() => {
-            setTargetShadowParentId(null);
-            setMainTab('questions-deneme1');
-          }}
-        />
+        <div className="space-y-4">
+          <div className="flex items-center justify-between bg-amber-50 dark:bg-amber-950/40 p-3 rounded-xl border border-amber-200/80 dark:border-amber-800/60">
+            <button
+              type="button"
+              onClick={() => setMainTab('hub')}
+              className="px-3.5 py-1.5 rounded-lg bg-white dark:bg-gray-900 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-amber-800 dark:text-amber-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs border border-amber-200 dark:border-amber-800"
+            >
+              <span>⬅️</span>
+              <span>Sınav ve Gölge Test Seçim Menüsüne Dön</span>
+            </button>
+            <span className="text-xs font-extrabold text-amber-900 dark:text-amber-200">
+              Gölge Test Deneme-1 (36 Paralel Soru)
+            </span>
+          </div>
+
+          <ShadowTestView
+            studentName={studentName}
+            initialSubject={questionsSubject}
+            initialExamId="aydin-nao-lgs-deneme-1"
+            targetParentQuestionId={targetShadowParentId}
+            onClearTargetParent={() => setTargetShadowParentId(null)}
+            onNavigateToOriginal={() => {
+              setTargetShadowParentId(null);
+              setMainTab('questions-deneme1');
+            }}
+          />
+        </div>
       )}
 
       {/* Main Tab: Shadow Test Deneme-2 */}
       {mainTab === 'shadow-deneme2' && (
-        <ShadowTestView
-          studentName={studentName}
-          initialSubject={questionsSubject}
-          initialExamId="aydin-nao-lgs-deneme-2"
-          targetParentQuestionId={targetShadowParentId}
-          onClearTargetParent={() => setTargetShadowParentId(null)}
-          onNavigateToOriginal={() => {
-            setTargetShadowParentId(null);
-            setMainTab('questions-deneme2');
-          }}
-        />
+        <div className="space-y-4">
+          <div className="flex items-center justify-between bg-amber-50 dark:bg-amber-950/40 p-3 rounded-xl border border-amber-200/80 dark:border-amber-800/60">
+            <button
+              type="button"
+              onClick={() => setMainTab('hub')}
+              className="px-3.5 py-1.5 rounded-lg bg-white dark:bg-gray-900 hover:bg-amber-100 dark:hover:bg-amber-900/60 text-amber-800 dark:text-amber-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs border border-amber-200 dark:border-amber-800"
+            >
+              <span>⬅️</span>
+              <span>Sınav ve Gölge Test Seçim Menüsüne Dön</span>
+            </button>
+            <span className="text-xs font-extrabold text-amber-900 dark:text-amber-200">
+              Gölge Test Deneme-2 (42 Paralel Soru)
+            </span>
+          </div>
+
+          <ShadowTestView
+            studentName={studentName}
+            initialSubject={questionsSubject}
+            initialExamId="aydin-nao-lgs-deneme-2"
+            targetParentQuestionId={targetShadowParentId}
+            onClearTargetParent={() => setTargetShadowParentId(null)}
+            onNavigateToOriginal={() => {
+              setTargetShadowParentId(null);
+              setMainTab('questions-deneme2');
+            }}
+          />
+        </div>
       )}
 
       {/* Main Tab: Vocabulary Table */}
       {mainTab === 'vocabulary' && (
-        <VocabularyStudyTable studentName={studentName} />
+        <div className="space-y-4">
+          <div className="flex items-center justify-between bg-emerald-50 dark:bg-emerald-950/40 p-3 rounded-xl border border-emerald-200/80 dark:border-emerald-800/60">
+            <button
+              type="button"
+              onClick={() => setMainTab('hub')}
+              className="px-3.5 py-1.5 rounded-lg bg-white dark:bg-gray-900 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs border border-emerald-200 dark:border-emerald-800"
+            >
+              <span>⬅️</span>
+              <span>Sınav ve Gölge Test Seçim Menüsüne Dön</span>
+            </button>
+            <span className="text-xs font-extrabold text-emerald-900 dark:text-emerald-200">
+              🇬🇧 İngilizce LGS Eksik Kelime Havuzu (115 Kelime)
+            </span>
+          </div>
+
+          <VocabularyStudyTable studentName={studentName} />
+        </div>
       )}
 
       {/* Main Tab 3: Mistake Topics & Exams View */}
