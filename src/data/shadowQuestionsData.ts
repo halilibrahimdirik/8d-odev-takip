@@ -17,6 +17,7 @@ export interface ShadowQuestion {
   title: string;
   leadText?: string;
   quoteBlock?: string;
+  svgDiagram?: string; // Vektörel SVG Şekil ve Grafik Çizimi
   tableData?: {
     headers: string[];
     rows: { col1: string; col2: string }[];

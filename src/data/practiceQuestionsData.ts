@@ -12,6 +12,7 @@ export interface PracticeQuestion {
   topic: string;
   leadText?: string;
   quoteBlock?: string;
+  svgDiagram?: string; // Vektörel SVG Şekil ve Grafik Çizimi
   tableData?: {
     headers: string[];
     rows: { col1: string; col2: string }[];
@@ -687,7 +688,7 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
   },
 
   // =========================================================================
-  // AYDIN DERSHANESİ - 8.SINIF NAO LGS DENEME-1 (18 Soru)
+  // AYDIN DERSHANESİ - 8.SINIF NAO LGS DENEME-1 (18 Soru - Vektörel SVG Çizimli)
   // =========================================================================
   {
     id: 'deneme1-tr-1',
@@ -699,6 +700,29 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 1,
     title: 'Anlatımı Zenginleştirme Yolları (Benzetme, Tezat, Kişileştirme)',
     topic: 'Türkçe / Anlatım Biçimleri ve Düşünceyi Geliştirme Yolları',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="200" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="25" y="25" width="510" height="35" rx="8" fill="#3b82f6"/>
+  <text x="280" y="48" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">Eren'in Türkçe Ders Anlatımı Geliştirme Panosu</text>
+  <rect x="25" y="75" width="160" height="115" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <rect x="35" y="85" width="140" height="24" rx="6" fill="#3b82f6"/>
+  <text x="105" y="101" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">I. Benzetme (Teşbih)</text>
+  <text x="105" y="130" fill="#1e3a8a" font-size="10" font-weight="semibold" text-anchor="middle">"Pınardan yeni süzülmüş</text>
+  <text x="105" y="145" fill="#1e3a8a" font-size="10" font-weight="semibold" text-anchor="middle">su berraklığında Türkçe"</text>
+  <text x="105" y="172" fill="#166534" font-size="10" font-weight="bold" text-anchor="middle">✓ Uygulandı</text>
+  <rect x="200" y="75" width="160" height="115" rx="12" fill="#fef3c7" stroke="#fde047" stroke-width="1.5"/>
+  <rect x="210" y="85" width="140" height="24" rx="6" fill="#d97706"/>
+  <text x="280" y="101" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">II. Tezat (Karşıtlık)</text>
+  <text x="280" y="130" fill="#78350f" font-size="10" font-weight="semibold" text-anchor="middle">"İhtişamlı aydınlık vs.</text>
+  <text x="280" y="145" fill="#78350f" font-size="10" font-weight="semibold" text-anchor="middle">Koyu karanlık"</text>
+  <text x="280" y="172" fill="#166534" font-size="10" font-weight="bold" text-anchor="middle">✓ Uygulandı</text>
+  <rect x="375" y="75" width="160" height="115" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <rect x="385" y="85" width="140" height="24" rx="6" fill="#16a34a"/>
+  <text x="455" y="101" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">III. Kişileştirme</text>
+  <text x="455" y="130" fill="#14532d" font-size="10" font-weight="semibold" text-anchor="middle">"Mahzun sokaklar,</text>
+  <text x="455" y="145" fill="#14532d" font-size="10" font-weight="semibold" text-anchor="middle">iç çeken kaldırımlar"</text>
+  <text x="455" y="172" fill="#166534" font-size="10" font-weight="bold" text-anchor="middle">✓ Uygulandı</text>
+</svg>`,
     leadText:
       'Eren, Türkçe dersi dönem ödevi için hazırladığı taslak metinde şu cümlelere yer vermiştir:\n“Yazar, son eserinde süssüz bir üslup tercih ederek geniş kitlelere ulaşmayı ilke edinmiştir. Romanının olay örgüsünde ise toplumsal adaletsizlikleri işlemiş, sıradan insanların günlük yaşam mücadelelerini yapmacıklıktan uzak bir dille aktarmıştır.”\n\nÖğretmeni metni inceledikten sonra Eren’e anlatımını zenginleştirmesi için şu önerilerde bulunmuştur:\nI. Aralarında değişik yönlerden ilgi bulunan iki unsurdan zayıf olanı, nitelikçe daha kuvvetli olana benzeterek anlatıma derinlik katabilirsin.\nII. Birbirine zıt olan duygu, düşünce, hayal veya durumları bir arada kullanarak tezat oluşturabilir; böylece anlatımı güçlendirebilirsin.\nIII. İnsan dışındaki varlıklara veya kavramlara insana özgü nitelikler yükleyerek teşhis (kişileştirme) sanatından yararlanabilirsin.',
     quoteBlock:
@@ -727,6 +751,31 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 3,
     title: 'Sözcükte Anlam - Numaralanmış Sözlerin Açıklamayla Uyuşması',
     topic: 'Türkçe / Sözcükte Anlam ve Cümle Yorumu',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="180" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="25" y="25" width="510" height="30" rx="6" fill="#f1f5f9"/>
+  <text x="280" y="45" fill="#334155" font-size="12" font-weight="bold" text-anchor="middle">Sözcük Anlamı ve Ayraç İçi Açıklama Analiz Kartı</text>
+  <rect x="25" y="65" width="245" height="50" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <circle cx="45" cy="90" r="12" fill="#dc2626"/>
+  <text x="45" y="94" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">I</text>
+  <text x="68" y="83" fill="#991b1b" font-size="11" font-weight="bold">dünyasında (merkezinde)</text>
+  <text x="68" y="100" fill="#7f1d1d" font-size="10">❌ Anlam Uyuşmuyor (Dünyası = Ortamı)</text>
+  <rect x="290" y="65" width="245" height="50" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <circle cx="310" cy="90" r="12" fill="#16a34a"/>
+  <text x="310" y="94" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">II</text>
+  <text x="333" y="83" fill="#166534" font-size="11" font-weight="bold">iç sesini (duygu ve düşünce)</text>
+  <text x="333" y="100" fill="#14532d" font-size="10">✓ Tam Uyuşmaktadır</text>
+  <rect x="25" y="125" width="245" height="50" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <circle cx="45" cy="150" r="12" fill="#16a34a"/>
+  <text x="45" y="154" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">III</text>
+  <text x="68" y="143" fill="#166534" font-size="11" font-weight="bold">güçlü damarını (önemli kolu)</text>
+  <text x="68" y="160" fill="#14532d" font-size="10">✓ Tam Uyuşmaktadır</text>
+  <rect x="290" y="125" width="245" height="50" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <circle cx="310" cy="150" r="12" fill="#16a34a"/>
+  <text x="310" y="154" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">IV</text>
+  <text x="333" y="143" fill="#166534" font-size="11" font-weight="bold">halkalarından (parçalarından)</text>
+  <text x="333" y="160" fill="#14532d" font-size="10">✓ Tam Uyuşmaktadır</text>
+</svg>`,
     leadText:
       'Osmanlı döneminde Sümbülzade Vehbi gibi klasik şiirin güçlü temsilcilerinin yetiştiği bu şehir, Anadolu’nun sözlü kültür **dünyasında (merkezinde)** önemli bir durak olmuştur. Anadolu’nun **iç sesini (duygu ve düşüncelerini)** taşıyan Karacaoğlan’ın türkülerinde bu coğrafyanın yalnızlığı, doğası ve insanı hissedilir. Halk şiirinin **güçlü damarını (önemli bir kolunu)** temsil eden Âşık Mahzuni Şerif ise sazıyla ve sözüyle Anadolu insanının duygularını dile getirirken bu kültür zincirinin önemli **halkalarından (parçalarından)** biri olmuştur.',
     questionPrompt: 'Bu parçada numaralanmış sözlerden hangisinin anlamı ayraç ( ) içinde verilen açıklamayla uyuşmamaktadır?',
@@ -753,6 +802,23 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 4,
     title: 'Atasözlerinin Anlam Özellikleri ve Örnek Eşleştirmesi',
     topic: 'Türkçe / Deyimler ve Atasözleri',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="190" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="25" y="25" width="510" height="30" rx="6" fill="#f59e0b"/>
+  <text x="280" y="45" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Atasözleri ve Açıklama Eşleştirme Şeması</text>
+  <rect x="25" y="65" width="245" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="35" y="84" fill="#0f172a" font-size="10" font-weight="bold">I. Saygılı ve dengeli ilişki:</text>
+  <text x="35" y="102" fill="#2563eb" font-size="10" font-weight="bold">"Çağrılan yere erinme..." ✓</text>
+  <rect x="290" y="65" width="245" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="300" y="84" fill="#0f172a" font-size="10" font-weight="bold">II. Kişiler arası etkileşim:</text>
+  <text x="300" y="102" fill="#2563eb" font-size="10" font-weight="bold">"İsin yanına varan is..." ✓</text>
+  <rect x="25" y="127" width="245" height="52" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="35" y="146" fill="#0f172a" font-size="10" font-weight="bold">III. Deneyimlerden öğüt çıkarma:</text>
+  <text x="35" y="164" fill="#2563eb" font-size="10" font-weight="bold">"Büyük lokma ye..." ✓</text>
+  <rect x="290" y="127" width="245" height="52" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="300" y="146" fill="#991b1b" font-size="10" font-weight="bold">IV. Tembellikten uzak çalışma:</text>
+  <text x="300" y="164" fill="#dc2626" font-size="10" font-weight="bold">"Yuvarlanan taş yosun tutmaz" ❌</text>
+</svg>`,
     leadText:
       'Atasözleri, kuşaktan kuşağa aktarılan ve insanların geçmişte edindiği deneyimlerin ortak birikimini yansıtan kısa ve özlü sözlerdir.\n(I) Bazı atasözleri, insanların birbirleriyle olan ilişkilerinde saygılı ve dengeli olmanın önemini vurgularken\n(II) bazıları kişiler arası etkileşimi dile getiren örnekler verir.\n(III) Kimi örnekler de ise amaç, deneyimlerden çıkarılan sonuçları insanlara yol gösterecek bir öğüt hâline getirmektir.\n(IV) Bununla birlikte bazı atasözleri de tembellikten uzak durup sürekli çalışmayı, üretken olmayı kişilere tembihler.',
     questionPrompt: 'Bu parçada numaralanmış cümlelerdeki açıklamalara aşağıdaki atasözlerinden hangisi örnek olarak gösterilemez?',
@@ -779,6 +845,22 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 10,
     title: 'Üç Fiilimsi Türünün Bir Arada Kullanımı',
     topic: 'Dil Bilgisi / Fiilimsiler (İsim-Fiil, Sıfat-Fiil, Zarf-Fiil)',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="190" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="25" y="25" width="510" height="30" rx="6" fill="#4f46e5"/>
+  <text x="280" y="45" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">3 Fiilimsi Türünün Bir Arada Bulunduğu Cümle Analizi (C Şıkkı)</text>
+  <rect x="35" y="70" width="150" height="60" rx="10" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="110" y="92" fill="#312e81" font-size="11" font-weight="bold" text-anchor="middle">Zarf-Fiil (-erek)</text>
+  <text x="110" y="115" fill="#4338ca" font-size="12" font-weight="extrabold" text-anchor="middle">"süzerek"</text>
+  <rect x="205" y="70" width="150" height="60" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="280" y="92" fill="#78350f" font-size="11" font-weight="bold" text-anchor="middle">Sıfat-Fiil (-dık / -an)</text>
+  <text x="280" y="115" fill="#b45309" font-size="12" font-weight="extrabold" text-anchor="middle">"tanıdık / oturan"</text>
+  <rect x="375" y="70" width="150" height="60" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="450" y="92" fill="#14532d" font-size="11" font-weight="bold" text-anchor="middle">İsim-Fiil (-me)</text>
+  <text x="450" y="115" fill="#15803d" font-size="12" font-weight="extrabold" text-anchor="middle">"incelemeye"</text>
+  <rect x="35" y="145" width="490" height="40" rx="8" fill="#f1f5f9"/>
+  <text x="280" y="170" fill="#0f172a" font-size="11" font-weight="bold" text-anchor="middle">✓ C Şıkkında 3 Fiilimsi Türü de Eksiksiz Yer Almaktadır.</text>
+</svg>`,
     leadText: 'Fiilimsiler cümlede isim, sıfat ve zarf görevinde kullanılabilir.',
     questionPrompt: 'Buna göre aşağıdaki cümlelerin hangisinde üç fiilimsi türü de (isim-fiil, sıfat-fiil, zarf-fiil) bir arada kullanılmıştır?',
     options: [
@@ -804,6 +886,19 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 11,
     title: '-de ve -ki Eklerinin / Bağlaçlarının Yazımı',
     topic: 'Yazım Kuralları / De ve Ki’nin Yazımı',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="170" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="25" y="25" width="510" height="30" rx="6" fill="#0284c7"/>
+  <text x="280" y="45" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">"-ki" ve "-de" Yazım Kuralı Tespit Kartı</text>
+  <rect x="25" y="68" width="510" height="45" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="40" y="95" fill="#166534" font-size="11" font-weight="bold">Doğru Bitişik Yazım:</text>
+  <text x="170" y="95" fill="#15803d" font-size="11" font-weight="extrabold">"felsefe kulübündeki öğrenciler"</text>
+  <text x="430" y="95" fill="#16a34a" font-size="11" font-weight="bold">✓ Sıfat Yapan -ki</text>
+  <rect x="25" y="120" width="510" height="45" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="40" y="147" fill="#991b1b" font-size="11" font-weight="bold">Hatalı Ayrı Yazım (D Şıkkı):</text>
+  <text x="200" y="147" fill="#dc2626" font-size="11" font-weight="extrabold">"felsefe kulübünde ki öğrenciler"</text>
+  <text x="430" y="147" fill="#dc2626" font-size="11" font-weight="bold">❌ Yazım Yanlışı</text>
+</svg>`,
     leadText: 'Aşağıdaki cümlelerin hangisinde “de” veya “ki”nin yazımıyla ilgili bir yazım yanlışı yapılmıştır?',
     questionPrompt: 'Buna göre yukarıdaki cümlelerin hangisinde yazım yanlışı vardır?',
     options: [
@@ -829,6 +924,21 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 13,
     title: 'İki Metin Arasında Dil ve Anlatım Özellikleri Karşılaştırma',
     topic: 'Paragrafta Anlam / Metinlerin Karşılaştırılması',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="190" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="30" y="30" width="235" height="150" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="147" y="55" fill="#1e40af" font-size="12" font-weight="bold" text-anchor="middle">I. Metin (Yarasa)</text>
+  <text x="147" y="85" fill="#1e3a8a" font-size="10" font-weight="semibold" text-anchor="middle">• Okuru bilgilendirme ✅</text>
+  <text x="147" y="105" fill="#1e3a8a" font-size="10" font-weight="semibold" text-anchor="middle">• Nesnel anlatım ✅</text>
+  <text x="147" y="125" fill="#1e3a8a" font-size="10" font-weight="semibold" text-anchor="middle">• Karşılaştırma ✅</text>
+  <text x="147" y="155" fill="#dc2626" font-size="11" font-weight="extrabold" text-anchor="middle">❌ Örnekleme YOK</text>
+  <rect x="295" y="30" width="235" height="150" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="412" y="55" fill="#166534" font-size="12" font-weight="bold" text-anchor="middle">II. Metin (Kutup Hayvanları)</text>
+  <text x="412" y="85" fill="#14532d" font-size="10" font-weight="semibold" text-anchor="middle">• Okuru bilgilendirme ✅</text>
+  <text x="412" y="105" fill="#14532d" font-size="10" font-weight="semibold" text-anchor="middle">• Nesnel anlatım ✅</text>
+  <text x="412" y="125" fill="#14532d" font-size="10" font-weight="semibold" text-anchor="middle">• Karşılaştırma ✅</text>
+  <text x="412" y="155" fill="#16a34a" font-size="11" font-weight="extrabold" text-anchor="middle">✓ Kutup tilkisi ÖRNEĞİ VAR</text>
+</svg>`,
     leadText:
       'I. Metin: Gece iyice çöktüğünde yarasa, karanlığın içinde sessizce ilerlemeye başlar...\nII. Metin: Kutup bölgelerinde yaşayan bazı hayvanların vücutları, düşük sıcaklıklarda yaşamlarını sürdürebilecek biçimde uyum sağlamıştır...',
     questionPrompt: 'Bu iki metin dil ve anlatım özellikleri bakımından karşılaştırıldığında aşağıdakilerden hangisi ortak değildir?',
@@ -855,6 +965,23 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 15,
     title: 'Virgülün (,) Kullanım Yerleri ve Görevleri',
     topic: 'Noktalama İşaretleri / Virgülün Görevleri',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="190" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="25" y="25" width="510" height="30" rx="6" fill="#7c3aed"/>
+  <text x="280" y="45" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Noktalama Kuralları: Virgülün (,) Doğru ve Hatalı Kullanımları</text>
+  <rect x="25" y="65" width="245" height="52" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="35" y="85" fill="#166534" font-size="10" font-weight="bold">Ara sözleri ayırma:</text>
+  <text x="35" y="103" fill="#15803d" font-size="10">"...kasabaya, çocukluğuma,..." ✓</text>
+  <rect x="290" y="65" width="245" height="52" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="300" y="85" fill="#166534" font-size="10" font-weight="bold">Aktarma cümlesi sonu:</text>
+  <text x="300" y="103" fill="#15803d" font-size="10">"...çıkarmaz, diyordu adam" ✓</text>
+  <rect x="25" y="125" width="245" height="52" rx="8" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="35" y="145" fill="#166534" font-size="10" font-weight="bold">Kabul/Ret kelimesi sonrası:</text>
+  <text x="35" y="163" fill="#15803d" font-size="10">"Evet, gece gündüz..." ✓</text>
+  <rect x="290" y="125" width="245" height="52" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="300" y="145" fill="#991b1b" font-size="10" font-weight="bold">Zarf-fiil sonrası virgül (D Şıkkı):</text>
+  <text x="300" y="163" fill="#dc2626" font-size="10" font-weight="bold">"...bırakıp, salondaki..." ❌ HATA</text>
+</svg>`,
     leadText:
       'Virgülün (,) kullanımıyla ilgili bazı kurallar şunlarda verilmiştir:\n• Cümle içindeki ara sözleri veya ara cümleleri ayırmak için ara sözlerin başına ve sonuna konur.\n• Kendisinden sonraki cümleye bağlı olarak ret, kabul ve teşvik bildiren kelimelerden sonra konur.\n• Tırnak içinde olmayan aktarma cümlelerinden sonra konur.\n• Sıralı cümleleri birbirinden ayırmak için aralarına konur.',
     questionPrompt: 'Aşağıdaki seçeneklerden hangisi virgülün verilen görevlerinden birine örnek olamaz?',
@@ -885,6 +1012,31 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 51,
     title: 'Dikdörtgen Bölme ve Alan Paylaştırma (En Az Çevre)',
     topic: 'Çarpanlar ve Katlar / EBOB ve Dikdörtgen Alanı',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 300" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="560" height="280" rx="16" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="60" y="50" width="460" height="190" fill="#ffffff" stroke="#1e293b" stroke-width="2.5"/>
+  <line x1="330" y1="50" x2="330" y2="240" stroke="#1e293b" stroke-width="2.5" stroke-dasharray="4,4"/>
+  <line x1="60" y1="150" x2="520" y2="150" stroke="#1e293b" stroke-width="2.5"/>
+  <rect x="60" y="50" width="270" height="100" fill="#e0f2fe" opacity="0.85"/>
+  <text x="195" y="95" fill="#0369a1" font-size="14" font-weight="extrabold" text-anchor="middle">AELM = 150 cm²</text>
+  <text x="195" y="115" fill="#0284c7" font-size="11" font-weight="bold" text-anchor="middle">(Dikdörtgen)</text>
+  <rect x="330" y="50" width="190" height="100" fill="#fef3c7" opacity="0.85"/>
+  <text x="425" y="95" fill="#b45309" font-size="14" font-weight="extrabold" text-anchor="middle">EBKL (Kare)</text>
+  <rect x="60" y="150" width="270" height="90" fill="#f1f5f9" opacity="0.85"/>
+  <text x="195" y="200" fill="#475569" font-size="13" font-weight="bold" text-anchor="middle">MLND Dikdörtgeni</text>
+  <rect x="330" y="150" width="190" height="90" fill="#dcfce7" opacity="0.85"/>
+  <text x="425" y="195" fill="#15803d" font-size="14" font-weight="extrabold" text-anchor="middle">KLNC = 90 cm²</text>
+  <text x="425" y="215" fill="#16a34a" font-size="11" font-weight="bold" text-anchor="middle">(Dikdörtgen)</text>
+  <text x="50" y="45" fill="#0f172a" font-size="15" font-weight="black">A</text>
+  <text x="325" y="45" fill="#0f172a" font-size="15" font-weight="black">E</text>
+  <text x="525" y="45" fill="#0f172a" font-size="15" font-weight="black">B</text>
+  <text x="45" y="155" fill="#0f172a" font-size="15" font-weight="black">M</text>
+  <text x="335" y="145" fill="#0f172a" font-size="15" font-weight="black">L</text>
+  <text x="525" y="155" fill="#0f172a" font-size="15" font-weight="black">K</text>
+  <text x="50" y="258" fill="#0f172a" font-size="15" font-weight="black">D</text>
+  <text x="325" y="258" fill="#0f172a" font-size="15" font-weight="black">N</text>
+  <text x="525" y="258" fill="#0f172a" font-size="15" font-weight="black">C</text>
+</svg>`,
     leadText:
       'Aşağıda kenar uzunlukları santimetre cinsinden birer tam sayı olan ABCD dikdörtgeni verilmiştir.\nAELM bölgesi = 150 cm², KLNC bölgesi = 90 cm².\nBu dikdörtgen, AELM, KLNC ve MLND birer dikdörtgen, EBKL ise kare olacak şekilde dört bölgeye ayrılmıştır.',
     questionPrompt: 'AELM bölgesinin alanı 150 cm² ve KLNC bölgesinin alanı 90 cm² olduğuna göre, ABCD dikdörtgeninin çevresi en az kaç santimetredir?',
@@ -911,6 +1063,39 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 62,
     title: 'Konferans Salonu Sandalye Yerleşimi ve Çarpanlar',
     topic: 'Çarpanlar ve Katlar / Pozitif Tam Sayı Çarpanları',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 260" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="560" height="240" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <rect x="60" y="25" width="460" height="40" rx="8" fill="#312e81" stroke="#6366f1" stroke-width="2"/>
+  <text x="290" y="50" fill="#e0e7ff" font-size="14" font-weight="extrabold" text-anchor="middle">🎭 KONFERANS SALONU SAHNESİ (360 Sandalye)</text>
+  <text x="40" y="100" fill="#94a3b8" font-size="11" font-weight="bold">1. Sıra</text>
+  <rect x="90" y="85" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="120" y="85" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="150" y="85" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="180" y="85" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <text x="215" y="100" fill="#64748b" font-size="14" font-weight="bold">...</text>
+  <rect x="430" y="85" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="460" y="85" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <text x="40" y="140" fill="#94a3b8" font-size="11" font-weight="bold">2. Sıra</text>
+  <rect x="90" y="125" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="120" y="125" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="150" y="125" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="180" y="125" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <text x="215" y="140" fill="#64748b" font-size="14" font-weight="bold">...</text>
+  <rect x="430" y="125" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="460" y="125" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <text x="135" y="175" fill="#64748b" font-size="16" font-weight="bold">⋮   ⋮   ⋮</text>
+  <text x="40" y="210" fill="#94a3b8" font-size="11" font-weight="bold">n. Sıra</text>
+  <rect x="90" y="195" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="120" y="195" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="150" y="195" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="180" y="195" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <text x="215" y="210" fill="#64748b" font-size="14" font-weight="bold">...</text>
+  <rect x="430" y="195" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="460" y="195" width="22" height="22" rx="4" fill="#3b82f6"/>
+  <rect x="310" y="165" width="210" height="50" rx="8" fill="#1e293b" stroke="#3b82f6"/>
+  <text x="415" y="187" fill="#f8fafc" font-size="11" font-weight="bold" text-anchor="middle">Sıra Sayısı x Sıradaki Sandalye</text>
+  <text x="415" y="205" fill="#60a5fa" font-size="12" font-weight="black" text-anchor="middle">= 360 Sandalye</text>
+</svg>`,
     leadText:
       'Bir konferans salonundaki 360 sandalye, her sırada eşit sayıda sandalye bulunacak ve hiç sandalye artmayacak şekilde yerleştirilecektir.\nSıra sayısı ile bir sıradaki sandalye sayısının yer değiştirdiği yerleşimler aynı kabul edilmektedir.',
     questionPrompt: 'Buna göre sandalyeler kaç farklı şekilde yerleştirilebilir?',
@@ -937,6 +1122,37 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 65,
     title: 'Duvar Saatleri ve Eş Dairesel Saat Dizilimi (EKOK)',
     topic: 'Çarpanlar ve Katlar / EKOK Problemleri',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 290" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="560" height="270" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <line x1="40" y1="120" x2="540" y2="120" stroke="#475569" stroke-width="4"/>
+  <text x="40" y="30" fill="#0f172a" font-size="12" font-weight="extrabold">1. DUVAR: r = 16 cm (Çap = 32 cm), Boşluk = 10 cm</text>
+  <circle cx="100" cy="80" r="30" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <line x1="100" y1="80" x2="100" y2="60" stroke="#1e293b" stroke-width="2"/>
+  <line x1="100" y1="80" x2="115" y2="80" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="200" cy="80" r="30" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <line x1="200" y1="80" x2="200" y2="60" stroke="#1e293b" stroke-width="2"/>
+  <line x1="200" y1="80" x2="215" y2="80" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="300" cy="80" r="30" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <line x1="300" y1="80" x2="300" y2="60" stroke="#1e293b" stroke-width="2"/>
+  <line x1="300" y1="80" x2="315" y2="80" stroke="#1e293b" stroke-width="2"/>
+  <line x1="40" y1="80" x2="70" y2="80" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="2,2"/>
+  <text x="55" y="75" fill="#dc2626" font-size="9" font-weight="bold">10cm</text>
+  <line x1="130" y1="80" x2="170" y2="80" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="2,2"/>
+  <text x="150" y="75" fill="#dc2626" font-size="9" font-weight="bold">10cm</text>
+  <line x1="40" y1="250" x2="540" y2="250" stroke="#475569" stroke-width="4"/>
+  <text x="40" y="160" fill="#0f172a" font-size="12" font-weight="extrabold">2. DUVAR: r = 14 cm (Çap = 28 cm), Tek kenarda 10 cm boşluk</text>
+  <circle cx="70" cy="210" r="26" fill="#ffffff" stroke="#16a34a" stroke-width="3"/>
+  <line x1="70" y1="210" x2="70" y2="192" stroke="#1e293b" stroke-width="2"/>
+  <line x1="70" y1="210" x2="82" y2="210" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="150" cy="210" r="26" fill="#ffffff" stroke="#16a34a" stroke-width="3"/>
+  <line x1="150" y1="210" x2="150" y2="192" stroke="#1e293b" stroke-width="2"/>
+  <line x1="150" y1="210" x2="162" y2="210" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="230" cy="210" r="26" fill="#ffffff" stroke="#16a34a" stroke-width="3"/>
+  <line x1="230" y1="210" x2="230" y2="192" stroke="#1e293b" stroke-width="2"/>
+  <line x1="230" y1="210" x2="242" y2="210" stroke="#1e293b" stroke-width="2"/>
+  <rect x="360" y="180" width="180" height="40" rx="8" fill="#2563eb"/>
+  <text x="450" y="205" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Duvar Uzunluğu &gt; 5 Metre</text>
+</svg>`,
     leadText:
       'Birinci duvara yarıçapı 16 cm olan eş dairesel saatler aralarında ve kenarlarda 10 cm boşluk olacak şekilde yan yana dizilmiştir. 2. duvarda yarıçapı 14 cm olan eş dairesel saatler aralarında ve kenarların birinde boşluk olmadan diğer kenarında 10 cm boşluk olacak şekilde yan yana dizilmiştir.\nDuvarın uzunluğu 5 metreden fazla olduğuna göre, monte edilen saatlerin toplam sayısı en az kaçtır?',
     questionPrompt: 'Buna göre saatlerin toplam sayısı en az kaçtır?',
@@ -963,6 +1179,29 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 70,
     title: 'Dinlenme Tesislerinin Mersin’e Uzaklıkları (EBOB / EKOK)',
     topic: 'Çarpanlar ve Katlar / EBOB ve EKOK Uygulamaları',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 230" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="560" height="210" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <rect x="30" y="90" width="520" height="30" fill="#334155"/>
+  <line x1="30" y1="105" x2="550" y2="105" stroke="#f8fafc" stroke-width="2" stroke-dasharray="10,8"/>
+  <circle cx="50" cy="105" r="14" fill="#ef4444"/>
+  <text x="50" y="109" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">A</text>
+  <text x="50" y="70" fill="#f8fafc" font-size="12" font-weight="extrabold" text-anchor="middle">ANKARA</text>
+  <circle cx="530" cy="105" r="14" fill="#3b82f6"/>
+  <text x="530" y="109" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">M</text>
+  <text x="530" y="70" fill="#f8fafc" font-size="12" font-weight="extrabold" text-anchor="middle">MERSİN</text>
+  <circle cx="490" cy="105" r="8" fill="#eab308"/>
+  <text x="490" y="145" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">Taşpınar</text>
+  <text x="490" y="160" fill="#cbd5e1" font-size="9" text-anchor="middle">EBOB=5km</text>
+  <circle cx="460" cy="105" r="8" fill="#eab308"/>
+  <text x="460" y="180" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">Pelit</text>
+  <text x="460" y="195" fill="#cbd5e1" font-size="9" text-anchor="middle">EBOB=6km</text>
+  <circle cx="390" cy="105" r="8" fill="#eab308"/>
+  <text x="390" y="145" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">Demireller</text>
+  <text x="390" y="160" fill="#cbd5e1" font-size="9" text-anchor="middle">EKOK=18km</text>
+  <circle cx="160" cy="105" r="10" fill="#22c55e" stroke="#ffffff" stroke-width="2"/>
+  <text x="160" y="145" fill="#4ade80" font-size="11" font-weight="extrabold" text-anchor="middle">Ağaçlı (EKOK=300km)</text>
+  <text x="160" y="160" fill="#86efac" font-size="10" font-weight="bold" text-anchor="middle">✓ Ankara'ya En Yakın</text>
+</svg>`,
     leadText:
       'Ankara ve Mersin şehirleri arasında doğrusal bir otobanda sefer yapan otobüs dört tesiste mola vermiştir. Mersin’e olan uzaklıkları şöyledir:\n• Taşpınar: EBOB(5, 25) = 5 km\n• Demireller: EKOK(1, 18) = 18 km\n• Ağaçlı: EKOK(20, 75) = 300 km\n• Pelit: EBOB(18, 24) = 6 km',
     questionPrompt: 'Buna göre yukarıda verilen dinlenme tesislerinden Ankara’ya en yakın olan dinlenme tesisi aşağıdakilerden hangisidir?',
@@ -993,6 +1232,24 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 16,
     title: 'Basit Elektrik Devresi ve Parça-Bütün İlişkisi',
     topic: 'Fen Bilimleri / Elektrik Yükleri ve Elektrik Enerjisi',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 220" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="520" height="200" rx="16" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <path d="M 120 110 L 120 50 L 420 50 L 420 170 L 120 170 Z" fill="none" stroke="#2563eb" stroke-width="4"/>
+  <rect x="90" y="90" width="60" height="40" rx="6" fill="#1e293b"/>
+  <rect x="150" y="102" width="8" height="16" rx="2" fill="#ef4444"/>
+  <text x="102" y="115" fill="#ffffff" font-size="12" font-weight="bold">- Pil +</text>
+  <circle cx="270" cy="50" r="5" fill="#1e293b"/>
+  <circle cx="330" cy="50" r="5" fill="#1e293b"/>
+  <line x1="270" y1="50" x2="325" y2="50" stroke="#16a34a" stroke-width="3"/>
+  <text x="300" y="35" fill="#15803d" font-size="11" font-weight="bold" text-anchor="middle">Anahtar (Kapalı)</text>
+  <circle cx="420" cy="110" r="22" fill="#fef08a" stroke="#eab308" stroke-width="3"/>
+  <path d="M 412 118 L 420 100 L 428 118" fill="none" stroke="#ca8a04" stroke-width="2"/>
+  <line x1="420" y1="78" x2="420" y2="70" stroke="#eab308" stroke-width="2"/>
+  <line x1="445" y1="110" x2="453" y2="110" stroke="#eab308" stroke-width="2"/>
+  <line x1="395" y1="110" x2="387" y2="110" stroke="#eab308" stroke-width="2"/>
+  <text x="420" y="150" fill="#854d0e" font-size="11" font-weight="bold" text-anchor="middle">Ampul (Işık Veriyor)</text>
+  <text x="270" y="195" fill="#0f172a" font-size="12" font-weight="bold" text-anchor="middle">Basit Elektrik Devresi Elemanları Şeması</text>
+</svg>`,
     leadText: 'Basit bir elektrik devresinde pil (üreteç), bağlantı kabloları, anahtar ve alıcı-yük (ampul) bulunur. Parçaların her biri farklı bir görev üstlense de biri diğeri olmadan çalışamaz.',
     questionPrompt: 'Bu açıklama ve görsel birlikte değerlendirildiğinde aşağıdakilerden hangisi söylenebilir?',
     options: [
@@ -1018,6 +1275,29 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 78,
     title: 'İklim ve Hava Olayları Kavram Haritası',
     topic: 'Fen Bilimleri / Mevsimlerin Oluşumu ve İklim',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 250" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="560" height="230" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="190" y="25" width="200" height="35" rx="8" fill="#3b82f6"/>
+  <text x="290" y="47" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">Güneşli, rüzgârlı, yağmurlu...</text>
+  <line x1="290" y1="60" x2="150" y2="90" stroke="#64748b" stroke-width="2"/>
+  <line x1="290" y1="60" x2="430" y2="90" stroke="#64748b" stroke-width="2"/>
+  <text x="200" y="70" fill="#2563eb" font-size="10" font-weight="bold">Hava Olayı ✓</text>
+  <text x="380" y="70" fill="#dc2626" font-size="10" font-weight="bold">İklim ❌</text>
+  <rect x="50" y="90" width="200" height="35" rx="8" fill="#dcfce7" stroke="#22c55e"/>
+  <text x="150" y="112" fill="#14532d" font-size="10" font-weight="bold" text-anchor="middle">Ülkemizde 3 tipi görülür (İklim)</text>
+  <rect x="330" y="90" width="200" height="35" rx="8" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="430" y="112" fill="#7f1d1d" font-size="10" font-weight="bold" text-anchor="middle">Kısa sürede değişir (Hava Olayı)</text>
+  <line x1="150" y1="125" x2="90" y2="160" stroke="#16a34a" stroke-width="2"/>
+  <line x1="150" y1="125" x2="210" y2="160" stroke="#dc2626" stroke-width="2"/>
+  <rect x="40" y="160" width="100" height="40" rx="8" fill="#16a34a"/>
+  <text x="90" y="185" fill="#ffffff" font-size="12" font-weight="black" text-anchor="middle">MİNEL ✓</text>
+  <rect x="160" y="160" width="100" height="40" rx="8" fill="#94a3b8"/>
+  <text x="210" y="185" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Çiğdem</text>
+  <rect x="320" y="160" width="100" height="40" rx="8" fill="#94a3b8"/>
+  <text x="370" y="185" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Burcu</text>
+  <rect x="440" y="160" width="100" height="40" rx="8" fill="#94a3b8"/>
+  <text x="490" y="185" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle">Nergis</text>
+</svg>`,
     leadText: 'Dört öğrenci, kutular içinde verilen bilgileri iklim ya da hava olaylarına ait olma durumuna göre tercih ederek adlarının yazılı olduğu çıkışa ulaşıyor.',
     questionPrompt: 'Buna göre, hatasız ilerleyen öğrenci aşağıdakilerden hangisidir?',
     options: [
@@ -1043,6 +1323,33 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 80,
     title: 'Dönenciler ve Ekvator Gece Süresi Grafikleri',
     topic: 'Fen Bilimleri / Mevsimlerin Oluşumu ve Eksen Eğikliği',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 250" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="560" height="230" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="140" y="35" fill="#0f172a" font-size="12" font-weight="extrabold" text-anchor="middle">Gece Süresi Grafiği (Saat)</text>
+  <line x1="40" y1="50" x2="40" y2="190" stroke="#475569" stroke-width="2"/>
+  <line x1="40" y1="190" x2="240" y2="190" stroke="#475569" stroke-width="2"/>
+  <text x="30" y="60" fill="#64748b" font-size="9">24h</text>
+  <line x1="38" y1="55" x2="240" y2="55" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+  <text x="30" y="125" fill="#64748b" font-size="9">12h</text>
+  <line x1="38" y1="120" x2="240" y2="120" stroke="#3b82f6" stroke-dasharray="4,4"/>
+  <rect x="60" y="85" width="40" height="105" fill="#ef4444" rx="4"/>
+  <text x="80" y="78" fill="#dc2626" font-size="10" font-weight="bold" text-anchor="middle">18s</text>
+  <text x="80" y="208" fill="#0f172a" font-size="11" font-weight="bold" text-anchor="middle">X Şehri</text>
+  <rect x="120" y="120" width="40" height="70" fill="#3b82f6" rx="4"/>
+  <text x="140" y="113" fill="#2563eb" font-size="10" font-weight="bold" text-anchor="middle">12s</text>
+  <text x="140" y="208" fill="#0f172a" font-size="11" font-weight="bold" text-anchor="middle">Y (Ekvator)</text>
+  <rect x="180" y="155" width="40" height="35" fill="#22c55e" rx="4"/>
+  <text x="200" y="148" fill="#16a34a" font-size="10" font-weight="bold" text-anchor="middle">6s</text>
+  <text x="200" y="208" fill="#0f172a" font-size="11" font-weight="bold" text-anchor="middle">Z Şehri</text>
+  <text x="420" y="35" fill="#0f172a" font-size="12" font-weight="extrabold" text-anchor="middle">Dünya Üzerindeki Konumlar</text>
+  <circle cx="420" cy="130" r="70" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <line x1="355" y1="95" x2="485" y2="95" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="500" y="98" fill="#dc2626" font-size="9" font-weight="bold">Yengeç (X)</text>
+  <line x1="350" y1="130" x2="490" y2="130" stroke="#3b82f6" stroke-width="2"/>
+  <text x="500" y="133" fill="#2563eb" font-size="9" font-weight="bold">Ekvator (Y)</text>
+  <line x1="355" y1="165" x2="485" y2="165" stroke="#22c55e" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="500" y="168" fill="#16a34a" font-size="9" font-weight="bold">Oğlak (Z)</text>
+</svg>`,
     leadText: 'Yengeç Dönencesi, Ekvator ve Oğlak Dönencesi üzerinde bulunan üç şehirde mevsim başlangıç tarihinde gece süresi ölçülmüş ve grafikler çizilmiştir.',
     questionPrompt: 'Buna göre aşağıdakilerden hangisi yanlıştır?',
     options: [
@@ -1068,6 +1375,23 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 84,
     title: 'Dünya ve Güneş Konumu - Gece Süresi',
     topic: 'Fen Bilimleri / Mevsimlerin Oluşumu',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 250" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="560" height="230" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <circle cx="80" cy="120" r="45" fill="#facc15" stroke="#ca8a04" stroke-width="3"/>
+  <text x="80" y="125" fill="#713f12" font-size="13" font-weight="black" text-anchor="middle">GÜNEŞ</text>
+  <line x1="135" y1="90" x2="310" y2="90" stroke="#fde047" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="135" y1="120" x2="310" y2="120" stroke="#fde047" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="135" y1="150" x2="310" y2="150" stroke="#fde047" stroke-width="2" stroke-dasharray="6,4"/>
+  <g transform="translate(400, 120) rotate(-23.5)">
+    <path d="M 0 -70 A 70 70 0 0 0 0 70 Z" fill="#38bdf8"/>
+    <path d="M 0 -70 A 70 70 0 0 1 0 70 Z" fill="#1e293b"/>
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#f8fafc" stroke-width="2"/>
+    <line x1="0" y1="-85" x2="0" y2="85" stroke="#ef4444" stroke-width="2"/>
+    <line x1="-70" y1="0" x2="70" y2="0" stroke="#facc15" stroke-width="2"/>
+  </g>
+  <text x="400" y="25" fill="#f8fafc" font-size="12" font-weight="extrabold" text-anchor="middle">21 Aralık Konumu (Kuzey'de Kış, En Uzun Gece)</text>
+  <text x="400" y="225" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">Kuzey Kutup Dairesi - Yengeç Arası (En Uzun Gece)</text>
+</svg>`,
     leadText: 'Görseldeki Dünya ve Güneş’in konumuna göre aşağıda verilen yerlerden hangisinde gece süresi en uzun olur?',
     questionPrompt: 'Buna göre gece süresinin en uzun olduğu yer hangisidir?',
     options: [
@@ -1097,6 +1421,26 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 21,
     title: '1789 Fransız İnsan ve Yurttaş Hakları Bildirisi',
     topic: 'İnkılap Tarihi / Bir Kahraman Doğuyor - Fransız İhtilali',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="190" rx="16" fill="#fffbebe" stroke="#d97706" stroke-width="2"/>
+  <rect x="30" y="25" width="500" height="35" rx="8" fill="#b45309"/>
+  <text x="280" y="47" fill="#ffffff" font-size="13" font-weight="extrabold" text-anchor="middle">📜 1789 FRANSIZ İNSAN VE YURTTAŞ HAKLARI BİLDİRİSİ</text>
+  <rect x="30" y="70" width="155" height="110" rx="10" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="107" y="95" fill="#b45309" font-size="11" font-weight="black" text-anchor="middle">I. HALK İRADESİ</text>
+  <text x="107" y="120" fill="#78350f" font-size="10" font-weight="semibold" text-anchor="middle">Egemenlik kayıtsız</text>
+  <text x="107" y="135" fill="#78350f" font-size="10" font-weight="semibold" text-anchor="middle">şartsız milletindir.</text>
+  <text x="107" y="160" fill="#166534" font-size="10" font-weight="bold" text-anchor="middle">✓ Ulaşılır</text>
+  <rect x="202" y="70" width="155" height="110" rx="10" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="280" y="95" fill="#b45309" font-size="11" font-weight="black" text-anchor="middle">II. EŞİTLİK</text>
+  <text x="280" y="120" fill="#78350f" font-size="10" font-weight="semibold" text-anchor="middle">Ayrıcalıklara ve</text>
+  <text x="280" y="135" fill="#78350f" font-size="10" font-weight="semibold" text-anchor="middle">sınıflara karşıtlık.</text>
+  <text x="280" y="160" fill="#166534" font-size="10" font-weight="bold" text-anchor="middle">✓ Ulaşılır</text>
+  <rect x="375" y="70" width="155" height="110" rx="10" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="452" y="95" fill="#b45309" font-size="11" font-weight="black" text-anchor="middle">III. DEMOKRASİ</text>
+  <text x="452" y="120" fill="#78350f" font-size="10" font-weight="semibold" text-anchor="middle">İnsan hakları ve</text>
+  <text x="452" y="135" fill="#78350f" font-size="10" font-weight="semibold" text-anchor="middle">özgürlük güvencesi.</text>
+  <text x="452" y="160" fill="#166534" font-size="10" font-weight="bold" text-anchor="middle">✓ Ulaşılır</text>
+</svg>`,
     leadText:
       '1789’da yayımlanan Fransız İnsan ve Yurttaş Hakları Bildirisi, Fransız Ulusal Meclisi tarafından kabul edilmiştir. Bu belge Fransız Devrimi’nin özgürlük, eşitlik ve halk egemenliği anlayışını ortaya koymuştur. İnsanların doğuştan özgür ve eşit olduğu savunulmuştur.',
     questionPrompt: 'Verilen bilgilere göre;\nI. Devlet yönetiminin halkın iradesine dayanmasının gerekliliği vurgulanmıştır.\nII. Toplumsal ayrıcalıklara karşı çıkılmıştır.\nIII. Demokratik devlet anlayışı yansıtılmıştır.\nyargılarından hangilerine ulaşılır?',
@@ -1123,6 +1467,19 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 27,
     title: 'Picardie Manevraları ve Mustafa Kemal’in Öngörüsü',
     topic: 'İnkılap Tarihi / Mustafa Kemal’in Askerlik Hayatı',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="190" rx="16" fill="#1e1b4b" stroke="#4338ca" stroke-width="2"/>
+  <rect x="25" y="25" width="510" height="35" rx="8" fill="#3730a3"/>
+  <text x="280" y="47" fill="#ffffff" font-size="13" font-weight="extrabold" text-anchor="middle">🇫🇷 1910 PICARDIE MANEVRALARI (FRANSA)</text>
+  <rect x="30" y="75" width="235" height="110" rx="10" fill="#312e81" stroke="#6366f1"/>
+  <text x="147" y="100" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">MUSTAFA KEMAL'İN GÖZLEMİ</text>
+  <text x="147" y="125" fill="#e0e7ff" font-size="10" text-anchor="middle">• Askerî teknoloji gelişimi</text>
+  <text x="147" y="145" fill="#e0e7ff" font-size="10" text-anchor="middle">• Avrupa ordularının üstünlüğü</text>
+  <rect x="295" y="75" width="235" height="110" rx="10" fill="#312e81" stroke="#818cf8"/>
+  <text x="412" y="100" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">STRATEJİK ÖNGÖRÜ</text>
+  <text x="412" y="125" fill="#fde047" font-size="11" font-weight="extrabold" text-anchor="middle">"Büyük Bir Dünya Savaşı Yaklaşıyor"</text>
+  <text x="412" y="150" fill="#86efac" font-size="10" font-weight="bold" text-anchor="middle">✓ XX. yy. Başında Değişim Yaşanmıştır</text>
+</svg>`,
     leadText:
       'Mustafa Kemal 1910 yılında katıldığı Picardie Manevraları’nda Fransız ordusunu yakından tanıma fırsatı buldu. Avrupa’daki ordularla Türk ordusunun durumunu karşılaştırdı. Mustafa Kemal, Avrupa’da askerî teknoloji konusunda yaşanan gelişmeleri değerlendirerek büyük bir savaşın yaklaşmakta olduğu yönünde yorumda bulundu.',
     questionPrompt: 'Paragraftaki bilgilere göre aşağıdaki yargılardan hangisine ulaşılır?',
@@ -1149,6 +1506,19 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     questionNumber: 28,
     title: 'Trablusgarp Savaşı ve Mustafa Kemal’in Teşkilatçılığı',
     topic: 'İnkılap Tarihi / Trablusgarp Savaşı',
+    svgDiagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" class="w-full h-auto max-w-xl font-sans">
+  <rect x="10" y="10" width="540" height="200" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <rect x="25" y="25" width="510" height="100" fill="#0284c7" rx="8"/>
+  <text x="280" y="50" fill="#ffffff" font-size="13" font-weight="extrabold" text-anchor="middle">AKDENİZ (MEDITERRANEAN SEA)</text>
+  <text x="120" y="40" fill="#fef08a" font-size="11" font-weight="bold">İTALYA (İşgalci Donanma 🚢)</text>
+  <rect x="25" y="130" width="510" height="65" fill="#b45309" rx="8"/>
+  <text x="280" y="150" fill="#ffffff" font-size="13" font-weight="extrabold" text-anchor="middle">TRABLUSGARP (LİBYA - OSMANLI TOPRAĞI)</text>
+  <rect x="120" y="160" width="140" height="25" rx="6" fill="#15803d"/>
+  <text x="190" y="177" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle">DERNE SAVUNMASI</text>
+  <rect x="300" y="160" width="140" height="25" rx="6" fill="#15803d"/>
+  <text x="370" y="177" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle">TOBRUK SAVUNMASI</text>
+  <text x="280" y="110" fill="#fde047" font-size="11" font-weight="extrabold" text-anchor="middle">⚔️ M. Kemal'in Teşkilatçılığı ve Yerli Halk Direnişi</text>
+</svg>`,
     leadText:
       'İtalya’nın Trablusgarp’ı işgal etmesi üzerine Mustafa Kemal ve bazı Osmanlı subayları Trablusgarp’a gittiler. Buradaki yerli halkı işgale karşı teşkilatlandırarak İtalya’ya karşı büyük bir direniş başlattılar. Mustafa Kemal, Derne ve Tobruk bölgelerinde İtalyanlara karşı önemli başarılar kazandı ve binbaşılığa terfi etti.',
     questionPrompt: 'Buna göre Mustafa Kemal ile ilgili;\nI. Devlet bütünlüğünün korunması için mücadele etmiştir.\nII. Askerî faaliyetlerde sorumluluk almıştır.\nIII. Siyasi yaşamında yeni bir dönem başlamıştır.\nyargılarından hangilerine ulaşılır?',
@@ -1166,3 +1536,4 @@ export const PRACTICE_QUESTIONS: PracticeQuestion[] = [
     examType: 'Aydın Dershanesi · 8.SINIF NAO LGS DENEME-1',
   },
 ];
+

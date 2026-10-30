@@ -511,6 +511,16 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
               {/* Question Body */}
               <div className="p-5 sm:p-6 space-y-4">
                 
+                {/* SVG Vector Diagram Card */}
+                {q.svgDiagram && (
+                  <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-inner my-2 overflow-x-auto flex flex-col items-center justify-center">
+                    <div className="w-full max-w-2xl flex justify-center" dangerouslySetInnerHTML={{ __html: q.svgDiagram }} />
+                    <span className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 font-bold flex items-center gap-1.5">
+                      <span>📐 Vektörel Şekil / Grafik Çizimi (SVG)</span>
+                    </span>
+                  </div>
+                )}
+
                 {/* Lead Text / Paragraph */}
                 {q.leadText && (
                   <p className="text-xs sm:text-sm text-gray-800 dark:text-gray-200 leading-relaxed font-medium">
