@@ -47,7 +47,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
   onUpdateMistakeStatus,
   onDeleteMistake,
 }) => {
-  const [mainTab, setMainTab] = useState<'hub' | 'mistakes' | 'questions-deneme1' | 'questions-deneme2' | 'shadow-deneme1' | 'shadow-deneme2' | 'vocabulary'>('hub');
+  const [mainTab, setMainTab] = useState<'hub' | 'mistakes' | 'questions-deneme1' | 'questions-deneme1v2' | 'questions-deneme2' | 'shadow-deneme1' | 'shadow-deneme1v2' | 'shadow-deneme2' | 'vocabulary'>('hub');
   const [questionsSubject, setQuestionsSubject] = useState<SubjectType | 'ALL'>('ALL');
   const [targetShadowParentId, setTargetShadowParentId] = useState<string | null>(null);
   const [selectedSubject, setSelectedSubject] = useState<SubjectType | 'ALL'>('ALL');
@@ -220,6 +220,38 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
         <button
           type="button"
           onClick={() => {
+            setMainTab('questions-deneme1v2');
+            setQuestionsSubject('ALL');
+          }}
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
+            mainTab === 'questions-deneme1v2'
+              ? 'bg-white dark:bg-gray-900 text-pink-600 dark:text-pink-400 shadow-xs ring-2 ring-pink-500/30'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <Building2 className="w-3.5 h-3.5 text-pink-600 dark:text-pink-400" />
+          <span>DENEME-1.v2 (18) ⭐</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setMainTab('shadow-deneme1v2');
+            setTargetShadowParentId(null);
+          }}
+          className={`px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer ${
+            mainTab === 'shadow-deneme1v2'
+              ? 'bg-white dark:bg-gray-900 text-pink-600 dark:text-pink-400 shadow-xs ring-2 ring-pink-500/30'
+              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+          }`}
+        >
+          <BrainCircuit className="w-3.5 h-3.5 text-pink-600 dark:text-pink-400" />
+          <span>Gölge Test-1.v2 (36)</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
             setMainTab('questions-deneme1');
             setQuestionsSubject('ALL');
           }}
@@ -321,6 +353,79 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* Card 0: 8.SINIF NAO LGS DENEME-1.v2 (Dikey Basılı Yeni Versiyon) */}
+            <div className="rounded-2xl border-2 border-pink-500/80 dark:border-pink-600/80 bg-linear-to-br from-pink-50/90 via-white to-pink-50/40 dark:from-pink-950/40 dark:via-gray-900 dark:to-gray-900 p-5 shadow-md hover:shadow-lg transition flex flex-col justify-between gap-4 md:col-span-2">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-12 h-12 rounded-xl bg-pink-600 text-white flex items-center justify-center text-xl font-black shadow-xs">
+                      ?
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-lg font-black text-gray-900 dark:text-white">
+                          8.SINIF NAO LGS DENEME-1.v2
+                        </h4>
+                        <span className="px-2.5 py-0.5 rounded-md text-[11px] font-black bg-pink-600 text-white uppercase tracking-wider animate-pulse">
+                          Yeni Versiyon V2
+                        </span>
+                      </div>
+                      <p className="text-xs text-pink-700 dark:text-pink-300 font-bold">
+                        Aydın Dershanesi · Pembe Rozet Sınav Düzeni · Dikey Basılı Sayfa Stili (3:4)
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-3 py-1 rounded-full text-xs font-black bg-pink-100 dark:bg-pink-950 text-pink-700 dark:text-pink-300 border border-pink-300 dark:border-pink-800">
+                    LGS Standart Vektör Çizim
+                  </span>
+                </div>
+
+                <p className="text-xs text-gray-700 dark:text-gray-200 leading-relaxed font-medium">
+                  Sol üstte pembe kare soru rozeti, saf beyaz arka plan üzerinde lekesiz dikey sınav kâğıdı görünümü, üstte %35 vektörel şekil alanı, antrasit kalın soru kökü ve asılı girintili LGS şıkları ile yenilenmiş 18 soru ve 36 gölge test.
+                </p>
+
+                <div className="flex items-center gap-2 text-[11px] font-bold text-pink-900 dark:text-pink-200 flex-wrap">
+                  <span className="px-2.5 py-1 rounded-lg bg-pink-100 dark:bg-pink-900/60 border border-pink-200 dark:border-pink-800">
+                    📖 Türkçe (7)
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg bg-pink-100 dark:bg-pink-900/60 border border-pink-200 dark:border-pink-800">
+                    📐 Matematik (4)
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg bg-pink-100 dark:bg-pink-900/60 border border-pink-200 dark:border-pink-800">
+                    🔬 Fen Bilimleri (4)
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg bg-pink-100 dark:bg-pink-900/60 border border-pink-200 dark:border-pink-800">
+                    🏛️ İnkılap Tarihi (3)
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-pink-200 dark:border-pink-900/50">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMainTab('questions-deneme1v2');
+                    setQuestionsSubject('ALL');
+                  }}
+                  className="py-3 px-4 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-extrabold transition cursor-pointer flex items-center justify-center gap-2 shadow-xs"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Deneme-1.v2 Sorularını İncele (18 Soru)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMainTab('shadow-deneme1v2');
+                    setTargetShadowParentId(null);
+                  }}
+                  className="py-3 px-4 rounded-xl bg-gray-900 dark:bg-gray-100 hover:bg-black text-white dark:text-gray-900 text-xs font-extrabold transition cursor-pointer flex items-center justify-center gap-2 shadow-xs"
+                >
+                  <BrainCircuit className="w-4 h-4 text-pink-500" />
+                  <span>Deneme-1.v2 Gölge Testine Başla (36 Soru)</span>
+                </button>
+              </div>
+            </div>
+
             {/* Card 1: 8.SINIF NAO LGS DENEME-1 */}
             <div className="rounded-2xl border border-purple-200 dark:border-purple-900/60 bg-linear-to-br from-purple-50/70 via-white to-purple-50/30 dark:from-purple-950/30 dark:via-gray-900 dark:to-gray-900 p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between gap-4">
               <div className="space-y-3">
@@ -339,7 +444,7 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
                     </div>
                   </div>
                   <span className="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300">
-                    Yeni eklendi
+                    Klasik Düzen
                   </span>
                 </div>
 
@@ -524,6 +629,65 @@ export const MistakeAnalysisView: React.FC<MistakeAnalysisViewProps> = ({
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Main Tab: Deneme-1.v2 Questions (Dikey Basılı Sayfa Stili V2) */}
+      {mainTab === 'questions-deneme1v2' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between bg-pink-50 dark:bg-pink-950/40 p-3 rounded-xl border border-pink-200/80 dark:border-pink-800/60">
+            <button
+              type="button"
+              onClick={() => setMainTab('hub')}
+              className="px-3.5 py-1.5 rounded-lg bg-white dark:bg-gray-900 hover:bg-pink-100 dark:hover:bg-pink-900/60 text-pink-700 dark:text-pink-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs border border-pink-200 dark:border-pink-800"
+            >
+              <span>⬅️</span>
+              <span>Sınav ve Gölge Test Seçim Menüsüne Dön</span>
+            </button>
+            <span className="text-xs font-extrabold text-pink-900 dark:text-pink-200 flex items-center gap-2">
+              <span className="w-4 h-4 bg-pink-600 text-white rounded-xs inline-flex items-center justify-center text-[10px]">?</span>
+              8.SINIF NAO LGS DENEME-1.v2 (Dikey Basılı Sınav Formatı)
+            </span>
+          </div>
+
+          <PracticeQuestionsView
+            studentName={studentName}
+            initialSubject={questionsSubject}
+            initialExamId="aydin-nao-lgs-deneme-1-v2"
+            onOpenShadowTest={(parentId) => {
+              setTargetShadowParentId(parentId || null);
+              setMainTab('shadow-deneme1v2');
+            }}
+          />
+        </div>
+      )}
+
+      {/* Main Tab: Shadow Test Deneme-1.v2 */}
+      {mainTab === 'shadow-deneme1v2' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between bg-pink-50 dark:bg-pink-950/40 p-3 rounded-xl border border-pink-200/80 dark:border-pink-800/60">
+            <button
+              type="button"
+              onClick={() => setMainTab('hub')}
+              className="px-3.5 py-1.5 rounded-lg bg-white dark:bg-gray-900 hover:bg-pink-100 dark:hover:bg-pink-900/60 text-pink-700 dark:text-pink-300 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-2xs border border-pink-200 dark:border-pink-800"
+            >
+              <span>⬅️</span>
+              <span>Sınav ve Gölge Test Seçim Menüsüne Dön</span>
+            </button>
+            <span className="text-xs font-extrabold text-pink-900 dark:text-pink-200 flex items-center gap-2">
+              <BrainCircuit className="w-4 h-4 text-pink-600" />
+              8.SINIF NAO LGS DENEME-1.v2 (Gölge Test - 36 Soru)
+            </span>
+          </div>
+
+          <ShadowTestView
+            studentName={studentName}
+            initialSubject="ALL"
+            initialExamId="aydin-nao-lgs-deneme-1-v2"
+            targetParentQuestionId={targetShadowParentId}
+            onClearTargetParent={() => setTargetShadowParentId(null)}
+            onNavigateToOriginal={() => setMainTab('questions-deneme1v2')}
+          />
         </div>
       )}
 

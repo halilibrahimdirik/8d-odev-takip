@@ -607,9 +607,16 @@ export const PracticeQuestionsView: React.FC<PracticeQuestionsViewProps> = ({
                   </blockquote>
                 )}
 
-                {/* Question Prompt (Bold root question) */}
-                <div className="p-3.5 rounded-xl bg-purple-50/50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40">
-                  <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white leading-relaxed">
+                {/* Question Prompt (Bold root question in dark slate with pink question mark badge for v2) */}
+                <div className={`p-3.5 sm:p-4 rounded-xl border flex items-start gap-2.5 ${
+                  q.examId.includes('v2')
+                    ? 'bg-pink-50/70 dark:bg-pink-950/30 border-pink-200 dark:border-pink-900/50'
+                    : 'bg-purple-50/50 dark:bg-purple-950/30 border-purple-100 dark:border-purple-900/40'
+                }`}>
+                  <span className="w-5 h-5 rounded-xs bg-pink-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                    ?
+                  </span>
+                  <p className="text-sm sm:text-base font-extrabold text-slate-800 dark:text-slate-100 leading-relaxed">
                     {q.questionPrompt}
                   </p>
                 </div>
